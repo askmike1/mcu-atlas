@@ -25,7 +25,7 @@ function ImportanceBadge({ importance }) {
   );
 }
 
-export default function DetailPanel({ entry, byId, dependents, watched, onToggleWatched, onSelect, onClose }) {
+export default function DetailPanel({ entry, byId, dependents, watched, onToggleWatched, onSelect, onClose, phaseNames }) {
   const [revealed, setRevealed] = useState(() => new Set());
 
   if (!entry) {
@@ -65,7 +65,7 @@ export default function DetailPanel({ entry, byId, dependents, watched, onToggle
         <h2>{entry.title}</h2>
         <p className="meta-line">
           {formatDate(entry.releaseDate)}
-          {upcoming && <span className="upcoming-tag">Upcoming</span>} · Phase {entry.phase}
+          {upcoming && <span className="upcoming-tag">Upcoming</span>} · {phaseNames.get(entry.phase) ?? `Phase ${entry.phase}`}
         </p>
       </div>
 

@@ -5,9 +5,26 @@ import { IMPORTANCE, PHASE_COLORS } from '../utils/mcu';
 
 cytoscape.use(dagre);
 
+const MOBILE_QUERY = '(max-width: 720px)';
+
+const CHECK_BADGE = `data:image/svg+xml;utf8,${encodeURIComponent(
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">' +
+    '<circle cx="10" cy="10" r="9.5" fill="#22c55e" stroke="#0f1117" stroke-width="1"/>' +
+    '<path d="M5.5 10.3l3 3 6-6.6" stroke="#ffffff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>' +
+    '</svg>'
+)}`;
+
+const SHOW_BADGE = `data:image/svg+xml;utf8,${encodeURIComponent(
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">' +
+    '<rect x="1.5" y="1.5" width="17" height="17" rx="4" fill="#334155" stroke="#94a3b8" stroke-width="1"/>' +
+    '<rect x="4.5" y="5" width="11" height="7.5" rx="1" fill="none" stroke="#e2e8f0" stroke-width="1.4"/>' +
+    '<path d="M7 15.5h6M10 12.5v3" stroke="#e2e8f0" stroke-width="1.4" stroke-linecap="round"/>' +
+    '</svg>'
+)}`;
+
 function buildElements(entries, phases) {
   const phaseNodes = phases.map((phase) => ({
-    data: { id: `phase-${phase.number}`, label: `${phase.name}\n${phase.saga}` },
+    data: { id: `phase-${phase.number}`, label: phase.name, phaseColor: PHASE_COLORS[phase.number] ?? '#8b93a7' },
     classes: 'phase-parent',
     selectable: false,
   }));
@@ -17,7 +34,6 @@ function buildElements(entries, phases) {
       id: entry.id,
       label: entry.title,
       parent: `phase-${entry.phase}`,
-      color: PHASE_COLORS[entry.phase] ?? '#8b93a7',
     },
     classes: `movie ${entry.type}`,
   }));
@@ -40,57 +56,96 @@ function buildElements(entries, phases) {
   return [...phaseNodes, ...movieNodes, ...edges];
 }
 
-const STYLE = [
+const THEME = { bg: '#0f1117', nodeFill: '#2b3040', nodeText: '#e9ebf2', nodeBorder: '#454b60' };
+
+function buildStyle(theme) { return [
   {
     selector: 'node.phase-parent',
     style: {
       shape: 'roundrectangle',
-      'background-color': '#8b93a7',
-      'background-opacity': 0.06,
-      'border-width': 1,
-      'border-color': '#8b93a7',
-      'border-opacity': 0.35,
+      'background-color': 'data(phaseColor)',
+      'background-opacity': 0.16,
+      'border-width': 2,
+      'border-color': 'data(phaseColor)',
+      'border-opacity': 0.7,
       label: 'data(label)',
       'text-valign': 'top',
-      'text-halign': 'center',
-      'text-margin-y': -6,
-      'font-size': 13,
+      'text-halign': 'left',
+      'text-margin-x': 4,
+      'text-margin-y': -4,
+      'font-size': 15,
       'font-weight': 700,
-      color: 'var(--text-muted)',
-      padding: '28px',
+      color: 'data(phaseColor)',
+      'text-background-color': theme.bg,
+      'text-background-opacity': 0.85,
+      'text-background-padding': '2px',
+      padding: '16px',
     },
   },
   {
     selector: 'node.movie',
     style: {
       shape: 'round-rectangle',
-      'background-color': 'data(color)',
+      'background-color': theme.nodeFill,
       width: 128,
-      height: 56,
+      height: 52,
       label: 'data(label)',
       'text-wrap': 'wrap',
-      'text-max-width': '112px',
-      'font-size': 11,
+      'text-max-width': '114px',
+      'font-size': 12.5,
       'font-weight': 600,
       'text-valign': 'center',
       'text-halign': 'center',
-      color: '#111319',
-      'border-width': 2,
-      'border-color': '#00000030',
-      'transition-property': 'opacity, border-width, border-color',
+      color: theme.nodeText,
+      'border-width': 1.5,
+      'border-color': theme.nodeBorder,
+      'transition-property': 'opacity, border-width, border-color, background-color',
       'transition-duration': 120,
     },
   },
   {
     selector: 'node.movie.show',
-    style: { 'border-style': 'dashed', 'border-width': 3 },
+    style: {
+      'border-style': 'dashed',
+      'background-image': SHOW_BADGE,
+      'background-width': '16px',
+      'background-height': '16px',
+      'background-position-x': '0%',
+      'background-position-y': '0%',
+      'background-offset-x': -3,
+      'background-offset-y': -3,
+      'background-clip': 'none',
+      'bounds-expansion': 6,
+    },
   },
   {
     selector: 'node.movie.watched',
     style: {
-      'background-opacity': 0.45,
-      'border-color': '#2fb865',
-      'border-width': 4,
+      'background-image': CHECK_BADGE,
+      'background-width': '16px',
+      'background-height': '16px',
+      'background-position-x': '100%',
+      'background-position-y': '0%',
+      'background-offset-x': 3,
+      'background-offset-y': -3,
+      'background-clip': 'none',
+      'bounds-expansion': 6,
+      'background-opacity': 0.7,
+      'border-color': '#22c55e',
+      'border-width': 2.5,
+    },
+  },
+  {
+    selector: 'node.movie.show.watched',
+    style: {
+      'background-image': [SHOW_BADGE, CHECK_BADGE],
+      'background-width': ['16px', '16px'],
+      'background-height': ['16px', '16px'],
+      'background-position-x': ['0%', '100%'],
+      'background-position-y': ['0%', '0%'],
+      'background-offset-x': [-3, 3],
+      'background-offset-y': [-3, -3],
+      'background-clip': ['none', 'none'],
     },
   },
   {
@@ -100,32 +155,32 @@ const STYLE = [
       'overlay-opacity': 0.25,
       'overlay-padding': 6,
       'border-color': '#ffffff',
-      'border-width': 4,
+      'border-width': 3,
       'z-index': 20,
     },
   },
   {
     selector: 'node.movie.dep-highlight',
-    style: { 'border-color': '#ffffff', 'border-width': 4, 'z-index': 15 },
+    style: { 'border-color': '#ffffff', 'border-width': 3, 'z-index': 15 },
   },
   {
     selector: 'node.movie.dependent-highlight',
-    style: { 'border-color': '#c9cfdc', 'border-width': 3, 'z-index': 12 },
+    style: { 'border-color': '#c9cfdc', 'border-width': 2, 'z-index': 12 },
   },
   {
     selector: 'node.movie.dim',
-    style: { opacity: 0.18 },
+    style: { opacity: 0.16 },
   },
   {
     selector: 'edge',
     style: {
       'curve-style': 'bezier',
       'target-arrow-shape': 'triangle',
-      'arrow-scale': 1,
-      width: 2,
+      'arrow-scale': 0.9,
+      width: 1.6,
       'line-color': 'data(color)',
       'target-arrow-color': 'data(color)',
-      opacity: 0.85,
+      opacity: 0.8,
     },
   },
   {
@@ -134,13 +189,37 @@ const STYLE = [
   },
   {
     selector: 'edge.dim',
-    style: { opacity: 0.05 },
+    style: { opacity: 0.04 },
   },
   {
     selector: 'edge.highlight',
-    style: { width: 3.5, opacity: 1, 'z-index': 10 },
+    style: { width: 3, opacity: 1, 'z-index': 10 },
   },
-];
+]; }
+
+function layoutFor(isMobile) {
+  return isMobile
+    ? {
+        name: 'dagre',
+        rankDir: 'TB',
+        nodeSep: 6,
+        rankSep: 46,
+        edgeSep: 4,
+        animate: false,
+        fit: true,
+        padding: 20,
+      }
+    : {
+        name: 'dagre',
+        rankDir: 'LR',
+        nodeSep: 8,
+        rankSep: 60,
+        edgeSep: 6,
+        animate: false,
+        fit: true,
+        padding: 24,
+      };
+}
 
 export default function GraphView({ entries, phases, watched, selectedId, onSelect }) {
   const containerRef = useRef(null);
@@ -163,23 +242,16 @@ export default function GraphView({ entries, phases, watched, selectedId, onSele
   }, [entries]);
 
   useEffect(() => {
+    const mql = window.matchMedia(MOBILE_QUERY);
+
     const cy = cytoscape({
       container: containerRef.current,
       elements: buildElements(entries, phases),
-      style: STYLE,
-      layout: {
-        name: 'dagre',
-        rankDir: 'LR',
-        nodeSep: 14,
-        rankSep: 110,
-        edgeSep: 8,
-        animate: false,
-        fit: true,
-        padding: 30,
-      },
+      style: buildStyle(THEME),
+      layout: layoutFor(mql.matches),
       wheelSensitivity: 0.25,
-      minZoom: 0.2,
-      maxZoom: 2.5,
+      minZoom: 0.15,
+      maxZoom: 3,
     });
 
     cy.on('tap', 'node.movie', (evt) => onSelect(evt.target.id()));
@@ -192,8 +264,14 @@ export default function GraphView({ entries, phases, watched, selectedId, onSele
     const resizeObserver = new ResizeObserver(() => cy.resize());
     resizeObserver.observe(containerRef.current);
 
+    const onBreakpointChange = (evt) => {
+      cy.layout(layoutFor(evt.matches)).run();
+    };
+    mql.addEventListener('change', onBreakpointChange);
+
     return () => {
       resizeObserver.disconnect();
+      mql.removeEventListener('change', onBreakpointChange);
       cy.destroy();
       cyRef.current = null;
     };

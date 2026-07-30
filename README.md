@@ -20,6 +20,9 @@ enabled — see [Deployment](#deployment) below).
   browser (`localStorage`).
 - **Export / Import** — download your watched list as a JSON file, or import
   one to restore it (import **overwrites** your current selections).
+- **GitHub sync** (optional) — save your watched list as a committed file in
+  this repo instead of/alongside browser storage, so it follows you across
+  devices. See [GitHub sync](#github-sync) below.
 
 ## Data format
 
@@ -31,7 +34,7 @@ needed.
 {
   "schemaVersion": 1,
   "phases": [
-    { "number": 1, "name": "Phase One", "saga": "The Infinity Saga" }
+    { "number": 1, "name": "Phase I", "saga": "The Infinity Saga" }
   ],
   "entries": [
     {
@@ -71,7 +74,7 @@ needed.
 |---|---|---|
 | `id` | string | Unique, kebab-case. Used to link dependencies — must match another entry's `id`. |
 | `title` | string | Display name. |
-| `type` | `"movie"` \| `"show"` | Shows render with a dashed border in the diagram. |
+| `type` | `"movie"` \| `"show"` | Shows render with a dashed border and a small screen icon in the diagram. |
 | `releaseDate` | string | `YYYY-MM-DD`. Drives left-to-right ordering. |
 | `phase` | number | Must match a `number` in the top-level `phases` array. |
 | `dependencies` | array | Zero or more prerequisite entries (see below). |
@@ -88,6 +91,32 @@ The dataset currently covers all released MCU movies and Disney+ series through
 mid-2026, plus a couple of announced-but-unreleased entries (e.g. *Avengers:
 Doomsday*) with placeholder/minimal dependencies — update those once the films
 are out and their actual connections are known.
+
+## GitHub sync
+
+Since this app has no backend, "saving to the cloud" means committing a small
+JSON file straight to this repo from your browser, using the GitHub REST API.
+
+1. Click **GitHub sync** in the toolbar.
+2. Create a [fine-grained personal access token](https://github.com/settings/personal-access-tokens/new)
+   scoped to **only this repository**, with **Contents: Read and write**
+   permission and nothing else.
+3. Paste it in, confirm the owner/repo/branch/path (auto-filled when running
+   on `*.github.io`), then **Save** or **Load**.
+
+Notes on the security model:
+
+- The token never leaves your browser except in direct HTTPS calls to
+  `api.github.com` — there's no server in between.
+- By default the token is kept only in memory for the current tab and is
+  lost on refresh. Checking "remember this token" stores it in this
+  browser's `localStorage` instead, for convenience — anyone with access to
+  that browser profile could read it from there, so only enable this on a
+  device you trust, and prefer a token scoped to just this one repo.
+- Progress is written to `data/watched-progress.json` (configurable) as a
+  normal commit, so it's versioned like everything else in the repo. The
+  deploy workflow ignores changes under `data/` so saving progress doesn't
+  trigger a rebuild.
 
 ## Development
 
