@@ -1,5 +1,47 @@
-import { useState } from 'react';
-import { IMPORTANCE, formatDate, isUpcoming } from '../utils/mcu';
+import { useEffect, useState } from 'react';
+import { IMPORTANCE, PHASE_COLORS, formatDate, isUpcoming } from '../utils/mcu';
+import { buildExternalLinks, posterSrcFor } from '../utils/externalLinks';
+
+function FilmIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <rect x="2.5" y="4" width="19" height="16" rx="2" />
+      <path d="M7 4v16M17 4v16M2.5 9h4.5M2.5 15h4.5M17 9h4.5M17 15h4.5" />
+    </svg>
+  );
+}
+
+function TvIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <rect x="2.5" y="5" width="19" height="13" rx="2" />
+      <path d="M8 21h8M12 18v3" />
+    </svg>
+  );
+}
+
+function Cover({ entry }) {
+  const [failed, setFailed] = useState(false);
+  useEffect(() => setFailed(false), [entry.id]);
+
+  if (failed) {
+    const color = PHASE_COLORS[entry.phase] ?? '#8b93a7';
+    return (
+      <div className="cover cover--placeholder" style={{ '--cover-color': color }}>
+        {entry.type === 'show' ? <TvIcon /> : <FilmIcon />}
+      </div>
+    );
+  }
+
+  return (
+    <img
+      className="cover"
+      src={posterSrcFor(entry)}
+      alt={`${entry.title} cover art`}
+      onError={() => setFailed(true)}
+    />
+  );
+}
 
 function EyeIcon({ revealed }) {
   return revealed ? (
@@ -53,6 +95,7 @@ export default function DetailPanel({ entry, byId, dependents, watched, onToggle
   );
   const dependentList = dependents.get(entry.id) || [];
   const upcoming = isUpcoming(entry.releaseDate);
+  const links = buildExternalLinks(entry);
 
   return (
     <aside className="detail-panel">
@@ -60,13 +103,29 @@ export default function DetailPanel({ entry, byId, dependents, watched, onToggle
         ×
       </button>
 
-      <div className="detail-header">
-        <span className="type-tag">{entry.type === 'show' ? 'Series' : 'Movie'}</span>
-        <h2>{entry.title}</h2>
-        <p className="meta-line">
-          {formatDate(entry.releaseDate)}
-          {upcoming && <span className="upcoming-tag">Upcoming</span>} · {phaseNames.get(entry.phase) ?? `Phase ${entry.phase}`}
-        </p>
+      <div className="cover-row">
+        <Cover entry={entry} />
+        <div className="detail-header">
+          <span className="type-tag">{entry.type === 'show' ? 'Series' : 'Movie'}</span>
+          <h2>{entry.title}</h2>
+          <p className="meta-line">
+            {formatDate(entry.releaseDate)}
+            {upcoming && <span className="upcoming-tag">Upcoming</span>} ·{' '}
+            {phaseNames.get(entry.phase) ?? `Phase ${entry.phase}`}
+          </p>
+        </div>
+      </div>
+
+      <div className="external-links">
+        <a href={links.wikipedia} target="_blank" rel="noreferrer">
+          Wikipedia
+        </a>
+        <a href={links.imdb} target="_blank" rel="noreferrer">
+          IMDb
+        </a>
+        <a href={links.disneyPlus} target="_blank" rel="noreferrer">
+          Disney+
+        </a>
       </div>
 
       <label className="watched-toggle">

@@ -280,6 +280,9 @@ export default function GraphView({ entries, phases, watched, selectedId, onSele
       wheelSensitivity: 0.25,
       minZoom: 0.15,
       maxZoom: 3,
+      // Nodes are fixed grid cells, not draggable — without this, a
+      // touch-drag on a box moves it instead of panning/scrolling.
+      autoungrabify: true,
     });
 
     cy.on('tap', 'node.movie', (evt) => onSelect(evt.target.id()));

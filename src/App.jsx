@@ -6,6 +6,7 @@ import Toolbar from './components/Toolbar';
 import GitHubSyncDialog from './components/GitHubSyncDialog';
 import { useWatchedState } from './hooks/useWatchedState';
 import { useGitHubSync } from './hooks/useGitHubSync';
+import { useIsMobile } from './hooks/useIsMobile';
 import { indexEntries } from './utils/mcu';
 import { downloadWatchedFile, parseWatchedFile } from './utils/watchedFile';
 import './App.css';
@@ -20,6 +21,7 @@ export default function App() {
   const [selectedId, setSelectedId] = useState(null);
   const [syncOpen, setSyncOpen] = useState(false);
   const sync = useGitHubSync();
+  const isMobile = useIsMobile();
 
   const handleSelect = useCallback((id) => setSelectedId(id), []);
   const handleClose = useCallback(() => setSelectedId(null), []);
@@ -60,17 +62,35 @@ export default function App() {
       />
       <div className="layout">
         <GraphView entries={entries} phases={phases} watched={watched} selectedId={selectedId} onSelect={handleSelect} />
-        <DetailPanel
-          entry={selectedEntry}
-          byId={byId}
-          dependents={dependentsOf}
-          watched={watched}
-          onToggleWatched={toggle}
-          onSelect={handleSelect}
-          onClose={handleClose}
-          phaseNames={phaseNames}
-        />
+        {!isMobile && (
+          <DetailPanel
+            entry={selectedEntry}
+            byId={byId}
+            dependents={dependentsOf}
+            watched={watched}
+            onToggleWatched={toggle}
+            onSelect={handleSelect}
+            onClose={handleClose}
+            phaseNames={phaseNames}
+          />
+        )}
       </div>
+      {isMobile && selectedEntry && (
+        <div className="detail-modal-backdrop" onClick={handleClose}>
+          <div className="detail-modal-card" onClick={(e) => e.stopPropagation()}>
+            <DetailPanel
+              entry={selectedEntry}
+              byId={byId}
+              dependents={dependentsOf}
+              watched={watched}
+              onToggleWatched={toggle}
+              onSelect={handleSelect}
+              onClose={handleClose}
+              phaseNames={phaseNames}
+            />
+          </div>
+        </div>
+      )}
       {syncOpen && (
         <GitHubSyncDialog
           onClose={() => setSyncOpen(false)}

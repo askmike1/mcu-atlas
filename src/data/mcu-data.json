@@ -1,6 +1,7 @@
 {
   "schemaVersion": 1,
   "phases": [
+    { "number": 0, "name": "Sony's Spider-Man", "saga": "Legacy Continuity (non-MCU)" },
     { "number": 1, "name": "Phase I", "saga": "The Infinity Saga" },
     { "number": 2, "name": "Phase II", "saga": "The Infinity Saga" },
     { "number": 3, "name": "Phase III", "saga": "The Infinity Saga" },
@@ -9,6 +10,52 @@
     { "number": 6, "name": "Phase VI", "saga": "The Multiverse Saga" }
   ],
   "entries": [
+    {
+      "id": "sony-spider-man",
+      "title": "Spider-Man",
+      "type": "movie",
+      "releaseDate": "2002-05-03",
+      "phase": 0,
+      "dependencies": []
+    },
+    {
+      "id": "sony-spider-man-2",
+      "title": "Spider-Man 2",
+      "type": "movie",
+      "releaseDate": "2004-06-30",
+      "phase": 0,
+      "dependencies": [
+        { "id": "sony-spider-man", "importance": "required", "note": "Directly continues Peter Parker's story, his relationship with Mary Jane, and his uncle's death." }
+      ]
+    },
+    {
+      "id": "sony-spider-man-3",
+      "title": "Spider-Man 3",
+      "type": "movie",
+      "releaseDate": "2007-05-04",
+      "phase": 0,
+      "dependencies": [
+        { "id": "sony-spider-man-2", "importance": "required", "note": "Harry Osborn's arc as the new Goblin and Peter's relationships all continue directly from that film." }
+      ]
+    },
+    {
+      "id": "sony-amazing-spider-man",
+      "title": "The Amazing Spider-Man",
+      "type": "movie",
+      "releaseDate": "2012-07-03",
+      "phase": 0,
+      "dependencies": []
+    },
+    {
+      "id": "sony-amazing-spider-man-2",
+      "title": "The Amazing Spider-Man 2",
+      "type": "movie",
+      "releaseDate": "2014-05-02",
+      "phase": 0,
+      "dependencies": [
+        { "id": "sony-amazing-spider-man", "importance": "required", "note": "Continues Peter and Gwen Stacy's relationship and the mystery of Peter's parents set up there." }
+      ]
+    },
     {
       "id": "iron-man",
       "title": "Iron Man",
@@ -370,7 +417,12 @@
       "dependencies": [
         { "id": "spider-man-far-from-home", "importance": "required", "note": "Opens literally seconds after that film's ending, with Peter's identity publicly revealed." },
         { "id": "doctor-strange", "importance": "required", "note": "Strange's spell to fix the identity reveal is the plot's inciting device, and relies on his established magical abilities." },
-        { "id": "spider-man-homecoming", "importance": "recommended", "note": "Peter's full relationships and history as Spider-Man pay off throughout this film." }
+        { "id": "spider-man-homecoming", "importance": "recommended", "note": "Peter's full relationships and history as Spider-Man pay off throughout this film." },
+        { "id": "sony-spider-man", "importance": "recommended", "note": "Introduces Peter Parker, Norman Osborn/Green Goblin, and the 'with great power' philosophy that this film's climax directly echoes. This Peter appears here as a multiverse variant." },
+        { "id": "sony-spider-man-2", "importance": "recommended", "note": "Introduces Otto Octavius/Doc Ock, who appears here still working through unfinished business from the end of that film." },
+        { "id": "sony-spider-man-3", "importance": "recommended", "note": "Introduces Harry Osborn's Goblin persona and Flint Marko/Sandman, both of whom reappear here." },
+        { "id": "sony-amazing-spider-man", "importance": "recommended", "note": "Introduces Curt Connors/The Lizard from a separate rebooted continuity, who reappears here as another multiverse variant." },
+        { "id": "sony-amazing-spider-man-2", "importance": "recommended", "note": "Introduces Max Dillon/Electro, whose unfinished arc from that film is picked back up here." }
       ]
     },
     {

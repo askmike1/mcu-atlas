@@ -81,6 +81,7 @@ needed.
 | `type` | `"movie"` \| `"show"` | Shows render with a dashed border and a small screen icon in the diagram. |
 | `releaseDate` | string | `YYYY-MM-DD`. Drives left-to-right ordering. |
 | `phase` | number | Must match a `number` in the top-level `phases` array. |
+| `posterUrl` | string (optional) | Cover art shown in the detail panel. Omit to use `public/posters/<id>.jpg` if present, else a generated placeholder — see [Cover art](#cover-art). |
 | `dependencies` | array | Zero or more prerequisite entries (see below). |
 
 Each item in `dependencies`:
@@ -95,6 +96,26 @@ The dataset currently covers all released MCU movies and Disney+ series through
 mid-2026, plus a couple of announced-but-unreleased entries (e.g. *Avengers:
 Doomsday*) with placeholder/minimal dependencies — update those once the films
 are out and their actual connections are known.
+
+It also includes a non-MCU **Phase 0: "Sony's Spider-Man"** group (Sam Raimi's
+and Marc Webb's Spider-Man films), since those are referenced as multiverse
+prerequisites for *Spider-Man: No Way Home*. A `phase` number doesn't have to
+correspond to an official MCU phase — it's just a grouping/coloring key that
+must match an entry in the top-level `phases` array.
+
+### Cover art
+
+We don't ship or hotlink any poster images (copyright, and no reliable way to
+guess the right file per title). The detail panel shows a generated
+placeholder by default. To add real cover art for a title, either:
+
+- drop an image at `public/posters/<id>.jpg` (matching the entry's `id`), or
+- set `"posterUrl": "https://…"` on that entry to any image URL you have the
+  rights to use.
+
+The Wikipedia/IMDb/Disney+ links in the panel are search links (not deep
+links to a specific page) for the same reason — we don't hardcode exact
+article slugs or title IDs, since a wrong guess is a broken link.
 
 ## GitHub sync
 
