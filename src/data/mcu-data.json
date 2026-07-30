@@ -1,0 +1,581 @@
+{
+  "schemaVersion": 1,
+  "phases": [
+    { "number": 1, "name": "Phase One", "saga": "The Infinity Saga" },
+    { "number": 2, "name": "Phase Two", "saga": "The Infinity Saga" },
+    { "number": 3, "name": "Phase Three", "saga": "The Infinity Saga" },
+    { "number": 4, "name": "Phase Four", "saga": "The Multiverse Saga" },
+    { "number": 5, "name": "Phase Five", "saga": "The Multiverse Saga" },
+    { "number": 6, "name": "Phase Six", "saga": "The Multiverse Saga" }
+  ],
+  "entries": [
+    {
+      "id": "iron-man",
+      "title": "Iron Man",
+      "type": "movie",
+      "releaseDate": "2008-05-02",
+      "phase": 1,
+      "dependencies": []
+    },
+    {
+      "id": "incredible-hulk",
+      "title": "The Incredible Hulk",
+      "type": "movie",
+      "releaseDate": "2008-06-13",
+      "phase": 1,
+      "dependencies": [
+        { "id": "iron-man", "importance": "optional", "note": "Tony Stark's end-credits cameo teases the wider Avengers Initiative, but adds nothing required to follow this film." }
+      ]
+    },
+    {
+      "id": "iron-man-2",
+      "title": "Iron Man 2",
+      "type": "movie",
+      "releaseDate": "2010-05-07",
+      "phase": 1,
+      "dependencies": [
+        { "id": "iron-man", "importance": "required", "note": "Directly continues Tony Stark's arc as a public superhero and the fallout of revealing his identity at the end of the first film." },
+        { "id": "incredible-hulk", "importance": "optional", "note": "Establishes S.H.I.E.L.D.'s wider monitoring of enhanced individuals, referenced only in passing." }
+      ]
+    },
+    {
+      "id": "thor",
+      "title": "Thor",
+      "type": "movie",
+      "releaseDate": "2011-05-06",
+      "phase": 1,
+      "dependencies": [
+        { "id": "iron-man-2", "importance": "optional", "note": "Agent Coulson and S.H.I.E.L.D.'s growing case-file on enhanced beings carries over, plus a post-credits tease of the Tesseract that pays off later." }
+      ]
+    },
+    {
+      "id": "captain-america-first-avenger",
+      "title": "Captain America: The First Avenger",
+      "type": "movie",
+      "releaseDate": "2011-07-22",
+      "phase": 1,
+      "dependencies": [
+        { "id": "thor", "importance": "optional", "note": "The Tesseract, already introduced as an object of cosmic power, turns out to be the same artifact HYDRA is hunting in WWII." }
+      ]
+    },
+    {
+      "id": "avengers",
+      "title": "The Avengers",
+      "type": "movie",
+      "releaseDate": "2012-05-04",
+      "phase": 1,
+      "dependencies": [
+        { "id": "iron-man", "importance": "required", "note": "Tony Stark's personality, tech, and prior confrontation with government oversight all drive his role on the team." },
+        { "id": "iron-man-2", "importance": "required", "note": "Introduces Black Widow and Nick Fury/S.H.I.E.L.D. as an active organization, both central to the team's formation here." },
+        { "id": "thor", "importance": "required", "note": "Loki and the Tesseract's backstory, plus Thor and Loki's fractured relationship, are the film's inciting conflict." },
+        { "id": "captain-america-first-avenger", "importance": "required", "note": "Steve Rogers' origin, his relationship to the Tesseract/HYDRA, and his time-displacement are all assumed knowledge." },
+        { "id": "incredible-hulk", "importance": "recommended", "note": "Bruce Banner's fugitive status and General Ross's pursuit of him carry directly into his introduction here." }
+      ]
+    },
+    {
+      "id": "iron-man-3",
+      "title": "Iron Man 3",
+      "type": "movie",
+      "releaseDate": "2013-05-03",
+      "phase": 2,
+      "dependencies": [
+        { "id": "avengers", "importance": "required", "note": "Tony's anxiety attacks and PTSD throughout this film stem directly from the near-death experience of the Battle of New York." },
+        { "id": "iron-man-2", "importance": "recommended", "note": "War Machine/Iron Patriot and Tony's supporting cast continue directly from this film." }
+      ]
+    },
+    {
+      "id": "thor-dark-world",
+      "title": "Thor: The Dark World",
+      "type": "movie",
+      "releaseDate": "2013-11-08",
+      "phase": 2,
+      "dependencies": [
+        { "id": "thor", "importance": "required", "note": "Jane Foster, Asgard's politics, and Thor and Loki's relationship all continue directly." },
+        { "id": "avengers", "importance": "required", "note": "Loki's imprisonment and motivations here are a direct consequence of his defeat and capture in New York." }
+      ]
+    },
+    {
+      "id": "captain-america-winter-soldier",
+      "title": "Captain America: The Winter Soldier",
+      "type": "movie",
+      "releaseDate": "2014-04-04",
+      "phase": 2,
+      "dependencies": [
+        { "id": "avengers", "importance": "required", "note": "Steve's adjustment to the modern world and his working relationship with Natasha/S.H.I.E.L.D. continue from here." },
+        { "id": "captain-america-first-avenger", "importance": "required", "note": "The Winter Soldier's true identity is a major twist tied directly to Steve's backstory from this film." },
+        { "id": "thor-dark-world", "importance": "recommended", "note": "Minor continuity around S.H.I.E.L.D.'s post-Avengers operations." }
+      ]
+    },
+    {
+      "id": "guardians-of-the-galaxy",
+      "title": "Guardians of the Galaxy",
+      "type": "movie",
+      "releaseDate": "2014-08-01",
+      "phase": 2,
+      "dependencies": [
+        { "id": "thor-dark-world", "importance": "optional", "note": "The Collector and the wider concept of Infinity Stones scattered across the universe were first introduced there." }
+      ]
+    },
+    {
+      "id": "avengers-age-of-ultron",
+      "title": "Avengers: Age of Ultron",
+      "type": "movie",
+      "releaseDate": "2015-05-01",
+      "phase": 2,
+      "dependencies": [
+        { "id": "avengers", "importance": "required", "note": "Picks up the team dynamic and roster established in the first Avengers film." },
+        { "id": "captain-america-winter-soldier", "importance": "required", "note": "The fall of S.H.I.E.L.D./HYDRA's exposure directly shapes the team's operating status here." },
+        { "id": "thor-dark-world", "importance": "required", "note": "Sets up Thor's search for the Infinity Stones, which drives his subplot in this film." },
+        { "id": "iron-man-3", "importance": "recommended", "note": "Tony's trauma and his motivation to build 'a suit of armor around the world' (Ultron) follows directly from events there." },
+        { "id": "guardians-of-the-galaxy", "importance": "recommended", "note": "Deepens the Infinity Stone mythology referenced in Thor's vision." }
+      ]
+    },
+    {
+      "id": "ant-man",
+      "title": "Ant-Man",
+      "type": "movie",
+      "releaseDate": "2015-07-17",
+      "phase": 2,
+      "dependencies": [
+        { "id": "avengers-age-of-ultron", "importance": "required", "note": "Set in the immediate aftermath, with a cameo from an Avenger tied to the team's new headquarters." }
+      ]
+    },
+    {
+      "id": "captain-america-civil-war",
+      "title": "Captain America: Civil War",
+      "type": "movie",
+      "releaseDate": "2016-05-06",
+      "phase": 3,
+      "dependencies": [
+        { "id": "avengers-age-of-ultron", "importance": "required", "note": "The collateral damage from Sokovia is the direct catalyst for the Sokovia Accords conflict driving this film." },
+        { "id": "captain-america-winter-soldier", "importance": "required", "note": "Bucky Barnes/the Winter Soldier's arc and Steve's loyalty to him are the emotional core of this film." },
+        { "id": "ant-man", "importance": "recommended", "note": "Scott Lang joins the fight here, building on his established powers and personality." }
+      ]
+    },
+    {
+      "id": "doctor-strange",
+      "title": "Doctor Strange",
+      "type": "movie",
+      "releaseDate": "2016-11-04",
+      "phase": 3,
+      "dependencies": [
+        { "id": "avengers-age-of-ultron", "importance": "optional", "note": "Brief dialogue references the Avengers and their public reputation, nothing plot-critical." }
+      ]
+    },
+    {
+      "id": "guardians-of-the-galaxy-vol-2",
+      "title": "Guardians of the Galaxy Vol. 2",
+      "type": "movie",
+      "releaseDate": "2017-05-05",
+      "phase": 3,
+      "dependencies": [
+        { "id": "guardians-of-the-galaxy", "importance": "required", "note": "Directly continues the team's dynamic and Peter Quill's search for answers about his father." }
+      ]
+    },
+    {
+      "id": "spider-man-homecoming",
+      "title": "Spider-Man: Homecoming",
+      "type": "movie",
+      "releaseDate": "2017-07-07",
+      "phase": 3,
+      "dependencies": [
+        { "id": "captain-america-civil-war", "importance": "required", "note": "Peter Parker's recruitment by Tony Stark and the airport battle are the direct lead-in to this film's plot and his mentor relationship with Tony." },
+        { "id": "avengers", "importance": "recommended", "note": "The Battle of New York's cleanup salvage is the origin of this film's central villain's technology and motive." }
+      ]
+    },
+    {
+      "id": "thor-ragnarok",
+      "title": "Thor: Ragnarok",
+      "type": "movie",
+      "releaseDate": "2017-11-03",
+      "phase": 3,
+      "dependencies": [
+        { "id": "thor-dark-world", "importance": "required", "note": "Continues Thor's family arc, particularly around Odin and Loki, and Asgard's political situation." },
+        { "id": "avengers-age-of-ultron", "importance": "required", "note": "Bruce Banner has been missing since the end of that film; his fate as the Hulk is resolved here." },
+        { "id": "doctor-strange", "importance": "recommended", "note": "A cameo appearance connects the mystical side of the MCU to Thor's search for his father." },
+        { "id": "captain-america-civil-war", "importance": "recommended", "note": "Explains why Hulk/Bruce Banner and Thor have both been absent from recent Avengers activity." }
+      ]
+    },
+    {
+      "id": "black-panther",
+      "title": "Black Panther",
+      "type": "movie",
+      "releaseDate": "2018-02-16",
+      "phase": 3,
+      "dependencies": [
+        { "id": "captain-america-civil-war", "importance": "required", "note": "T'Chaka's death and T'Challa's ascension to the throne of Wakanda, shown in that film, is the direct inciting incident here." }
+      ]
+    },
+    {
+      "id": "avengers-infinity-war",
+      "title": "Avengers: Infinity War",
+      "type": "movie",
+      "releaseDate": "2018-04-27",
+      "phase": 3,
+      "dependencies": [
+        { "id": "thor-ragnarok", "importance": "required", "note": "Opens directly where that film's post-credits scene left off, with the Asgardian refugee fleet." },
+        { "id": "black-panther", "importance": "required", "note": "Wakanda and its vibranium/technology become a central battleground, relying on the world established there." },
+        { "id": "captain-america-civil-war", "importance": "required", "note": "The fractured Avengers team (Cap's fugitive status, Tony's guilt) directly shapes who is available and how they interact." },
+        { "id": "doctor-strange", "importance": "required", "note": "Strange's role as protector of the Time Stone and his magical abilities are essential to the plot." },
+        { "id": "guardians-of-the-galaxy-vol-2", "importance": "required", "note": "Gamora and Nebula's fraught relationship with Thanos, established there, is central to this film's emotional stakes." },
+        { "id": "spider-man-homecoming", "importance": "recommended", "note": "Peter Parker's relationship with Tony Stark, built there, pays off emotionally here." },
+        { "id": "guardians-of-the-galaxy", "importance": "recommended", "note": "General familiarity with the Guardians team and cosmic side of the MCU helps follow the space-set storylines." }
+      ]
+    },
+    {
+      "id": "ant-man-and-the-wasp",
+      "title": "Ant-Man and the Wasp",
+      "type": "movie",
+      "releaseDate": "2018-07-06",
+      "phase": 3,
+      "dependencies": [
+        { "id": "ant-man", "importance": "required", "note": "Directly continues Scott Lang's story and his relationship with Hank and Hope Pym." },
+        { "id": "captain-america-civil-war", "importance": "required", "note": "Scott's fugitive status and house arrest, the film's central plot device, result directly from his involvement there." }
+      ]
+    },
+    {
+      "id": "captain-marvel",
+      "title": "Captain Marvel",
+      "type": "movie",
+      "releaseDate": "2019-03-08",
+      "phase": 3,
+      "dependencies": []
+    },
+    {
+      "id": "avengers-endgame",
+      "title": "Avengers: Endgame",
+      "type": "movie",
+      "releaseDate": "2019-04-26",
+      "phase": 3,
+      "dependencies": [
+        { "id": "avengers-infinity-war", "importance": "required", "note": "A direct, immediate continuation of the Snap and its aftermath; essentially a single story split across two films." },
+        { "id": "captain-marvel", "importance": "required", "note": "Carol Danvers is paged at the very end of Infinity War and arrives here already established, including her history with Nick Fury." },
+        { "id": "ant-man-and-the-wasp", "importance": "required", "note": "The Quantum Realm mechanics that enable the plot's time heist were established there." },
+        { "id": "iron-man", "importance": "recommended", "note": "The time-travel sequence revisits this film's events directly, and the finale echoes Tony's arc from the very beginning." },
+        { "id": "spider-man-homecoming", "importance": "recommended", "note": "Peter and Tony's mentor relationship, central to the film's emotional climax, was built there." },
+        { "id": "guardians-of-the-galaxy-vol-2", "importance": "recommended", "note": "Gamora and Nebula's history is revisited via time travel." },
+        { "id": "thor-ragnarok", "importance": "recommended", "note": "Thor's arc and his family history are directly revisited via time travel to Asgard." }
+      ]
+    },
+    {
+      "id": "spider-man-far-from-home",
+      "title": "Spider-Man: Far From Home",
+      "type": "movie",
+      "releaseDate": "2019-07-02",
+      "phase": 3,
+      "dependencies": [
+        { "id": "avengers-endgame", "importance": "required", "note": "Directly addresses the aftermath of 'the Blip' and Tony Stark's death, both central to Peter's arc here." },
+        { "id": "spider-man-homecoming", "importance": "required", "note": "Continues Peter's relationships, supporting cast, and status quo directly from that film." },
+        { "id": "captain-marvel", "importance": "recommended", "note": "Nick Fury and Talos (in disguise) appear throughout, building on characters and concepts introduced there." }
+      ]
+    },
+    {
+      "id": "wandavision",
+      "title": "WandaVision",
+      "type": "show",
+      "releaseDate": "2021-01-15",
+      "phase": 4,
+      "dependencies": [
+        { "id": "avengers-age-of-ultron", "importance": "required", "note": "Vision's creation and Wanda and Vision's relationship both begin there." },
+        { "id": "avengers-infinity-war", "importance": "required", "note": "Vision's death at Thanos's hand is the central trauma driving Wanda's actions throughout this series." },
+        { "id": "avengers-endgame", "importance": "recommended", "note": "Wanda's post-Blip grief and the state of the world after the Snap's reversal inform her mental state here." }
+      ]
+    },
+    {
+      "id": "falcon-and-winter-soldier",
+      "title": "The Falcon and the Winter Soldier",
+      "type": "show",
+      "releaseDate": "2021-03-19",
+      "phase": 4,
+      "dependencies": [
+        { "id": "avengers-endgame", "importance": "required", "note": "Picks up directly with Sam Wilson receiving the shield from an aged Steve Rogers in the film's final scene." },
+        { "id": "captain-america-civil-war", "importance": "required", "note": "Bucky's Winter Soldier trauma, his pardon, and his relationship with Sam all stem from events there." },
+        { "id": "captain-america-winter-soldier", "importance": "recommended", "note": "Bucky's full backstory as the Winter Soldier is essential context for his arc here." }
+      ]
+    },
+    {
+      "id": "loki-season-1",
+      "title": "Loki (Season 1)",
+      "type": "show",
+      "releaseDate": "2021-06-09",
+      "phase": 4,
+      "dependencies": [
+        { "id": "avengers-endgame", "importance": "required", "note": "Follows the variant Loki who escapes with the Tesseract during the time heist, branching off from that exact moment." },
+        { "id": "thor-dark-world", "importance": "recommended", "note": "Loki's full history and relationship with his family adds emotional depth to his arc here." }
+      ]
+    },
+    {
+      "id": "black-widow",
+      "title": "Black Widow",
+      "type": "movie",
+      "releaseDate": "2021-07-09",
+      "phase": 4,
+      "dependencies": [
+        { "id": "captain-america-civil-war", "importance": "required", "note": "Set immediately after that film, with Natasha a fugitive from the government and estranged from the team." },
+        { "id": "avengers-age-of-ultron", "importance": "recommended", "note": "References to Natasha's past and her relationships with other Avengers build on that film." }
+      ]
+    },
+    {
+      "id": "what-if-season-1",
+      "title": "What If...? (Season 1)",
+      "type": "show",
+      "releaseDate": "2021-08-11",
+      "phase": 4,
+      "dependencies": [
+        { "id": "avengers-endgame", "importance": "required", "note": "Framed by the Watcher and the multiverse concept the TVA/Loki established; several episodes directly remix Endgame's events." },
+        { "id": "captain-america-first-avenger", "importance": "recommended", "note": "One major episode reimagines this film's events entirely; prior knowledge makes the divergence land." },
+        { "id": "black-panther", "importance": "recommended", "note": "One major episode reimagines this film's events entirely; prior knowledge makes the divergence land." },
+        { "id": "doctor-strange", "importance": "recommended", "note": "One major episode reimagines this film's events entirely; prior knowledge makes the divergence land." },
+        { "id": "guardians-of-the-galaxy", "importance": "recommended", "note": "One major episode reimagines this film's events entirely; prior knowledge makes the divergence land." }
+      ]
+    },
+    {
+      "id": "shang-chi",
+      "title": "Shang-Chi and the Legend of the Ten Rings",
+      "type": "movie",
+      "releaseDate": "2021-09-03",
+      "phase": 4,
+      "dependencies": [
+        { "id": "avengers-endgame", "importance": "optional", "note": "An end-credits scene features Wong, Banner, and Captain Marvel discussing the Ten Rings' nature, tying into the wider post-Endgame status quo." }
+      ]
+    },
+    {
+      "id": "eternals",
+      "title": "Eternals",
+      "type": "movie",
+      "releaseDate": "2021-11-05",
+      "phase": 4,
+      "dependencies": [
+        { "id": "avengers-endgame", "importance": "recommended", "note": "The Eternals' choice not to intervene in past events, including the Blip, is directly addressed and questioned." }
+      ]
+    },
+    {
+      "id": "hawkeye",
+      "title": "Hawkeye",
+      "type": "show",
+      "releaseDate": "2021-11-24",
+      "phase": 4,
+      "dependencies": [
+        { "id": "avengers-endgame", "importance": "required", "note": "Clint Barton's guilt over choices made there, including Natasha's fate, drives his entire arc in this series." },
+        { "id": "avengers", "importance": "recommended", "note": "Kate Bishop's origin story ties back to witnessing the Battle of New York as a child." },
+        { "id": "black-widow", "importance": "recommended", "note": "Yelena Belova's introduction and motivations, including her feelings about Natasha, carry directly into this series." }
+      ]
+    },
+    {
+      "id": "spider-man-no-way-home",
+      "title": "Spider-Man: No Way Home",
+      "type": "movie",
+      "releaseDate": "2021-12-17",
+      "phase": 4,
+      "dependencies": [
+        { "id": "spider-man-far-from-home", "importance": "required", "note": "Opens literally seconds after that film's ending, with Peter's identity publicly revealed." },
+        { "id": "doctor-strange", "importance": "required", "note": "Strange's spell to fix the identity reveal is the plot's inciting device, and relies on his established magical abilities." },
+        { "id": "spider-man-homecoming", "importance": "recommended", "note": "Peter's full relationships and history as Spider-Man pay off throughout this film." }
+      ]
+    },
+    {
+      "id": "moon-knight",
+      "title": "Moon Knight",
+      "type": "show",
+      "releaseDate": "2022-03-30",
+      "phase": 4,
+      "dependencies": []
+    },
+    {
+      "id": "doctor-strange-multiverse-of-madness",
+      "title": "Doctor Strange in the Multiverse of Madness",
+      "type": "movie",
+      "releaseDate": "2022-05-06",
+      "phase": 4,
+      "dependencies": [
+        { "id": "doctor-strange", "importance": "required", "note": "Continues Strange's arc directly, including his relationship with Christine Palmer." },
+        { "id": "wandavision", "importance": "required", "note": "Wanda's actions and power growth in this film are a direct continuation of her arc and choices there." },
+        { "id": "spider-man-no-way-home", "importance": "recommended", "note": "The multiverse-breaking spell from that film is referenced as a direct cause of the instability here." },
+        { "id": "what-if-season-1", "importance": "recommended", "note": "Introduces the concept of Illuminati/variants across the multiverse that this film builds on visually and thematically." }
+      ]
+    },
+    {
+      "id": "ms-marvel",
+      "title": "Ms. Marvel",
+      "type": "show",
+      "releaseDate": "2022-06-08",
+      "phase": 4,
+      "dependencies": [
+        { "id": "captain-marvel", "importance": "recommended", "note": "Kamala Khan is an in-universe superfan of Captain Marvel, and the show references her history and powers." }
+      ]
+    },
+    {
+      "id": "thor-love-and-thunder",
+      "title": "Thor: Love and Thunder",
+      "type": "movie",
+      "releaseDate": "2022-07-08",
+      "phase": 4,
+      "dependencies": [
+        { "id": "thor-ragnarok", "importance": "required", "note": "Continues Thor's arc directly, including his time with the Guardians and his tone/character growth from that film." },
+        { "id": "avengers-endgame", "importance": "required", "note": "Jane Foster's reintroduction and Thor's post-Endgame drifting both build on his arc there." },
+        { "id": "guardians-of-the-galaxy-vol-2", "importance": "recommended", "note": "Thor is introduced traveling with the Guardians, following directly from the end of Endgame's team-up." }
+      ]
+    },
+    {
+      "id": "she-hulk",
+      "title": "She-Hulk: Attorney at Law",
+      "type": "show",
+      "releaseDate": "2022-08-18",
+      "phase": 4,
+      "dependencies": [
+        { "id": "incredible-hulk", "importance": "required", "note": "Bruce Banner's full history and struggle to control the Hulk, established there, is directly discussed and built upon." },
+        { "id": "avengers-age-of-ultron", "importance": "recommended", "note": "Bruce's relationship history and departure from Earth are referenced." },
+        { "id": "avengers-endgame", "importance": "recommended", "note": "'Smart Hulk,' the merged Bruce/Hulk persona from that film, is this show's starting point for the character." },
+        { "id": "shang-chi", "importance": "recommended", "note": "Wong and the Ten Rings organization, introduced there, both play into this show's plot." }
+      ]
+    },
+    {
+      "id": "black-panther-wakanda-forever",
+      "title": "Black Panther: Wakanda Forever",
+      "type": "movie",
+      "releaseDate": "2022-11-11",
+      "phase": 4,
+      "dependencies": [
+        { "id": "black-panther", "importance": "required", "note": "A direct continuation of Wakanda's story and characters; the film's central loss is a real-world/in-universe consequence of that film's cast." },
+        { "id": "shang-chi", "importance": "recommended", "note": "Establishes the wider world's awareness of hidden nations and powers, paralleling Wakanda's own reveal." }
+      ]
+    },
+    {
+      "id": "ant-man-quantumania",
+      "title": "Ant-Man and the Wasp: Quantumania",
+      "type": "movie",
+      "releaseDate": "2023-02-17",
+      "phase": 5,
+      "dependencies": [
+        { "id": "ant-man-and-the-wasp", "importance": "required", "note": "Directly continues Janet van Dyne's history in the Quantum Realm, teased at the end of that film." },
+        { "id": "avengers-endgame", "importance": "recommended", "note": "The Quantum Realm's role in the time heist established mechanics this film expands on significantly." }
+      ]
+    },
+    {
+      "id": "guardians-of-the-galaxy-vol-3",
+      "title": "Guardians of the Galaxy Vol. 3",
+      "type": "movie",
+      "releaseDate": "2023-05-05",
+      "phase": 5,
+      "dependencies": [
+        { "id": "guardians-of-the-galaxy-vol-2", "importance": "required", "note": "Continues the team directly, including Gamora's status and Rocket's backstory teased there." },
+        { "id": "avengers-infinity-war", "importance": "required", "note": "This Gamora is a variant who does not remember the team, a direct consequence of the original's death in that film." },
+        { "id": "thor-love-and-thunder", "importance": "recommended", "note": "The team's roster and status quo continue from where that film left them." }
+      ]
+    },
+    {
+      "id": "secret-invasion",
+      "title": "Secret Invasion",
+      "type": "show",
+      "releaseDate": "2023-06-21",
+      "phase": 5,
+      "dependencies": [
+        { "id": "captain-marvel", "importance": "required", "note": "The Skrulls' decades-long alliance with Nick Fury, established there, is the central relationship this series tests." },
+        { "id": "wandavision", "importance": "recommended", "note": "A supporting character's fate from that show is followed up on here." }
+      ]
+    },
+    {
+      "id": "loki-season-2",
+      "title": "Loki (Season 2)",
+      "type": "show",
+      "releaseDate": "2023-10-06",
+      "phase": 5,
+      "dependencies": [
+        { "id": "loki-season-1", "importance": "required", "note": "A direct, immediate continuation of that season's finale and the collapse of the Time Variance Authority's timeline." }
+      ]
+    },
+    {
+      "id": "the-marvels",
+      "title": "The Marvels",
+      "type": "movie",
+      "releaseDate": "2023-11-10",
+      "phase": 5,
+      "dependencies": [
+        { "id": "captain-marvel", "importance": "required", "note": "Directly continues Carol Danvers' arc and her complicated history with the Kree Empire." },
+        { "id": "ms-marvel", "importance": "required", "note": "Kamala Khan's powers and family, established there, are central to this film's plot and team-up." },
+        { "id": "wandavision", "importance": "recommended", "note": "Monica Rambeau's powers, gained there, and her arc continue directly into this film." },
+        { "id": "secret-invasion", "importance": "recommended", "note": "The state of Nick Fury and the Skrulls following that series informs his role here." }
+      ]
+    },
+    {
+      "id": "echo",
+      "title": "Echo",
+      "type": "show",
+      "releaseDate": "2024-01-09",
+      "phase": 5,
+      "dependencies": [
+        { "id": "hawkeye", "importance": "required", "note": "A direct spin-off following Maya Lopez and the Kingpin/criminal underworld storyline introduced in that series." }
+      ]
+    },
+    {
+      "id": "deadpool-and-wolverine",
+      "title": "Deadpool & Wolverine",
+      "type": "movie",
+      "releaseDate": "2024-07-26",
+      "phase": 5,
+      "dependencies": [
+        { "id": "loki-season-2", "importance": "recommended", "note": "The Time Variance Authority and the concept of 'sacred timelines' vs. pruned ones, central to this film's plot, were established there." },
+        { "id": "what-if-season-1", "importance": "optional", "note": "General familiarity with the multiverse and variant concepts helps, though this film explains them for newcomers too." }
+      ]
+    },
+    {
+      "id": "agatha-all-along",
+      "title": "Agatha All Along",
+      "type": "show",
+      "releaseDate": "2024-09-18",
+      "phase": 5,
+      "dependencies": [
+        { "id": "wandavision", "importance": "required", "note": "A direct spin-off following Agatha Harkness after the events of that show, including how she lost her powers." }
+      ]
+    },
+    {
+      "id": "captain-america-brave-new-world",
+      "title": "Captain America: Brave New World",
+      "type": "movie",
+      "releaseDate": "2025-02-14",
+      "phase": 5,
+      "dependencies": [
+        { "id": "falcon-and-winter-soldier", "importance": "required", "note": "Directly continues Sam Wilson's arc as the new Captain America, established there." },
+        { "id": "avengers-endgame", "importance": "recommended", "note": "Sam's status as shield-bearer originates from the final scene of that film." },
+        { "id": "eternals", "importance": "recommended", "note": "A major plot thread involves consequences tied to the Celestial revealed at the end of that film." },
+        { "id": "incredible-hulk", "importance": "recommended", "note": "General Thaddeus Ross, a major character here, was first introduced there." }
+      ]
+    },
+    {
+      "id": "thunderbolts",
+      "title": "Thunderbolts*",
+      "type": "movie",
+      "releaseDate": "2025-05-02",
+      "phase": 5,
+      "dependencies": [
+        { "id": "black-widow", "importance": "required", "note": "Yelena Belova's arc and grief over Natasha, established there, continue directly into this film." },
+        { "id": "falcon-and-winter-soldier", "importance": "recommended", "note": "Several characters and government/political threads from that series carry over directly." },
+        { "id": "captain-america-brave-new-world", "importance": "recommended", "note": "The state of the U.S. government and its enhanced-persons programs continues directly from that film." }
+      ]
+    },
+    {
+      "id": "fantastic-four-first-steps",
+      "title": "Fantastic Four: First Steps",
+      "type": "movie",
+      "releaseDate": "2025-07-25",
+      "phase": 6,
+      "dependencies": [
+        { "id": "what-if-season-1", "importance": "optional", "note": "General familiarity with the multiverse concept helps frame why this team's world looks different, though the film stands alone." }
+      ]
+    },
+    {
+      "id": "avengers-doomsday",
+      "title": "Avengers: Doomsday",
+      "type": "movie",
+      "releaseDate": "2026-12-18",
+      "phase": 6,
+      "dependencies": [
+        { "id": "thunderbolts", "importance": "required", "note": "" },
+        { "id": "captain-america-brave-new-world", "importance": "required", "note": "" },
+        { "id": "fantastic-four-first-steps", "importance": "required", "note": "" },
+        { "id": "deadpool-and-wolverine", "importance": "recommended", "note": "" },
+        { "id": "loki-season-2", "importance": "recommended", "note": "" }
+      ]
+    }
+  ]
+}
