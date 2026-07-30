@@ -3,10 +3,10 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
-    # Progress saved via the in-app GitHub sync feature writes to data/ and
-    # shouldn't trigger a full rebuild/redeploy.
+    # Progress saved via the in-app GitHub sync feature writes to user_data/
+    # and shouldn't trigger a full rebuild/redeploy.
     paths-ignore:
-      - 'data/**'
+      - 'user_data/**'
   workflow_dispatch:
 
 permissions:

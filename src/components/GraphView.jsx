@@ -1,11 +1,6 @@
 import { useEffect, useMemo, useRef } from 'react';
 import cytoscape from 'cytoscape';
-import dagre from 'cytoscape-dagre';
 import { IMPORTANCE, PHASE_COLORS } from '../utils/mcu';
-
-cytoscape.use(dagre);
-
-const MOBILE_QUERY = '(max-width: 720px)';
 
 const CHECK_BADGE = `data:image/svg+xml;utf8,${encodeURIComponent(
   '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">' +
@@ -22,7 +17,55 @@ const SHOW_BADGE = `data:image/svg+xml;utf8,${encodeURIComponent(
     '</svg>'
 )}`;
 
-function buildElements(entries, phases) {
+// Grid tuning: phase bands always span the full container width. Movies
+// pack 3-4 per row (fewer if the container is too narrow to keep them
+// comfortably spaced), growing to fill the row rather than staying a fixed
+// size, so phase boxes reach 100% width instead of hugging their content.
+const NODE_H = 60;
+const MIN_GAP = 18;
+const ROW_GAP = 18;
+const PHASE_GAP = 46;
+const OUTER_PADDING = 24;
+const TOP_PADDING = 40; // extra headroom so the first phase's label isn't clipped by the canvas edge
+const PREFERRED_PER_ROW = 4;
+const MIN_NODE_W = 150;
+const MAX_NODE_W = 320;
+
+function computeGrid(entries, phases, containerWidth) {
+  const availableWidth = Math.max((containerWidth || 900) - OUTER_PADDING * 2, MIN_NODE_W);
+  const itemsPerRow = Math.max(
+    1,
+    Math.min(PREFERRED_PER_ROW, Math.floor((availableWidth + MIN_GAP) / (MIN_NODE_W + MIN_GAP)))
+  );
+  const cellW = availableWidth / itemsPerRow;
+  const nodeW = Math.min(MAX_NODE_W, Math.max(MIN_NODE_W, cellW - MIN_GAP));
+  const nodeTextW = Math.max(nodeW - 20, 60);
+
+  const positions = new Map();
+  let y = TOP_PADDING;
+
+  for (const phase of phases) {
+    const phaseEntries = entries
+      .filter((e) => e.phase === phase.number)
+      .sort((a, b) => a.releaseDate.localeCompare(b.releaseDate));
+    if (phaseEntries.length === 0) continue;
+
+    phaseEntries.forEach((entry, i) => {
+      const row = Math.floor(i / itemsPerRow);
+      const col = i % itemsPerRow;
+      const x = OUTER_PADDING + col * cellW + cellW / 2;
+      const py = y + row * (NODE_H + ROW_GAP) + NODE_H / 2;
+      positions.set(entry.id, { x, y: py });
+    });
+
+    const numRows = Math.ceil(phaseEntries.length / itemsPerRow);
+    y += numRows * (NODE_H + ROW_GAP) + PHASE_GAP;
+  }
+
+  return { positions, nodeW, nodeTextW };
+}
+
+function buildElements(entries, phases, grid) {
   const phaseNodes = phases.map((phase) => ({
     data: { id: `phase-${phase.number}`, label: phase.name, phaseColor: PHASE_COLORS[phase.number] ?? '#8b93a7' },
     classes: 'phase-parent',
@@ -34,6 +77,8 @@ function buildElements(entries, phases) {
       id: entry.id,
       label: entry.title,
       parent: `phase-${entry.phase}`,
+      w: grid.nodeW,
+      tw: grid.nodeTextW,
     },
     classes: `movie ${entry.type}`,
   }));
@@ -70,9 +115,8 @@ function buildStyle(theme) { return [
       'border-opacity': 0.7,
       label: 'data(label)',
       'text-valign': 'top',
-      'text-halign': 'left',
-      'text-margin-x': 4,
-      'text-margin-y': -4,
+      'text-halign': 'center',
+      'text-margin-y': -6,
       'font-size': 15,
       'font-weight': 700,
       color: 'data(phaseColor)',
@@ -87,12 +131,12 @@ function buildStyle(theme) { return [
     style: {
       shape: 'round-rectangle',
       'background-color': theme.nodeFill,
-      width: 128,
-      height: 52,
+      width: 'data(w)',
+      height: NODE_H,
       label: 'data(label)',
       'text-wrap': 'wrap',
-      'text-max-width': '114px',
-      'font-size': 12.5,
+      'text-max-width': 'data(tw)',
+      'font-size': 13.5,
       'font-weight': 600,
       'text-valign': 'center',
       'text-halign': 'center',
@@ -180,7 +224,7 @@ function buildStyle(theme) { return [
       width: 1.6,
       'line-color': 'data(color)',
       'target-arrow-color': 'data(color)',
-      opacity: 0.8,
+      opacity: 0,
     },
   },
   {
@@ -188,37 +232,20 @@ function buildStyle(theme) { return [
     style: { 'line-style': 'dashed' },
   },
   {
-    selector: 'edge.dim',
-    style: { opacity: 0.04 },
-  },
-  {
     selector: 'edge.highlight',
     style: { width: 3, opacity: 1, 'z-index': 10 },
   },
 ]; }
 
-function layoutFor(isMobile) {
-  return isMobile
-    ? {
-        name: 'dagre',
-        rankDir: 'TB',
-        nodeSep: 6,
-        rankSep: 46,
-        edgeSep: 4,
-        animate: false,
-        fit: true,
-        padding: 20,
-      }
-    : {
-        name: 'dagre',
-        rankDir: 'LR',
-        nodeSep: 8,
-        rankSep: 60,
-        edgeSep: 6,
-        animate: false,
-        fit: true,
-        padding: 24,
-      };
+function layoutFor(positions) {
+  return {
+    name: 'preset',
+    positions: (node) => (node.hasClass('movie') ? positions.get(node.id()) : undefined),
+    zoom: 1,
+    pan: { x: 0, y: 0 },
+    fit: false,
+    animate: false,
+  };
 }
 
 export default function GraphView({ entries, phases, watched, selectedId, onSelect }) {
@@ -242,13 +269,14 @@ export default function GraphView({ entries, phases, watched, selectedId, onSele
   }, [entries]);
 
   useEffect(() => {
-    const mql = window.matchMedia(MOBILE_QUERY);
+    const initialWidth = containerRef.current.getBoundingClientRect().width;
+    const grid = computeGrid(entries, phases, initialWidth);
 
     const cy = cytoscape({
       container: containerRef.current,
-      elements: buildElements(entries, phases),
+      elements: buildElements(entries, phases, grid),
       style: buildStyle(THEME),
-      layout: layoutFor(mql.matches),
+      layout: layoutFor(grid.positions),
       wheelSensitivity: 0.25,
       minZoom: 0.15,
       maxZoom: 3,
@@ -261,17 +289,26 @@ export default function GraphView({ entries, phases, watched, selectedId, onSele
 
     cyRef.current = cy;
 
-    const resizeObserver = new ResizeObserver(() => cy.resize());
-    resizeObserver.observe(containerRef.current);
+    let lastWidth = initialWidth;
+    const resizeObserver = new ResizeObserver((observed) => {
+      const width = observed[0].contentRect.width;
+      cy.resize();
+      if (Math.abs(width - lastWidth) < 4) return;
+      lastWidth = width;
 
-    const onBreakpointChange = (evt) => {
-      cy.layout(layoutFor(evt.matches)).run();
-    };
-    mql.addEventListener('change', onBreakpointChange);
+      const newGrid = computeGrid(entries, phases, width);
+      cy.batch(() => {
+        cy.nodes('.movie').forEach((n) => {
+          n.data('w', newGrid.nodeW);
+          n.data('tw', newGrid.nodeTextW);
+        });
+      });
+      cy.layout(layoutFor(newGrid.positions)).run();
+    });
+    resizeObserver.observe(containerRef.current);
 
     return () => {
       resizeObserver.disconnect();
-      mql.removeEventListener('change', onBreakpointChange);
       cy.destroy();
       cyRef.current = null;
     };
@@ -307,7 +344,6 @@ export default function GraphView({ entries, phases, watched, selectedId, onSele
           const source = e.data('source');
           const target = e.data('target');
           if (target === selectedId || source === selectedId) e.addClass('highlight');
-          else e.addClass('dim');
         });
 
         const selNode = cy.$id(selectedId);

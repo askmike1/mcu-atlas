@@ -10,9 +10,10 @@ export default function GitHubSyncDialog({
   onLoad,
   onSave,
   watchedCount,
+  progressPath,
 }) {
   const busy = status?.type === 'loading';
-  const canSync = Boolean(config.owner && config.repo && config.path && token);
+  const canSync = Boolean(config.owner && config.repo && token);
 
   return (
     <div className="modal-backdrop" onClick={onClose}>
@@ -61,11 +62,11 @@ export default function GitHubSyncDialog({
             Branch
             <input value={config.branch} onChange={(e) => updateConfig({ branch: e.target.value })} />
           </label>
-          <label className="field">
-            File path
-            <input value={config.path} onChange={(e) => updateConfig({ path: e.target.value })} />
-          </label>
         </div>
+        <p className="hint">
+          Always saved to <code>{progressPath}</code> in that repo — this folder is excluded from the deploy
+          workflow, so saving progress never triggers a rebuild.
+        </p>
 
         <div className="modal-actions">
           <button disabled={!canSync || busy} onClick={() => onSave()}>
