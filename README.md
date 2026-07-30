@@ -9,11 +9,15 @@ enabled — see [Deployment](#deployment) below).
 
 ## Features
 
-- **Diagram view** — every MCU movie and Disney+ series laid out left-to-right
-  by phase/release order, with arrows showing what leads into what.
+- **Diagram view** — every MCU movie and Disney+ series packed into a compact
+  grid, oldest-to-newest, grouped and color-banded by phase (columns of up to
+  6 per phase on desktop; rows of up to 6 on mobile, so phases stack instead
+  of sprawling sideways).
 - **Click a title** to see its release date, phase, and prerequisites in a side
-  panel, and to highlight its direct dependencies and "unlocks" in the graph.
-  Click empty space or press `Esc` to clear the selection.
+  panel. Dependency lines are hidden by default and only drawn — highlighting
+  what leads into and out of the selected title — while something is
+  selected, so the grid stays uncluttered at rest. Click empty space or press
+  `Esc` to clear the selection.
 - **Spoiler-safe notes** — the "why does this matter" note on each dependency
   is blurred out behind an eye icon until you choose to reveal it.
 - **Watched tracking** — check off what you've seen. Progress is saved in your
@@ -101,8 +105,8 @@ JSON file straight to this repo from your browser, using the GitHub REST API.
 2. Create a [fine-grained personal access token](https://github.com/settings/personal-access-tokens/new)
    scoped to **only this repository**, with **Contents: Read and write**
    permission and nothing else.
-3. Paste it in, confirm the owner/repo/branch/path (auto-filled when running
-   on `*.github.io`), then **Save** or **Load**.
+3. Paste it in, confirm the owner/repo/branch (auto-filled when running on
+   `*.github.io`), then **Save** or **Load**.
 
 Notes on the security model:
 
@@ -113,10 +117,10 @@ Notes on the security model:
   browser's `localStorage` instead, for convenience — anyone with access to
   that browser profile could read it from there, so only enable this on a
   device you trust, and prefer a token scoped to just this one repo.
-- Progress is written to `data/watched-progress.json` (configurable) as a
-  normal commit, so it's versioned like everything else in the repo. The
-  deploy workflow ignores changes under `data/` so saving progress doesn't
-  trigger a rebuild.
+- Progress is always written to `user_data/watched-progress.json` — this path
+  is hardcoded (not user-configurable) so it's guaranteed to land in a
+  location the deploy workflow ignores (`paths-ignore: user_data/**`),
+  meaning saving progress never triggers a rebuild/redeploy.
 
 ## Development
 
@@ -140,6 +144,6 @@ fork it under a different name.
 
 ## Tech stack
 
-React + Vite, [Cytoscape.js](https://js.cytoscape.org/) with the `dagre`
+React + Vite, [Cytoscape.js](https://js.cytoscape.org/) with a fixed grid
 layout for the dependency graph. No backend — everything (data and watched
 state) lives in the repo and the browser.

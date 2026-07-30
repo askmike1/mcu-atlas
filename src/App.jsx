@@ -84,6 +84,7 @@ export default function App() {
           onLoad={handleSyncLoad}
           onSave={handleSyncSave}
           watchedCount={watched.size}
+          progressPath={sync.progressPath}
         />
       )}
     </div>

@@ -1,5 +1,10 @@
 const API_BASE = 'https://api.github.com';
 
+// Progress is always saved under user_data/ so it's trivially excluded from
+// the deploy workflow (see .github/workflows/deploy.yml paths-ignore) and
+// clearly separated from the app's own source/data files.
+export const PROGRESS_PATH = 'user_data/watched-progress.json';
+
 // Best-effort guess at { owner, repo } from a github.io Pages URL, e.g.
 // https://askmike1.github.io/mcu-atlas/ -> { owner: 'askmike1', repo: 'mcu-atlas' }.
 export function detectRepoFromLocation() {

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { detectRepoFromLocation, loadProgressFromRepo, saveProgressToRepo } from '../utils/githubSync';
+import { PROGRESS_PATH, detectRepoFromLocation, loadProgressFromRepo, saveProgressToRepo } from '../utils/githubSync';
 
 const CONFIG_KEY = 'mcu-atlas:github-sync-config';
 const TOKEN_KEY = 'mcu-atlas:github-sync-token';
@@ -9,7 +9,6 @@ function loadConfig() {
   const defaults = {
     owner: detected?.owner ?? '',
     repo: detected?.repo ?? '',
-    path: 'data/watched-progress.json',
     branch: 'main',
   };
   try {
@@ -41,7 +40,7 @@ export function useGitHubSync() {
   const load = useCallback(async () => {
     setStatus({ type: 'loading', message: 'Loading from GitHub…' });
     try {
-      const { watched } = await loadProgressFromRepo({ ...config, token });
+      const { watched } = await loadProgressFromRepo({ ...config, path: PROGRESS_PATH, token });
       setStatus({
         type: 'ok',
         message: `Loaded ${watched.length} watched title${watched.length === 1 ? '' : 's'} from the repo.`,
@@ -57,8 +56,8 @@ export function useGitHubSync() {
     async (watchedSet) => {
       setStatus({ type: 'loading', message: 'Saving to GitHub…' });
       try {
-        const existing = await loadProgressFromRepo({ ...config, token });
-        await saveProgressToRepo({ ...config, token, watched: watchedSet, sha: existing.sha });
+        const existing = await loadProgressFromRepo({ ...config, path: PROGRESS_PATH, token });
+        await saveProgressToRepo({ ...config, path: PROGRESS_PATH, token, watched: watchedSet, sha: existing.sha });
         setStatus({
           type: 'ok',
           message: `Saved ${watchedSet.size} watched title${watchedSet.size === 1 ? '' : 's'} to the repo.`,
@@ -71,5 +70,16 @@ export function useGitHubSync() {
     [config, token]
   );
 
-  return { config, updateConfig, token, setToken, rememberToken, setRememberToken, status, load, save };
+  return {
+    config,
+    updateConfig,
+    token,
+    setToken,
+    rememberToken,
+    setRememberToken,
+    status,
+    load,
+    save,
+    progressPath: PROGRESS_PATH,
+  };
 }
