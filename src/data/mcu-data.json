@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "phases": [
-    { "number": 1, "name": "Phase One", "saga": "The Infinity Saga" },
-    { "number": 2, "name": "Phase Two", "saga": "The Infinity Saga" },
-    { "number": 3, "name": "Phase Three", "saga": "The Infinity Saga" },
-    { "number": 4, "name": "Phase Four", "saga": "The Multiverse Saga" },
-    { "number": 5, "name": "Phase Five", "saga": "The Multiverse Saga" },
-    { "number": 6, "name": "Phase Six", "saga": "The Multiverse Saga" }
+    { "number": 1, "name": "Phase I", "saga": "The Infinity Saga" },
+    { "number": 2, "name": "Phase II", "saga": "The Infinity Saga" },
+    { "number": 3, "name": "Phase III", "saga": "The Infinity Saga" },
+    { "number": 4, "name": "Phase IV", "saga": "The Multiverse Saga" },
+    { "number": 5, "name": "Phase V", "saga": "The Multiverse Saga" },
+    { "number": 6, "name": "Phase VI", "saga": "The Multiverse Saga" }
   ],
   "entries": [
     {

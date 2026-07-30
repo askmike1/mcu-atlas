@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import { IMPORTANCE } from '../utils/mcu';
 
-export default function Toolbar({ watchedCount, totalCount, onExport, onImport, onReset }) {
+export default function Toolbar({ watchedCount, totalCount, onExport, onImport, onReset, onOpenSync }) {
   const fileInputRef = useRef(null);
   const [status, setStatus] = useState(null);
 
@@ -55,8 +55,9 @@ export default function Toolbar({ watchedCount, totalCount, onExport, onImport, 
       </div>
 
       <div className="toolbar-actions">
-        <button onClick={onExport}>Export progress</button>
-        <button onClick={handleImportClick}>Import progress</button>
+        <button onClick={onOpenSync}>GitHub sync</button>
+        <button onClick={onExport}>Export</button>
+        <button onClick={handleImportClick}>Import</button>
         <input ref={fileInputRef} type="file" accept="application/json,.json" hidden onChange={handleFileChange} />
         <button className="danger" onClick={handleReset}>
           Reset
