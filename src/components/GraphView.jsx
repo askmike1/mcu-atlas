@@ -283,11 +283,30 @@ export default function GraphView({ entries, phases, watched, selectedId, onSele
       // Nodes are fixed grid cells, not draggable — without this, a
       // touch-drag on a box moves it instead of panning/scrolling.
       autoungrabify: true,
+      // Cytoscape's built-in drag-to-pan only engages when the drag starts
+      // on empty canvas, not on a node — and phase boxes now cover nearly
+      // the whole width, leaving almost no empty space to grab on mobile.
+      // We replace it with manual panning below that works from anywhere.
+      userPanningEnabled: false,
     });
 
     cy.on('tap', 'node.movie', (evt) => onSelect(evt.target.id()));
     cy.on('tap', (evt) => {
       if (evt.target === cy) onSelect(null);
+    });
+
+    let panFrom = null;
+    cy.on('tapstart', (evt) => {
+      panFrom = { x: evt.renderedPosition.x, y: evt.renderedPosition.y };
+    });
+    cy.on('tapdrag', (evt) => {
+      if (!panFrom) return;
+      const pos = evt.renderedPosition;
+      cy.panBy({ x: pos.x - panFrom.x, y: pos.y - panFrom.y });
+      panFrom = { x: pos.x, y: pos.y };
+    });
+    cy.on('tapend', () => {
+      panFrom = null;
     });
 
     cyRef.current = cy;

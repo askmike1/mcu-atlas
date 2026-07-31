@@ -1,6 +1,7 @@
 // Visual language shared across the graph, legend, and detail panel.
 
 export const PHASE_COLORS = {
+  '-1': '#9a8478',
   0: '#64748b',
   1: '#7c9cff',
   2: '#5ad1c9',
