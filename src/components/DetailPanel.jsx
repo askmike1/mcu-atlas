@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { IMPORTANCE, PHASE_COLORS, formatDate, isUpcoming } from '../utils/mcu';
-import { buildExternalLinks, posterSrcFor } from '../utils/externalLinks';
+import { buildExternalLinks, formatRuntime, posterSrcFor } from '../utils/externalLinks';
 
 function FilmIcon() {
   return (
@@ -96,6 +96,7 @@ export default function DetailPanel({ entry, byId, dependents, watched, onToggle
   const dependentList = dependents.get(entry.id) || [];
   const upcoming = isUpcoming(entry.releaseDate);
   const links = buildExternalLinks(entry);
+  const runtime = formatRuntime(entry.runtimeMinutes);
 
   return (
     <aside className="detail-panel">
@@ -112,6 +113,7 @@ export default function DetailPanel({ entry, byId, dependents, watched, onToggle
             {formatDate(entry.releaseDate)}
             {upcoming && <span className="upcoming-tag">Upcoming</span>} ·{' '}
             {phaseNames.get(entry.phase) ?? `Phase ${entry.phase}`}
+            {runtime && <> · {runtime}</>}
           </p>
         </div>
       </div>
@@ -125,6 +127,9 @@ export default function DetailPanel({ entry, byId, dependents, watched, onToggle
         </a>
         <a href={links.disneyPlus} target="_blank" rel="noreferrer">
           Disney+
+        </a>
+        <a href={links.fandom} target="_blank" rel="noreferrer">
+          MCU Wiki
         </a>
       </div>
 

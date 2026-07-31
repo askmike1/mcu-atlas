@@ -81,7 +81,12 @@ needed.
 | `type` | `"movie"` \| `"show"` | Shows render with a dashed border and a small screen icon in the diagram. |
 | `releaseDate` | string | `YYYY-MM-DD`. Drives left-to-right ordering. |
 | `phase` | number | Must match a `number` in the top-level `phases` array. |
-| `posterUrl` | string (optional) | Cover art shown in the detail panel. Omit to use `public/posters/<id>.jpg` if present, else a generated placeholder — see [Cover art](#cover-art). |
+| `posterUrl` | string (optional) | Cover art shown in the detail panel. Omit to use `public/posters/<id>.jpg` if present, else a generated placeholder — see [External links & cover art](#external-links--cover-art). |
+| `wikipediaUrl` | string (optional) | Direct link to the Wikipedia article. Falls back to a Wikipedia search if unset. |
+| `imdbUrl` | string (optional) | Direct link to the IMDb title page. Falls back to an IMDb search if unset. |
+| `fandomUrl` | string (optional) | Direct link to the MCU Fandom wiki page. Falls back to a Fandom search if unset. |
+| `disneyPlusUrl` | string (optional) | Direct link to the title's Disney+ page. Falls back to a Disney+ search if unset — **not** populated by the enrichment script, see below. |
+| `runtimeMinutes` | number (optional) | Runtime in minutes, shown as e.g. "2h 21m". |
 | `dependencies` | array | Zero or more prerequisite entries (see below). |
 
 Each item in `dependencies`:
@@ -97,25 +102,66 @@ mid-2026, plus a couple of announced-but-unreleased entries (e.g. *Avengers:
 Doomsday*) with placeholder/minimal dependencies — update those once the films
 are out and their actual connections are known.
 
-It also includes a non-MCU **Phase 0: "Sony's Spider-Man"** group (Sam Raimi's
-and Marc Webb's Spider-Man films), since those are referenced as multiverse
-prerequisites for *Spider-Man: No Way Home*. A `phase` number doesn't have to
-correspond to an official MCU phase — it's just a grouping/coloring key that
-must match an entry in the top-level `phases` array.
+It also includes two non-MCU groups, since both are referenced as
+prerequisites of in-canon MCU films: **"Fox's X-Men"** (the pre-Disney X-Men
+film series, including both Deadpool films — prerequisites of *Deadpool &
+Wolverine*) and **"Sony's Spider-Man"** (Sam Raimi's and Marc Webb's
+Spider-Man films — multiverse prerequisites of *Spider-Man: No Way Home*). A
+`phase` number doesn't have to correspond to an official MCU phase or even be
+positive — it's just a grouping/coloring key that must match an entry in the
+top-level `phases` array.
 
-### Cover art
+### External links & cover art
 
-We don't ship or hotlink any poster images (copyright, and no reliable way to
-guess the right file per title). The detail panel shows a generated
-placeholder by default. To add real cover art for a title, either:
+Most entries have real, direct links (not search links) to Wikipedia, IMDb,
+the MCU Fandom wiki, a poster image, and a runtime, populated by
+[`scripts/enrich-data.mjs`](scripts/enrich-data.mjs) from Wikipedia's and
+Wikidata's public APIs — never guessed or hand-typed. Concretely, for each
+entry it:
 
-- drop an image at `public/posters/<id>.jpg` (matching the entry's `id`), or
-- set `"posterUrl": "https://…"` on that entry to any image URL you have the
-  rights to use.
+1. Searches Wikipedia for the title to resolve the real article (e.g. `Iron
+   Man` → `Iron Man (2008 film)`), and uses that for `wikipediaUrl`.
+2. Looks up that article's Wikidata item for its IMDb ID (`imdbUrl`) and
+   runtime (`runtimeMinutes`).
+3. Takes the poster straight from Wikipedia's page image (falling back to
+   the Wikidata-linked Commons file, resolved via `Special:FilePath` so
+   nothing needs a hand-computed image path) for `posterUrl`.
+4. Constructs `fandomUrl` from the resolved title — the one field here that's
+   a pattern match rather than a verified API result, since the Fandom wiki
+   blocks non-browser requests and can't be checked ahead of time.
 
-The Wikipedia/IMDb/Disney+ links in the panel are search links (not deep
-links to a specific page) for the same reason — we don't hardcode exact
-article slugs or title IDs, since a wrong guess is a broken link.
+Run it after adding new entries:
+
+```bash
+node scripts/enrich-data.mjs            # only fills entries missing a field
+node scripts/enrich-data.mjs --force    # re-fetches everything
+node scripts/enrich-data.mjs --only=id1,id2
+```
+
+It's deliberately slow (rate-limited to be a good API citizen) and prints
+any entry it couldn't confidently match, so nothing gets a silently wrong
+link.
+
+**Disney+ is the one exception** — a title's Disney+ URL embeds an opaque
+per-title UUID (`.../browse/entity-<uuid>`) that has no public lookup API,
+so the script never touches `disneyPlusUrl` for any entry. Set it by hand if
+you want a direct link; otherwise the panel falls back to a Disney+ search.
+
+Run `node scripts/audit-links.mjs` after enriching to flag entries whose
+resolved Wikipedia title doesn't reduce to the same "core" title as the
+entry (a cheap sanity check, not proof of correctness — a couple of
+legitimate matches get flagged too, e.g. Wikipedia's real article for our
+`X2: X-Men United` entry is titled just `X2 (film)`). Worth a manual look at
+`fandomUrl` in particular for the non-MCU entries (Fox's X-Men, Sony's
+Spider-Man): that wiki sometimes reserves a bare title like `Deadpool` or
+`X-Men` for the character/team page rather than the film, and since we
+can't fetch-and-verify Fandom pages, a couple of those may point at the
+wrong page (`fox-x-men`'s is the team page, not a film-specific one — no
+dedicated page for that film seems to exist on that wiki).
+
+If an entry has no `posterUrl` (or the enrichment script hasn't been run on
+it yet), the detail panel falls back to `public/posters/<id>.jpg` if
+present, then a generated placeholder.
 
 ## GitHub sync
 

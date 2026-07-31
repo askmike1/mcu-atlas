@@ -208,6 +208,7 @@
 
 .external-links {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.6rem;
   margin-bottom: 1.25rem;
 }

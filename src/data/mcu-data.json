@@ -1,22 +1,297 @@
 {
   "schemaVersion": 1,
   "phases": [
-    { "number": 0, "name": "Sony's Spider-Man", "saga": "Legacy Continuity (non-MCU)" },
-    { "number": 1, "name": "Phase I", "saga": "The Infinity Saga" },
-    { "number": 2, "name": "Phase II", "saga": "The Infinity Saga" },
-    { "number": 3, "name": "Phase III", "saga": "The Infinity Saga" },
-    { "number": 4, "name": "Phase IV", "saga": "The Multiverse Saga" },
-    { "number": 5, "name": "Phase V", "saga": "The Multiverse Saga" },
-    { "number": 6, "name": "Phase VI", "saga": "The Multiverse Saga" }
+    {
+      "number": -1,
+      "name": "Fox's X-Men",
+      "saga": "Legacy Continuity (non-MCU)"
+    },
+    {
+      "number": 0,
+      "name": "Sony's Spider-Man",
+      "saga": "Legacy Continuity (non-MCU)"
+    },
+    {
+      "number": 1,
+      "name": "Phase I",
+      "saga": "The Infinity Saga"
+    },
+    {
+      "number": 2,
+      "name": "Phase II",
+      "saga": "The Infinity Saga"
+    },
+    {
+      "number": 3,
+      "name": "Phase III",
+      "saga": "The Infinity Saga"
+    },
+    {
+      "number": 4,
+      "name": "Phase IV",
+      "saga": "The Multiverse Saga"
+    },
+    {
+      "number": 5,
+      "name": "Phase V",
+      "saga": "The Multiverse Saga"
+    },
+    {
+      "number": 6,
+      "name": "Phase VI",
+      "saga": "The Multiverse Saga"
+    }
   ],
   "entries": [
+    {
+      "id": "fox-x-men",
+      "title": "X-Men",
+      "type": "movie",
+      "releaseDate": "2000-07-14",
+      "phase": -1,
+      "dependencies": [],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/X-Men_(film)",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/X-Men",
+      "imdbUrl": "https://www.imdb.com/title/tt0120903/",
+      "runtimeMinutes": 104,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/8/81/X-MenfilmPoster.jpg"
+    },
+    {
+      "id": "fox-x2",
+      "title": "X2: X-Men United",
+      "type": "movie",
+      "releaseDate": "2003-05-02",
+      "phase": -1,
+      "dependencies": [
+        {
+          "id": "fox-x-men",
+          "importance": "required",
+          "note": "Directly continues the team's roster, Wolverine's search for his past, and Magneto's imprisonment from that film."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/X2_(film)",
+      "imdbUrl": "https://www.imdb.com/title/tt0290334/",
+      "runtimeMinutes": 134,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/3/3e/X2_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/X2"
+    },
+    {
+      "id": "fox-x-men-last-stand",
+      "title": "X-Men: The Last Stand",
+      "type": "movie",
+      "releaseDate": "2006-05-26",
+      "phase": -1,
+      "dependencies": [
+        {
+          "id": "fox-x2",
+          "importance": "required",
+          "note": "Jean Grey's apparent death and Xavier/Magneto's fallout from that film's climax directly set up this film's plot."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/X-Men:_The_Last_Stand",
+      "imdbUrl": "https://www.imdb.com/title/tt0376994/",
+      "runtimeMinutes": 104,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/5/5b/X-Men_The_Last_Stand_theatrical_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/X-Men:_The_Last_Stand"
+    },
+    {
+      "id": "fox-x-men-origins-wolverine",
+      "title": "X-Men Origins: Wolverine",
+      "type": "movie",
+      "releaseDate": "2009-05-01",
+      "phase": -1,
+      "dependencies": [],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/X-Men_Origins:_Wolverine",
+      "imdbUrl": "https://www.imdb.com/title/tt0458525/",
+      "runtimeMinutes": 107,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/0/08/X-Men_Origins_Wolverine_theatrical_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/X-Men_Origins:_Wolverine"
+    },
+    {
+      "id": "fox-x-men-first-class",
+      "title": "X-Men: First Class",
+      "type": "movie",
+      "releaseDate": "2011-06-03",
+      "phase": -1,
+      "dependencies": [],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/X-Men:_First_Class",
+      "imdbUrl": "https://www.imdb.com/title/tt1270798/",
+      "runtimeMinutes": 131,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/5/55/X-MenFirstClassMoviePoster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/X-Men:_First_Class"
+    },
+    {
+      "id": "fox-the-wolverine",
+      "title": "The Wolverine",
+      "type": "movie",
+      "releaseDate": "2013-07-26",
+      "phase": -1,
+      "dependencies": [
+        {
+          "id": "fox-x-men-origins-wolverine",
+          "importance": "recommended",
+          "note": "Logan's history with Victor Creed and his general backstory, established there, are referenced."
+        },
+        {
+          "id": "fox-x-men-last-stand",
+          "importance": "required",
+          "note": "Logan is still grieving having killed Jean Grey at the end of that film, which haunts him throughout via visions."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Wolverine_(film)",
+      "imdbUrl": "https://www.imdb.com/title/tt1430132/",
+      "runtimeMinutes": 138,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/7/74/The_Wolverine_posterUS.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/The_Wolverine"
+    },
+    {
+      "id": "fox-x-men-days-of-future-past",
+      "title": "X-Men: Days of Future Past",
+      "type": "movie",
+      "releaseDate": "2014-05-23",
+      "phase": -1,
+      "dependencies": [
+        {
+          "id": "fox-x-men-first-class",
+          "importance": "required",
+          "note": "The younger cast and 1960s-set history from that film directly continue into the past-set half of this story."
+        },
+        {
+          "id": "fox-x-men-last-stand",
+          "importance": "required",
+          "note": "The dark future shown here is a direct consequence of events set in motion by that film and its sequels."
+        },
+        {
+          "id": "fox-the-wolverine",
+          "importance": "recommended",
+          "note": "Logan's arc and mindset continue directly from where that film left him."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/X-Men:_Days_of_Future_Past",
+      "imdbUrl": "https://www.imdb.com/title/tt1877832/",
+      "runtimeMinutes": 131,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/0/0c/X-Men_Days_of_Future_Past_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/X-Men:_Days_of_Future_Past"
+    },
+    {
+      "id": "fox-deadpool",
+      "title": "Deadpool",
+      "type": "movie",
+      "releaseDate": "2016-02-12",
+      "phase": -1,
+      "dependencies": [],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Deadpool_(film)",
+      "imdbUrl": "https://www.imdb.com/title/tt1431045/",
+      "runtimeMinutes": 108,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/2/23/Deadpool_%282016_poster%29.png",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Deadpool_(film)"
+    },
+    {
+      "id": "fox-x-men-apocalypse",
+      "title": "X-Men: Apocalypse",
+      "type": "movie",
+      "releaseDate": "2016-05-27",
+      "phase": -1,
+      "dependencies": [
+        {
+          "id": "fox-x-men-days-of-future-past",
+          "importance": "required",
+          "note": "The altered timeline and reassembled young cast from the end of that film continue directly here."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/X-Men:_Apocalypse",
+      "imdbUrl": "https://www.imdb.com/title/tt3385516/",
+      "runtimeMinutes": 131,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/0/04/X-Men_-_Apocalypse.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/X-Men:_Apocalypse"
+    },
+    {
+      "id": "fox-logan",
+      "title": "Logan",
+      "type": "movie",
+      "releaseDate": "2017-03-03",
+      "phase": -1,
+      "dependencies": [
+        {
+          "id": "fox-the-wolverine",
+          "importance": "required",
+          "note": "Logan's declining healing factor and weariness, seeded there, have fully caught up with him by this film."
+        },
+        {
+          "id": "fox-x-men-days-of-future-past",
+          "importance": "recommended",
+          "note": "References to what happened to the rest of the X-Men, alluded to here, follow from the altered timeline shown there."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Logan_(film)",
+      "imdbUrl": "https://www.imdb.com/title/tt3315342/",
+      "runtimeMinutes": 137,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/3/37/Logan_2017_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Logan"
+    },
+    {
+      "id": "fox-deadpool-2",
+      "title": "Deadpool 2",
+      "type": "movie",
+      "releaseDate": "2018-05-18",
+      "phase": -1,
+      "dependencies": [
+        {
+          "id": "fox-deadpool",
+          "importance": "required",
+          "note": "Directly continues Wade Wilson's relationships and tone from that film."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Deadpool_2",
+      "imdbUrl": "https://www.imdb.com/title/tt5463162/",
+      "runtimeMinutes": 119,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/c/cf/Deadpool_2_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Deadpool_2"
+    },
+    {
+      "id": "fox-dark-phoenix",
+      "title": "Dark Phoenix",
+      "type": "movie",
+      "releaseDate": "2019-06-07",
+      "phase": -1,
+      "dependencies": [
+        {
+          "id": "fox-x-men-apocalypse",
+          "importance": "required",
+          "note": "Continues the reassembled young X-Men team and timeline established there."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Dark_Phoenix_(film)",
+      "imdbUrl": "https://www.imdb.com/title/tt6565702/",
+      "runtimeMinutes": 114,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/9/9e/Dark_Phoenix_%28film%29.png",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Dark_Phoenix"
+    },
+    {
+      "id": "fox-the-new-mutants",
+      "title": "The New Mutants",
+      "type": "movie",
+      "releaseDate": "2020-08-28",
+      "phase": -1,
+      "dependencies": [],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/The_New_Mutants_(film)",
+      "imdbUrl": "https://www.imdb.com/title/tt4682266/",
+      "runtimeMinutes": 94,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/1/1a/TheNewMutantsPoster.jpeg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/The_New_Mutants"
+    },
     {
       "id": "sony-spider-man",
       "title": "Spider-Man",
       "type": "movie",
       "releaseDate": "2002-05-03",
       "phase": 0,
-      "dependencies": []
+      "dependencies": [],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Spider-Man_(2002_film)",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/6/6c/Spider-Man_%282002_film%29_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Spider-Man_(2002_film)",
+      "imdbUrl": "https://www.imdb.com/title/tt0145487/",
+      "runtimeMinutes": 121
     },
     {
       "id": "sony-spider-man-2",
@@ -25,8 +300,17 @@
       "releaseDate": "2004-06-30",
       "phase": 0,
       "dependencies": [
-        { "id": "sony-spider-man", "importance": "required", "note": "Directly continues Peter Parker's story, his relationship with Mary Jane, and his uncle's death." }
-      ]
+        {
+          "id": "sony-spider-man",
+          "importance": "required",
+          "note": "Directly continues Peter Parker's story, his relationship with Mary Jane, and his uncle's death."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Spider-Man_2",
+      "imdbUrl": "https://www.imdb.com/title/tt0316654/",
+      "runtimeMinutes": 122,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/4/4e/Spider-Man_2_USA_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Spider-Man_2"
     },
     {
       "id": "sony-spider-man-3",
@@ -35,8 +319,17 @@
       "releaseDate": "2007-05-04",
       "phase": 0,
       "dependencies": [
-        { "id": "sony-spider-man-2", "importance": "required", "note": "Harry Osborn's arc as the new Goblin and Peter's relationships all continue directly from that film." }
-      ]
+        {
+          "id": "sony-spider-man-2",
+          "importance": "required",
+          "note": "Harry Osborn's arc as the new Goblin and Peter's relationships all continue directly from that film."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Spider-Man_3",
+      "imdbUrl": "https://www.imdb.com/title/tt0413300/",
+      "runtimeMinutes": 139,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/7/7a/Spider-Man_3%2C_International_Poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Spider-Man_3"
     },
     {
       "id": "sony-amazing-spider-man",
@@ -44,7 +337,12 @@
       "type": "movie",
       "releaseDate": "2012-07-03",
       "phase": 0,
-      "dependencies": []
+      "dependencies": [],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Amazing_Spider-Man_(film)",
+      "imdbUrl": "https://www.imdb.com/title/tt0948470/",
+      "runtimeMinutes": 136,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/e/e0/The_Amazing_Spider-Man_%28film%29_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/The_Amazing_Spider-Man"
     },
     {
       "id": "sony-amazing-spider-man-2",
@@ -53,8 +351,17 @@
       "releaseDate": "2014-05-02",
       "phase": 0,
       "dependencies": [
-        { "id": "sony-amazing-spider-man", "importance": "required", "note": "Continues Peter and Gwen Stacy's relationship and the mystery of Peter's parents set up there." }
-      ]
+        {
+          "id": "sony-amazing-spider-man",
+          "importance": "required",
+          "note": "Continues Peter and Gwen Stacy's relationship and the mystery of Peter's parents set up there."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Amazing_Spider-Man_2",
+      "imdbUrl": "https://www.imdb.com/title/tt1872181/",
+      "runtimeMinutes": 142,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/2/24/The_Amazing_Spider-Man_2_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/The_Amazing_Spider-Man_2"
     },
     {
       "id": "iron-man",
@@ -62,7 +369,12 @@
       "type": "movie",
       "releaseDate": "2008-05-02",
       "phase": 1,
-      "dependencies": []
+      "dependencies": [],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Iron_Man_(2008_film)",
+      "imdbUrl": "https://www.imdb.com/title/tt0371746/",
+      "runtimeMinutes": 126,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/0/02/Iron_Man_%282008_film%29_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Iron_Man"
     },
     {
       "id": "incredible-hulk",
@@ -71,8 +383,17 @@
       "releaseDate": "2008-06-13",
       "phase": 1,
       "dependencies": [
-        { "id": "iron-man", "importance": "optional", "note": "Tony Stark's end-credits cameo teases the wider Avengers Initiative, but adds nothing required to follow this film." }
-      ]
+        {
+          "id": "iron-man",
+          "importance": "optional",
+          "note": "Tony Stark's end-credits cameo teases the wider Avengers Initiative, but adds nothing required to follow this film."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Incredible_Hulk_(film)",
+      "imdbUrl": "https://www.imdb.com/title/tt0800080/",
+      "runtimeMinutes": 112,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/f/f0/The_Incredible_Hulk_%28film%29_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/The_Incredible_Hulk"
     },
     {
       "id": "iron-man-2",
@@ -81,9 +402,22 @@
       "releaseDate": "2010-05-07",
       "phase": 1,
       "dependencies": [
-        { "id": "iron-man", "importance": "required", "note": "Directly continues Tony Stark's arc as a public superhero and the fallout of revealing his identity at the end of the first film." },
-        { "id": "incredible-hulk", "importance": "optional", "note": "Establishes S.H.I.E.L.D.'s wider monitoring of enhanced individuals, referenced only in passing." }
-      ]
+        {
+          "id": "iron-man",
+          "importance": "required",
+          "note": "Directly continues Tony Stark's arc as a public superhero and the fallout of revealing his identity at the end of the first film."
+        },
+        {
+          "id": "incredible-hulk",
+          "importance": "optional",
+          "note": "Establishes S.H.I.E.L.D.'s wider monitoring of enhanced individuals, referenced only in passing."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Iron_Man_2",
+      "imdbUrl": "https://www.imdb.com/title/tt1228705/",
+      "runtimeMinutes": 125,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/e/ed/Iron_Man_2_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Iron_Man_2"
     },
     {
       "id": "thor",
@@ -92,8 +426,17 @@
       "releaseDate": "2011-05-06",
       "phase": 1,
       "dependencies": [
-        { "id": "iron-man-2", "importance": "optional", "note": "Agent Coulson and S.H.I.E.L.D.'s growing case-file on enhanced beings carries over, plus a post-credits tease of the Tesseract that pays off later." }
-      ]
+        {
+          "id": "iron-man-2",
+          "importance": "optional",
+          "note": "Agent Coulson and S.H.I.E.L.D.'s growing case-file on enhanced beings carries over, plus a post-credits tease of the Tesseract that pays off later."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Thor_(film)",
+      "imdbUrl": "https://www.imdb.com/title/tt0800369/",
+      "runtimeMinutes": 114,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/9/95/Thor_%28film%29_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Thor"
     },
     {
       "id": "captain-america-first-avenger",
@@ -102,8 +445,17 @@
       "releaseDate": "2011-07-22",
       "phase": 1,
       "dependencies": [
-        { "id": "thor", "importance": "optional", "note": "The Tesseract, already introduced as an object of cosmic power, turns out to be the same artifact HYDRA is hunting in WWII." }
-      ]
+        {
+          "id": "thor",
+          "importance": "optional",
+          "note": "The Tesseract, already introduced as an object of cosmic power, turns out to be the same artifact HYDRA is hunting in WWII."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Captain_America:_The_First_Avenger",
+      "imdbUrl": "https://www.imdb.com/title/tt0458339/",
+      "runtimeMinutes": 124,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/3/37/Captain_America_The_First_Avenger_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America:_The_First_Avenger"
     },
     {
       "id": "avengers",
@@ -112,12 +464,37 @@
       "releaseDate": "2012-05-04",
       "phase": 1,
       "dependencies": [
-        { "id": "iron-man", "importance": "required", "note": "Tony Stark's personality, tech, and prior confrontation with government oversight all drive his role on the team." },
-        { "id": "iron-man-2", "importance": "required", "note": "Introduces Black Widow and Nick Fury/S.H.I.E.L.D. as an active organization, both central to the team's formation here." },
-        { "id": "thor", "importance": "required", "note": "Loki and the Tesseract's backstory, plus Thor and Loki's fractured relationship, are the film's inciting conflict." },
-        { "id": "captain-america-first-avenger", "importance": "required", "note": "Steve Rogers' origin, his relationship to the Tesseract/HYDRA, and his time-displacement are all assumed knowledge." },
-        { "id": "incredible-hulk", "importance": "recommended", "note": "Bruce Banner's fugitive status and General Ross's pursuit of him carry directly into his introduction here." }
-      ]
+        {
+          "id": "iron-man",
+          "importance": "required",
+          "note": "Tony Stark's personality, tech, and prior confrontation with government oversight all drive his role on the team."
+        },
+        {
+          "id": "iron-man-2",
+          "importance": "required",
+          "note": "Introduces Black Widow and Nick Fury/S.H.I.E.L.D. as an active organization, both central to the team's formation here."
+        },
+        {
+          "id": "thor",
+          "importance": "required",
+          "note": "Loki and the Tesseract's backstory, plus Thor and Loki's fractured relationship, are the film's inciting conflict."
+        },
+        {
+          "id": "captain-america-first-avenger",
+          "importance": "required",
+          "note": "Steve Rogers' origin, his relationship to the Tesseract/HYDRA, and his time-displacement are all assumed knowledge."
+        },
+        {
+          "id": "incredible-hulk",
+          "importance": "recommended",
+          "note": "Bruce Banner's fugitive status and General Ross's pursuit of him carry directly into his introduction here."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Avengers_(2012_film)",
+      "imdbUrl": "https://www.imdb.com/title/tt0848228/",
+      "runtimeMinutes": 142,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/8/8a/The_Avengers_%282012_film%29_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/The_Avengers"
     },
     {
       "id": "iron-man-3",
@@ -126,9 +503,22 @@
       "releaseDate": "2013-05-03",
       "phase": 2,
       "dependencies": [
-        { "id": "avengers", "importance": "required", "note": "Tony's anxiety attacks and PTSD throughout this film stem directly from the near-death experience of the Battle of New York." },
-        { "id": "iron-man-2", "importance": "recommended", "note": "War Machine/Iron Patriot and Tony's supporting cast continue directly from this film." }
-      ]
+        {
+          "id": "avengers",
+          "importance": "required",
+          "note": "Tony's anxiety attacks and PTSD throughout this film stem directly from the near-death experience of the Battle of New York."
+        },
+        {
+          "id": "iron-man-2",
+          "importance": "recommended",
+          "note": "War Machine/Iron Patriot and Tony's supporting cast continue directly from this film."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Iron_Man_3",
+      "imdbUrl": "https://www.imdb.com/title/tt1300854/",
+      "runtimeMinutes": 130,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/1/19/Iron_Man_3_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Iron_Man_3"
     },
     {
       "id": "thor-dark-world",
@@ -137,9 +527,22 @@
       "releaseDate": "2013-11-08",
       "phase": 2,
       "dependencies": [
-        { "id": "thor", "importance": "required", "note": "Jane Foster, Asgard's politics, and Thor and Loki's relationship all continue directly." },
-        { "id": "avengers", "importance": "required", "note": "Loki's imprisonment and motivations here are a direct consequence of his defeat and capture in New York." }
-      ]
+        {
+          "id": "thor",
+          "importance": "required",
+          "note": "Jane Foster, Asgard's politics, and Thor and Loki's relationship all continue directly."
+        },
+        {
+          "id": "avengers",
+          "importance": "required",
+          "note": "Loki's imprisonment and motivations here are a direct consequence of his defeat and capture in New York."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Thor:_The_Dark_World",
+      "imdbUrl": "https://www.imdb.com/title/tt1981115/",
+      "runtimeMinutes": 112,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/7/7f/Thor_The_Dark_World_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Thor:_The_Dark_World"
     },
     {
       "id": "captain-america-winter-soldier",
@@ -148,10 +551,27 @@
       "releaseDate": "2014-04-04",
       "phase": 2,
       "dependencies": [
-        { "id": "avengers", "importance": "required", "note": "Steve's adjustment to the modern world and his working relationship with Natasha/S.H.I.E.L.D. continue from here." },
-        { "id": "captain-america-first-avenger", "importance": "required", "note": "The Winter Soldier's true identity is a major twist tied directly to Steve's backstory from this film." },
-        { "id": "thor-dark-world", "importance": "recommended", "note": "Minor continuity around S.H.I.E.L.D.'s post-Avengers operations." }
-      ]
+        {
+          "id": "avengers",
+          "importance": "required",
+          "note": "Steve's adjustment to the modern world and his working relationship with Natasha/S.H.I.E.L.D. continue from here."
+        },
+        {
+          "id": "captain-america-first-avenger",
+          "importance": "required",
+          "note": "The Winter Soldier's true identity is a major twist tied directly to Steve's backstory from this film."
+        },
+        {
+          "id": "thor-dark-world",
+          "importance": "recommended",
+          "note": "Minor continuity around S.H.I.E.L.D.'s post-Avengers operations."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Captain_America:_The_Winter_Soldier",
+      "imdbUrl": "https://www.imdb.com/title/tt1843866/",
+      "runtimeMinutes": 136,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/9/9e/Captain_America_The_Winter_Soldier_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America:_The_Winter_Soldier"
     },
     {
       "id": "guardians-of-the-galaxy",
@@ -160,8 +580,17 @@
       "releaseDate": "2014-08-01",
       "phase": 2,
       "dependencies": [
-        { "id": "thor-dark-world", "importance": "optional", "note": "The Collector and the wider concept of Infinity Stones scattered across the universe were first introduced there." }
-      ]
+        {
+          "id": "thor-dark-world",
+          "importance": "optional",
+          "note": "The Collector and the wider concept of Infinity Stones scattered across the universe were first introduced there."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Guardians_of_the_Galaxy_(film)",
+      "imdbUrl": "https://www.imdb.com/title/tt2015381/",
+      "runtimeMinutes": 121,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/3/33/Guardians_of_the_Galaxy_%28film%29_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Guardians_of_the_Galaxy"
     },
     {
       "id": "avengers-age-of-ultron",
@@ -170,12 +599,37 @@
       "releaseDate": "2015-05-01",
       "phase": 2,
       "dependencies": [
-        { "id": "avengers", "importance": "required", "note": "Picks up the team dynamic and roster established in the first Avengers film." },
-        { "id": "captain-america-winter-soldier", "importance": "required", "note": "The fall of S.H.I.E.L.D./HYDRA's exposure directly shapes the team's operating status here." },
-        { "id": "thor-dark-world", "importance": "required", "note": "Sets up Thor's search for the Infinity Stones, which drives his subplot in this film." },
-        { "id": "iron-man-3", "importance": "recommended", "note": "Tony's trauma and his motivation to build 'a suit of armor around the world' (Ultron) follows directly from events there." },
-        { "id": "guardians-of-the-galaxy", "importance": "recommended", "note": "Deepens the Infinity Stone mythology referenced in Thor's vision." }
-      ]
+        {
+          "id": "avengers",
+          "importance": "required",
+          "note": "Picks up the team dynamic and roster established in the first Avengers film."
+        },
+        {
+          "id": "captain-america-winter-soldier",
+          "importance": "required",
+          "note": "The fall of S.H.I.E.L.D./HYDRA's exposure directly shapes the team's operating status here."
+        },
+        {
+          "id": "thor-dark-world",
+          "importance": "required",
+          "note": "Sets up Thor's search for the Infinity Stones, which drives his subplot in this film."
+        },
+        {
+          "id": "iron-man-3",
+          "importance": "recommended",
+          "note": "Tony's trauma and his motivation to build 'a suit of armor around the world' (Ultron) follows directly from events there."
+        },
+        {
+          "id": "guardians-of-the-galaxy",
+          "importance": "recommended",
+          "note": "Deepens the Infinity Stone mythology referenced in Thor's vision."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Avengers:_Age_of_Ultron",
+      "imdbUrl": "https://www.imdb.com/title/tt2395427/",
+      "runtimeMinutes": 141,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/f/ff/Avengers_Age_of_Ultron_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Avengers:_Age_of_Ultron"
     },
     {
       "id": "ant-man",
@@ -184,8 +638,17 @@
       "releaseDate": "2015-07-17",
       "phase": 2,
       "dependencies": [
-        { "id": "avengers-age-of-ultron", "importance": "required", "note": "Set in the immediate aftermath, with a cameo from an Avenger tied to the team's new headquarters." }
-      ]
+        {
+          "id": "avengers-age-of-ultron",
+          "importance": "required",
+          "note": "Set in the immediate aftermath, with a cameo from an Avenger tied to the team's new headquarters."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Ant-Man_(film)",
+      "imdbUrl": "https://www.imdb.com/title/tt0478970/",
+      "runtimeMinutes": 117,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/1/12/Ant-Man_%28film%29_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Ant-Man"
     },
     {
       "id": "captain-america-civil-war",
@@ -194,10 +657,27 @@
       "releaseDate": "2016-05-06",
       "phase": 3,
       "dependencies": [
-        { "id": "avengers-age-of-ultron", "importance": "required", "note": "The collateral damage from Sokovia is the direct catalyst for the Sokovia Accords conflict driving this film." },
-        { "id": "captain-america-winter-soldier", "importance": "required", "note": "Bucky Barnes/the Winter Soldier's arc and Steve's loyalty to him are the emotional core of this film." },
-        { "id": "ant-man", "importance": "recommended", "note": "Scott Lang joins the fight here, building on his established powers and personality." }
-      ]
+        {
+          "id": "avengers-age-of-ultron",
+          "importance": "required",
+          "note": "The collateral damage from Sokovia is the direct catalyst for the Sokovia Accords conflict driving this film."
+        },
+        {
+          "id": "captain-america-winter-soldier",
+          "importance": "required",
+          "note": "Bucky Barnes/the Winter Soldier's arc and Steve's loyalty to him are the emotional core of this film."
+        },
+        {
+          "id": "ant-man",
+          "importance": "recommended",
+          "note": "Scott Lang joins the fight here, building on his established powers and personality."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Captain_America:_Civil_War",
+      "imdbUrl": "https://www.imdb.com/title/tt3498820/",
+      "runtimeMinutes": 147,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/5/53/Captain_America_Civil_War_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America:_Civil_War"
     },
     {
       "id": "doctor-strange",
@@ -206,8 +686,17 @@
       "releaseDate": "2016-11-04",
       "phase": 3,
       "dependencies": [
-        { "id": "avengers-age-of-ultron", "importance": "optional", "note": "Brief dialogue references the Avengers and their public reputation, nothing plot-critical." }
-      ]
+        {
+          "id": "avengers-age-of-ultron",
+          "importance": "optional",
+          "note": "Brief dialogue references the Avengers and their public reputation, nothing plot-critical."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Doctor_Strange_(2016_film)",
+      "imdbUrl": "https://www.imdb.com/title/tt1211837/",
+      "runtimeMinutes": 115,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/a/a1/Doctor_Strange_%282016_film%29_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Doctor_Strange"
     },
     {
       "id": "guardians-of-the-galaxy-vol-2",
@@ -216,8 +705,17 @@
       "releaseDate": "2017-05-05",
       "phase": 3,
       "dependencies": [
-        { "id": "guardians-of-the-galaxy", "importance": "required", "note": "Directly continues the team's dynamic and Peter Quill's search for answers about his father." }
-      ]
+        {
+          "id": "guardians-of-the-galaxy",
+          "importance": "required",
+          "note": "Directly continues the team's dynamic and Peter Quill's search for answers about his father."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Guardians_of_the_Galaxy_Vol._2",
+      "imdbUrl": "https://www.imdb.com/title/tt3896198/",
+      "runtimeMinutes": 136,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/3/32/Guardians_of_the_Galaxy_Vol._2_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Guardians_of_the_Galaxy_Vol._2"
     },
     {
       "id": "spider-man-homecoming",
@@ -226,9 +724,22 @@
       "releaseDate": "2017-07-07",
       "phase": 3,
       "dependencies": [
-        { "id": "captain-america-civil-war", "importance": "required", "note": "Peter Parker's recruitment by Tony Stark and the airport battle are the direct lead-in to this film's plot and his mentor relationship with Tony." },
-        { "id": "avengers", "importance": "recommended", "note": "The Battle of New York's cleanup salvage is the origin of this film's central villain's technology and motive." }
-      ]
+        {
+          "id": "captain-america-civil-war",
+          "importance": "required",
+          "note": "Peter Parker's recruitment by Tony Stark and the airport battle are the direct lead-in to this film's plot and his mentor relationship with Tony."
+        },
+        {
+          "id": "avengers",
+          "importance": "recommended",
+          "note": "The Battle of New York's cleanup salvage is the origin of this film's central villain's technology and motive."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Spider-Man:_Homecoming",
+      "imdbUrl": "https://www.imdb.com/title/tt2250912/",
+      "runtimeMinutes": 133,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/f/f9/Spider-Man_Homecoming_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Spider-Man:_Homecoming"
     },
     {
       "id": "thor-ragnarok",
@@ -237,11 +748,32 @@
       "releaseDate": "2017-11-03",
       "phase": 3,
       "dependencies": [
-        { "id": "thor-dark-world", "importance": "required", "note": "Continues Thor's family arc, particularly around Odin and Loki, and Asgard's political situation." },
-        { "id": "avengers-age-of-ultron", "importance": "required", "note": "Bruce Banner has been missing since the end of that film; his fate as the Hulk is resolved here." },
-        { "id": "doctor-strange", "importance": "recommended", "note": "A cameo appearance connects the mystical side of the MCU to Thor's search for his father." },
-        { "id": "captain-america-civil-war", "importance": "recommended", "note": "Explains why Hulk/Bruce Banner and Thor have both been absent from recent Avengers activity." }
-      ]
+        {
+          "id": "thor-dark-world",
+          "importance": "required",
+          "note": "Continues Thor's family arc, particularly around Odin and Loki, and Asgard's political situation."
+        },
+        {
+          "id": "avengers-age-of-ultron",
+          "importance": "required",
+          "note": "Bruce Banner has been missing since the end of that film; his fate as the Hulk is resolved here."
+        },
+        {
+          "id": "doctor-strange",
+          "importance": "recommended",
+          "note": "A cameo appearance connects the mystical side of the MCU to Thor's search for his father."
+        },
+        {
+          "id": "captain-america-civil-war",
+          "importance": "recommended",
+          "note": "Explains why Hulk/Bruce Banner and Thor have both been absent from recent Avengers activity."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Thor:_Ragnarok",
+      "imdbUrl": "https://www.imdb.com/title/tt3501632/",
+      "runtimeMinutes": 130,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/7/7d/Thor_Ragnarok_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Thor:_Ragnarok"
     },
     {
       "id": "black-panther",
@@ -250,8 +782,17 @@
       "releaseDate": "2018-02-16",
       "phase": 3,
       "dependencies": [
-        { "id": "captain-america-civil-war", "importance": "required", "note": "T'Chaka's death and T'Challa's ascension to the throne of Wakanda, shown in that film, is the direct inciting incident here." }
-      ]
+        {
+          "id": "captain-america-civil-war",
+          "importance": "required",
+          "note": "T'Chaka's death and T'Challa's ascension to the throne of Wakanda, shown in that film, is the direct inciting incident here."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Black_Panther_(film)",
+      "imdbUrl": "https://www.imdb.com/title/tt1825683/",
+      "runtimeMinutes": 134,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/d/d6/Black_Panther_%28film%29_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Black_Panther"
     },
     {
       "id": "avengers-infinity-war",
@@ -260,14 +801,47 @@
       "releaseDate": "2018-04-27",
       "phase": 3,
       "dependencies": [
-        { "id": "thor-ragnarok", "importance": "required", "note": "Opens directly where that film's post-credits scene left off, with the Asgardian refugee fleet." },
-        { "id": "black-panther", "importance": "required", "note": "Wakanda and its vibranium/technology become a central battleground, relying on the world established there." },
-        { "id": "captain-america-civil-war", "importance": "required", "note": "The fractured Avengers team (Cap's fugitive status, Tony's guilt) directly shapes who is available and how they interact." },
-        { "id": "doctor-strange", "importance": "required", "note": "Strange's role as protector of the Time Stone and his magical abilities are essential to the plot." },
-        { "id": "guardians-of-the-galaxy-vol-2", "importance": "required", "note": "Gamora and Nebula's fraught relationship with Thanos, established there, is central to this film's emotional stakes." },
-        { "id": "spider-man-homecoming", "importance": "recommended", "note": "Peter Parker's relationship with Tony Stark, built there, pays off emotionally here." },
-        { "id": "guardians-of-the-galaxy", "importance": "recommended", "note": "General familiarity with the Guardians team and cosmic side of the MCU helps follow the space-set storylines." }
-      ]
+        {
+          "id": "thor-ragnarok",
+          "importance": "required",
+          "note": "Opens directly where that film's post-credits scene left off, with the Asgardian refugee fleet."
+        },
+        {
+          "id": "black-panther",
+          "importance": "required",
+          "note": "Wakanda and its vibranium/technology become a central battleground, relying on the world established there."
+        },
+        {
+          "id": "captain-america-civil-war",
+          "importance": "required",
+          "note": "The fractured Avengers team (Cap's fugitive status, Tony's guilt) directly shapes who is available and how they interact."
+        },
+        {
+          "id": "doctor-strange",
+          "importance": "required",
+          "note": "Strange's role as protector of the Time Stone and his magical abilities are essential to the plot."
+        },
+        {
+          "id": "guardians-of-the-galaxy-vol-2",
+          "importance": "required",
+          "note": "Gamora and Nebula's fraught relationship with Thanos, established there, is central to this film's emotional stakes."
+        },
+        {
+          "id": "spider-man-homecoming",
+          "importance": "recommended",
+          "note": "Peter Parker's relationship with Tony Stark, built there, pays off emotionally here."
+        },
+        {
+          "id": "guardians-of-the-galaxy",
+          "importance": "recommended",
+          "note": "General familiarity with the Guardians team and cosmic side of the MCU helps follow the space-set storylines."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Avengers:_Infinity_War",
+      "imdbUrl": "https://www.imdb.com/title/tt4154756/",
+      "runtimeMinutes": 149,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/4/4d/Avengers_Infinity_War_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Avengers:_Infinity_War"
     },
     {
       "id": "ant-man-and-the-wasp",
@@ -276,9 +850,22 @@
       "releaseDate": "2018-07-06",
       "phase": 3,
       "dependencies": [
-        { "id": "ant-man", "importance": "required", "note": "Directly continues Scott Lang's story and his relationship with Hank and Hope Pym." },
-        { "id": "captain-america-civil-war", "importance": "required", "note": "Scott's fugitive status and house arrest, the film's central plot device, result directly from his involvement there." }
-      ]
+        {
+          "id": "ant-man",
+          "importance": "required",
+          "note": "Directly continues Scott Lang's story and his relationship with Hank and Hope Pym."
+        },
+        {
+          "id": "captain-america-civil-war",
+          "importance": "required",
+          "note": "Scott's fugitive status and house arrest, the film's central plot device, result directly from his involvement there."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Ant-Man_and_the_Wasp",
+      "imdbUrl": "https://www.imdb.com/title/tt5095030/",
+      "runtimeMinutes": 118,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/2/2c/Ant-Man_and_the_Wasp_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Ant-Man_and_the_Wasp"
     },
     {
       "id": "captain-marvel",
@@ -286,7 +873,12 @@
       "type": "movie",
       "releaseDate": "2019-03-08",
       "phase": 3,
-      "dependencies": []
+      "dependencies": [],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Captain_Marvel_(film)",
+      "imdbUrl": "https://www.imdb.com/title/tt4154664/",
+      "runtimeMinutes": 124,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/4/4e/Captain_Marvel_%28film%29_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_Marvel"
     },
     {
       "id": "avengers-endgame",
@@ -295,14 +887,47 @@
       "releaseDate": "2019-04-26",
       "phase": 3,
       "dependencies": [
-        { "id": "avengers-infinity-war", "importance": "required", "note": "A direct, immediate continuation of the Snap and its aftermath; essentially a single story split across two films." },
-        { "id": "captain-marvel", "importance": "required", "note": "Carol Danvers is paged at the very end of Infinity War and arrives here already established, including her history with Nick Fury." },
-        { "id": "ant-man-and-the-wasp", "importance": "required", "note": "The Quantum Realm mechanics that enable the plot's time heist were established there." },
-        { "id": "iron-man", "importance": "recommended", "note": "The time-travel sequence revisits this film's events directly, and the finale echoes Tony's arc from the very beginning." },
-        { "id": "spider-man-homecoming", "importance": "recommended", "note": "Peter and Tony's mentor relationship, central to the film's emotional climax, was built there." },
-        { "id": "guardians-of-the-galaxy-vol-2", "importance": "recommended", "note": "Gamora and Nebula's history is revisited via time travel." },
-        { "id": "thor-ragnarok", "importance": "recommended", "note": "Thor's arc and his family history are directly revisited via time travel to Asgard." }
-      ]
+        {
+          "id": "avengers-infinity-war",
+          "importance": "required",
+          "note": "A direct, immediate continuation of the Snap and its aftermath; essentially a single story split across two films."
+        },
+        {
+          "id": "captain-marvel",
+          "importance": "required",
+          "note": "Carol Danvers is paged at the very end of Infinity War and arrives here already established, including her history with Nick Fury."
+        },
+        {
+          "id": "ant-man-and-the-wasp",
+          "importance": "required",
+          "note": "The Quantum Realm mechanics that enable the plot's time heist were established there."
+        },
+        {
+          "id": "iron-man",
+          "importance": "recommended",
+          "note": "The time-travel sequence revisits this film's events directly, and the finale echoes Tony's arc from the very beginning."
+        },
+        {
+          "id": "spider-man-homecoming",
+          "importance": "recommended",
+          "note": "Peter and Tony's mentor relationship, central to the film's emotional climax, was built there."
+        },
+        {
+          "id": "guardians-of-the-galaxy-vol-2",
+          "importance": "recommended",
+          "note": "Gamora and Nebula's history is revisited via time travel."
+        },
+        {
+          "id": "thor-ragnarok",
+          "importance": "recommended",
+          "note": "Thor's arc and his family history are directly revisited via time travel to Asgard."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Avengers:_Endgame",
+      "imdbUrl": "https://www.imdb.com/title/tt4154796/",
+      "runtimeMinutes": 181,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/0/0d/Avengers_Endgame_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Avengers:_Endgame"
     },
     {
       "id": "spider-man-far-from-home",
@@ -311,10 +936,27 @@
       "releaseDate": "2019-07-02",
       "phase": 3,
       "dependencies": [
-        { "id": "avengers-endgame", "importance": "required", "note": "Directly addresses the aftermath of 'the Blip' and Tony Stark's death, both central to Peter's arc here." },
-        { "id": "spider-man-homecoming", "importance": "required", "note": "Continues Peter's relationships, supporting cast, and status quo directly from that film." },
-        { "id": "captain-marvel", "importance": "recommended", "note": "Nick Fury and Talos (in disguise) appear throughout, building on characters and concepts introduced there." }
-      ]
+        {
+          "id": "avengers-endgame",
+          "importance": "required",
+          "note": "Directly addresses the aftermath of 'the Blip' and Tony Stark's death, both central to Peter's arc here."
+        },
+        {
+          "id": "spider-man-homecoming",
+          "importance": "required",
+          "note": "Continues Peter's relationships, supporting cast, and status quo directly from that film."
+        },
+        {
+          "id": "captain-marvel",
+          "importance": "recommended",
+          "note": "Nick Fury and Talos (in disguise) appear throughout, building on characters and concepts introduced there."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Spider-Man:_Far_From_Home",
+      "imdbUrl": "https://www.imdb.com/title/tt6320628/",
+      "runtimeMinutes": 129,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/b/bd/Spider-Man_Far_From_Home_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Spider-Man:_Far_From_Home"
     },
     {
       "id": "wandavision",
@@ -323,10 +965,27 @@
       "releaseDate": "2021-01-15",
       "phase": 4,
       "dependencies": [
-        { "id": "avengers-age-of-ultron", "importance": "required", "note": "Vision's creation and Wanda and Vision's relationship both begin there." },
-        { "id": "avengers-infinity-war", "importance": "required", "note": "Vision's death at Thanos's hand is the central trauma driving Wanda's actions throughout this series." },
-        { "id": "avengers-endgame", "importance": "recommended", "note": "Wanda's post-Blip grief and the state of the world after the Snap's reversal inform her mental state here." }
-      ]
+        {
+          "id": "avengers-age-of-ultron",
+          "importance": "required",
+          "note": "Vision's creation and Wanda and Vision's relationship both begin there."
+        },
+        {
+          "id": "avengers-infinity-war",
+          "importance": "required",
+          "note": "Vision's death at Thanos's hand is the central trauma driving Wanda's actions throughout this series."
+        },
+        {
+          "id": "avengers-endgame",
+          "importance": "recommended",
+          "note": "Wanda's post-Blip grief and the state of the world after the Snap's reversal inform her mental state here."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/WandaVision",
+      "imdbUrl": "https://www.imdb.com/title/tt9140560/",
+      "runtimeMinutes": 40,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/2/20/WandaVision_logo.png",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/WandaVision"
     },
     {
       "id": "falcon-and-winter-soldier",
@@ -335,10 +994,27 @@
       "releaseDate": "2021-03-19",
       "phase": 4,
       "dependencies": [
-        { "id": "avengers-endgame", "importance": "required", "note": "Picks up directly with Sam Wilson receiving the shield from an aged Steve Rogers in the film's final scene." },
-        { "id": "captain-america-civil-war", "importance": "required", "note": "Bucky's Winter Soldier trauma, his pardon, and his relationship with Sam all stem from events there." },
-        { "id": "captain-america-winter-soldier", "importance": "recommended", "note": "Bucky's full backstory as the Winter Soldier is essential context for his arc here." }
-      ]
+        {
+          "id": "avengers-endgame",
+          "importance": "required",
+          "note": "Picks up directly with Sam Wilson receiving the shield from an aged Steve Rogers in the film's final scene."
+        },
+        {
+          "id": "captain-america-civil-war",
+          "importance": "required",
+          "note": "Bucky's Winter Soldier trauma, his pardon, and his relationship with Sam all stem from events there."
+        },
+        {
+          "id": "captain-america-winter-soldier",
+          "importance": "recommended",
+          "note": "Bucky's full backstory as the Winter Soldier is essential context for his arc here."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Falcon_and_the_Winter_Soldier",
+      "imdbUrl": "https://www.imdb.com/title/tt9208876/",
+      "runtimeMinutes": 55,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/9/9a/The_Falcon_and_the_Winter_Soldier_logo.png",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/The_Falcon_and_the_Winter_Soldier"
     },
     {
       "id": "loki-season-1",
@@ -347,9 +1023,22 @@
       "releaseDate": "2021-06-09",
       "phase": 4,
       "dependencies": [
-        { "id": "avengers-endgame", "importance": "required", "note": "Follows the variant Loki who escapes with the Tesseract during the time heist, branching off from that exact moment." },
-        { "id": "thor-dark-world", "importance": "recommended", "note": "Loki's full history and relationship with his family adds emotional depth to his arc here." }
-      ]
+        {
+          "id": "avengers-endgame",
+          "importance": "required",
+          "note": "Follows the variant Loki who escapes with the Tesseract during the time heist, branching off from that exact moment."
+        },
+        {
+          "id": "thor-dark-world",
+          "importance": "recommended",
+          "note": "Loki's full history and relationship with his family adds emotional depth to his arc here."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Loki_(TV_series)",
+      "imdbUrl": "https://www.imdb.com/title/tt9140554/",
+      "runtimeMinutes": 50,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/4/4e/Loki_%28TV_series%29_logo.png",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Loki"
     },
     {
       "id": "black-widow",
@@ -358,9 +1047,22 @@
       "releaseDate": "2021-07-09",
       "phase": 4,
       "dependencies": [
-        { "id": "captain-america-civil-war", "importance": "required", "note": "Set immediately after that film, with Natasha a fugitive from the government and estranged from the team." },
-        { "id": "avengers-age-of-ultron", "importance": "recommended", "note": "References to Natasha's past and her relationships with other Avengers build on that film." }
-      ]
+        {
+          "id": "captain-america-civil-war",
+          "importance": "required",
+          "note": "Set immediately after that film, with Natasha a fugitive from the government and estranged from the team."
+        },
+        {
+          "id": "avengers-age-of-ultron",
+          "importance": "recommended",
+          "note": "References to Natasha's past and her relationships with other Avengers build on that film."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Black_Widow_(2021_film)",
+      "imdbUrl": "https://www.imdb.com/title/tt3480822/",
+      "runtimeMinutes": 133,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/e/e9/Black_Widow_%282021_film%29_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Black_Widow"
     },
     {
       "id": "what-if-season-1",
@@ -369,12 +1071,37 @@
       "releaseDate": "2021-08-11",
       "phase": 4,
       "dependencies": [
-        { "id": "avengers-endgame", "importance": "required", "note": "Framed by the Watcher and the multiverse concept the TVA/Loki established; several episodes directly remix Endgame's events." },
-        { "id": "captain-america-first-avenger", "importance": "recommended", "note": "One major episode reimagines this film's events entirely; prior knowledge makes the divergence land." },
-        { "id": "black-panther", "importance": "recommended", "note": "One major episode reimagines this film's events entirely; prior knowledge makes the divergence land." },
-        { "id": "doctor-strange", "importance": "recommended", "note": "One major episode reimagines this film's events entirely; prior knowledge makes the divergence land." },
-        { "id": "guardians-of-the-galaxy", "importance": "recommended", "note": "One major episode reimagines this film's events entirely; prior knowledge makes the divergence land." }
-      ]
+        {
+          "id": "avengers-endgame",
+          "importance": "required",
+          "note": "Framed by the Watcher and the multiverse concept the TVA/Loki established; several episodes directly remix Endgame's events."
+        },
+        {
+          "id": "captain-america-first-avenger",
+          "importance": "recommended",
+          "note": "One major episode reimagines this film's events entirely; prior knowledge makes the divergence land."
+        },
+        {
+          "id": "black-panther",
+          "importance": "recommended",
+          "note": "One major episode reimagines this film's events entirely; prior knowledge makes the divergence land."
+        },
+        {
+          "id": "doctor-strange",
+          "importance": "recommended",
+          "note": "One major episode reimagines this film's events entirely; prior knowledge makes the divergence land."
+        },
+        {
+          "id": "guardians-of-the-galaxy",
+          "importance": "recommended",
+          "note": "One major episode reimagines this film's events entirely; prior knowledge makes the divergence land."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/What_If...?_(TV_series)",
+      "imdbUrl": "https://www.imdb.com/title/tt10168312/",
+      "runtimeMinutes": 33,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/b/b6/What_If...%3F_%28TV_series%29_logo.png",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/What_If...?"
     },
     {
       "id": "shang-chi",
@@ -383,8 +1110,17 @@
       "releaseDate": "2021-09-03",
       "phase": 4,
       "dependencies": [
-        { "id": "avengers-endgame", "importance": "optional", "note": "An end-credits scene features Wong, Banner, and Captain Marvel discussing the Ten Rings' nature, tying into the wider post-Endgame status quo." }
-      ]
+        {
+          "id": "avengers-endgame",
+          "importance": "optional",
+          "note": "An end-credits scene features Wong, Banner, and Captain Marvel discussing the Ten Rings' nature, tying into the wider post-Endgame status quo."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Shang-Chi_and_the_Legend_of_the_Ten_Rings",
+      "imdbUrl": "https://www.imdb.com/title/tt9376612/",
+      "runtimeMinutes": 132,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/7/74/Shang-Chi_and_the_Legend_of_the_Ten_Rings_poster.jpeg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Shang-Chi_and_the_Legend_of_the_Ten_Rings"
     },
     {
       "id": "eternals",
@@ -393,8 +1129,17 @@
       "releaseDate": "2021-11-05",
       "phase": 4,
       "dependencies": [
-        { "id": "avengers-endgame", "importance": "recommended", "note": "The Eternals' choice not to intervene in past events, including the Blip, is directly addressed and questioned." }
-      ]
+        {
+          "id": "avengers-endgame",
+          "importance": "recommended",
+          "note": "The Eternals' choice not to intervene in past events, including the Blip, is directly addressed and questioned."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Eternals_(film)",
+      "imdbUrl": "https://www.imdb.com/title/tt9032400/",
+      "runtimeMinutes": 156,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/9/9b/Eternals_%28film%29_poster.jpeg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Eternals"
     },
     {
       "id": "hawkeye",
@@ -403,10 +1148,27 @@
       "releaseDate": "2021-11-24",
       "phase": 4,
       "dependencies": [
-        { "id": "avengers-endgame", "importance": "required", "note": "Clint Barton's guilt over choices made there, including Natasha's fate, drives his entire arc in this series." },
-        { "id": "avengers", "importance": "recommended", "note": "Kate Bishop's origin story ties back to witnessing the Battle of New York as a child." },
-        { "id": "black-widow", "importance": "recommended", "note": "Yelena Belova's introduction and motivations, including her feelings about Natasha, carry directly into this series." }
-      ]
+        {
+          "id": "avengers-endgame",
+          "importance": "required",
+          "note": "Clint Barton's guilt over choices made there, including Natasha's fate, drives his entire arc in this series."
+        },
+        {
+          "id": "avengers",
+          "importance": "recommended",
+          "note": "Kate Bishop's origin story ties back to witnessing the Battle of New York as a child."
+        },
+        {
+          "id": "black-widow",
+          "importance": "recommended",
+          "note": "Yelena Belova's introduction and motivations, including her feelings about Natasha, carry directly into this series."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Hawkeye_(miniseries)",
+      "imdbUrl": "https://www.imdb.com/title/tt10160804/",
+      "runtimeMinutes": 40,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/7/7a/Hawkeye_%28miniseries%29_logo.png",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Hawkeye"
     },
     {
       "id": "spider-man-no-way-home",
@@ -415,15 +1177,52 @@
       "releaseDate": "2021-12-17",
       "phase": 4,
       "dependencies": [
-        { "id": "spider-man-far-from-home", "importance": "required", "note": "Opens literally seconds after that film's ending, with Peter's identity publicly revealed." },
-        { "id": "doctor-strange", "importance": "required", "note": "Strange's spell to fix the identity reveal is the plot's inciting device, and relies on his established magical abilities." },
-        { "id": "spider-man-homecoming", "importance": "recommended", "note": "Peter's full relationships and history as Spider-Man pay off throughout this film." },
-        { "id": "sony-spider-man", "importance": "recommended", "note": "Introduces Peter Parker, Norman Osborn/Green Goblin, and the 'with great power' philosophy that this film's climax directly echoes. This Peter appears here as a multiverse variant." },
-        { "id": "sony-spider-man-2", "importance": "recommended", "note": "Introduces Otto Octavius/Doc Ock, who appears here still working through unfinished business from the end of that film." },
-        { "id": "sony-spider-man-3", "importance": "recommended", "note": "Introduces Harry Osborn's Goblin persona and Flint Marko/Sandman, both of whom reappear here." },
-        { "id": "sony-amazing-spider-man", "importance": "recommended", "note": "Introduces Curt Connors/The Lizard from a separate rebooted continuity, who reappears here as another multiverse variant." },
-        { "id": "sony-amazing-spider-man-2", "importance": "recommended", "note": "Introduces Max Dillon/Electro, whose unfinished arc from that film is picked back up here." }
-      ]
+        {
+          "id": "spider-man-far-from-home",
+          "importance": "required",
+          "note": "Opens literally seconds after that film's ending, with Peter's identity publicly revealed."
+        },
+        {
+          "id": "doctor-strange",
+          "importance": "required",
+          "note": "Strange's spell to fix the identity reveal is the plot's inciting device, and relies on his established magical abilities."
+        },
+        {
+          "id": "spider-man-homecoming",
+          "importance": "recommended",
+          "note": "Peter's full relationships and history as Spider-Man pay off throughout this film."
+        },
+        {
+          "id": "sony-spider-man",
+          "importance": "recommended",
+          "note": "Introduces Peter Parker, Norman Osborn/Green Goblin, and the 'with great power' philosophy that this film's climax directly echoes. This Peter appears here as a multiverse variant."
+        },
+        {
+          "id": "sony-spider-man-2",
+          "importance": "recommended",
+          "note": "Introduces Otto Octavius/Doc Ock, who appears here still working through unfinished business from the end of that film."
+        },
+        {
+          "id": "sony-spider-man-3",
+          "importance": "recommended",
+          "note": "Introduces Harry Osborn's Goblin persona and Flint Marko/Sandman, both of whom reappear here."
+        },
+        {
+          "id": "sony-amazing-spider-man",
+          "importance": "recommended",
+          "note": "Introduces Curt Connors/The Lizard from a separate rebooted continuity, who reappears here as another multiverse variant."
+        },
+        {
+          "id": "sony-amazing-spider-man-2",
+          "importance": "recommended",
+          "note": "Introduces Max Dillon/Electro, whose unfinished arc from that film is picked back up here."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Spider-Man:_No_Way_Home",
+      "imdbUrl": "https://www.imdb.com/title/tt10872600/",
+      "runtimeMinutes": 148,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/0/00/Spider-Man_No_Way_Home_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Spider-Man:_No_Way_Home"
     },
     {
       "id": "moon-knight",
@@ -431,7 +1230,12 @@
       "type": "show",
       "releaseDate": "2022-03-30",
       "phase": 4,
-      "dependencies": []
+      "dependencies": [],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Moon_Knight_(miniseries)",
+      "imdbUrl": "https://www.imdb.com/title/tt10234724/",
+      "runtimeMinutes": 45,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/a/a8/Moon_Knight_%28miniseries%29_logo.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Moon_Knight_(miniseries)"
     },
     {
       "id": "doctor-strange-multiverse-of-madness",
@@ -440,11 +1244,32 @@
       "releaseDate": "2022-05-06",
       "phase": 4,
       "dependencies": [
-        { "id": "doctor-strange", "importance": "required", "note": "Continues Strange's arc directly, including his relationship with Christine Palmer." },
-        { "id": "wandavision", "importance": "required", "note": "Wanda's actions and power growth in this film are a direct continuation of her arc and choices there." },
-        { "id": "spider-man-no-way-home", "importance": "recommended", "note": "The multiverse-breaking spell from that film is referenced as a direct cause of the instability here." },
-        { "id": "what-if-season-1", "importance": "recommended", "note": "Introduces the concept of Illuminati/variants across the multiverse that this film builds on visually and thematically." }
-      ]
+        {
+          "id": "doctor-strange",
+          "importance": "required",
+          "note": "Continues Strange's arc directly, including his relationship with Christine Palmer."
+        },
+        {
+          "id": "wandavision",
+          "importance": "required",
+          "note": "Wanda's actions and power growth in this film are a direct continuation of her arc and choices there."
+        },
+        {
+          "id": "spider-man-no-way-home",
+          "importance": "recommended",
+          "note": "The multiverse-breaking spell from that film is referenced as a direct cause of the instability here."
+        },
+        {
+          "id": "what-if-season-1",
+          "importance": "recommended",
+          "note": "Introduces the concept of Illuminati/variants across the multiverse that this film builds on visually and thematically."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Doctor_Strange_in_the_Multiverse_of_Madness",
+      "imdbUrl": "https://www.imdb.com/title/tt9419884/",
+      "runtimeMinutes": 126,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/1/17/Doctor_Strange_in_the_Multiverse_of_Madness_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Doctor_Strange_in_the_Multiverse_of_Madness"
     },
     {
       "id": "ms-marvel",
@@ -453,8 +1278,16 @@
       "releaseDate": "2022-06-08",
       "phase": 4,
       "dependencies": [
-        { "id": "captain-marvel", "importance": "recommended", "note": "Kamala Khan is an in-universe superfan of Captain Marvel, and the show references her history and powers." }
-      ]
+        {
+          "id": "captain-marvel",
+          "importance": "recommended",
+          "note": "Kamala Khan is an in-universe superfan of Captain Marvel, and the show references her history and powers."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Ms._Marvel_(miniseries)",
+      "imdbUrl": "https://www.imdb.com/title/tt10857164/",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/a/ac/Ms._Marvel_%28miniseries%29_logo.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Ms._Marvel"
     },
     {
       "id": "thor-love-and-thunder",
@@ -463,10 +1296,27 @@
       "releaseDate": "2022-07-08",
       "phase": 4,
       "dependencies": [
-        { "id": "thor-ragnarok", "importance": "required", "note": "Continues Thor's arc directly, including his time with the Guardians and his tone/character growth from that film." },
-        { "id": "avengers-endgame", "importance": "required", "note": "Jane Foster's reintroduction and Thor's post-Endgame drifting both build on his arc there." },
-        { "id": "guardians-of-the-galaxy-vol-2", "importance": "recommended", "note": "Thor is introduced traveling with the Guardians, following directly from the end of Endgame's team-up." }
-      ]
+        {
+          "id": "thor-ragnarok",
+          "importance": "required",
+          "note": "Continues Thor's arc directly, including his time with the Guardians and his tone/character growth from that film."
+        },
+        {
+          "id": "avengers-endgame",
+          "importance": "required",
+          "note": "Jane Foster's reintroduction and Thor's post-Endgame drifting both build on his arc there."
+        },
+        {
+          "id": "guardians-of-the-galaxy-vol-2",
+          "importance": "recommended",
+          "note": "Thor is introduced traveling with the Guardians, following directly from the end of Endgame's team-up."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Thor:_Love_and_Thunder",
+      "imdbUrl": "https://www.imdb.com/title/tt10648342/",
+      "runtimeMinutes": 119,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/8/88/Thor_Love_and_Thunder_poster.jpeg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Thor:_Love_and_Thunder"
     },
     {
       "id": "she-hulk",
@@ -475,11 +1325,31 @@
       "releaseDate": "2022-08-18",
       "phase": 4,
       "dependencies": [
-        { "id": "incredible-hulk", "importance": "required", "note": "Bruce Banner's full history and struggle to control the Hulk, established there, is directly discussed and built upon." },
-        { "id": "avengers-age-of-ultron", "importance": "recommended", "note": "Bruce's relationship history and departure from Earth are referenced." },
-        { "id": "avengers-endgame", "importance": "recommended", "note": "'Smart Hulk,' the merged Bruce/Hulk persona from that film, is this show's starting point for the character." },
-        { "id": "shang-chi", "importance": "recommended", "note": "Wong and the Ten Rings organization, introduced there, both play into this show's plot." }
-      ]
+        {
+          "id": "incredible-hulk",
+          "importance": "required",
+          "note": "Bruce Banner's full history and struggle to control the Hulk, established there, is directly discussed and built upon."
+        },
+        {
+          "id": "avengers-age-of-ultron",
+          "importance": "recommended",
+          "note": "Bruce's relationship history and departure from Earth are referenced."
+        },
+        {
+          "id": "avengers-endgame",
+          "importance": "recommended",
+          "note": "'Smart Hulk,' the merged Bruce/Hulk persona from that film, is this show's starting point for the character."
+        },
+        {
+          "id": "shang-chi",
+          "importance": "recommended",
+          "note": "Wong and the Ten Rings organization, introduced there, both play into this show's plot."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/She-Hulk:_Attorney_at_Law",
+      "imdbUrl": "https://www.imdb.com/title/tt10857160/",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/3/32/She-Hulk_Attorney_at_Law_logo.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/She-Hulk:_Attorney_at_Law"
     },
     {
       "id": "black-panther-wakanda-forever",
@@ -488,9 +1358,22 @@
       "releaseDate": "2022-11-11",
       "phase": 4,
       "dependencies": [
-        { "id": "black-panther", "importance": "required", "note": "A direct continuation of Wakanda's story and characters; the film's central loss is a real-world/in-universe consequence of that film's cast." },
-        { "id": "shang-chi", "importance": "recommended", "note": "Establishes the wider world's awareness of hidden nations and powers, paralleling Wakanda's own reveal." }
-      ]
+        {
+          "id": "black-panther",
+          "importance": "required",
+          "note": "A direct continuation of Wakanda's story and characters; the film's central loss is a real-world/in-universe consequence of that film's cast."
+        },
+        {
+          "id": "shang-chi",
+          "importance": "recommended",
+          "note": "Establishes the wider world's awareness of hidden nations and powers, paralleling Wakanda's own reveal."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Black_Panther:_Wakanda_Forever",
+      "imdbUrl": "https://www.imdb.com/title/tt9114286/",
+      "runtimeMinutes": 161,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/3/3b/Black_Panther_Wakanda_Forever_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Black_Panther:_Wakanda_Forever"
     },
     {
       "id": "ant-man-quantumania",
@@ -499,9 +1382,22 @@
       "releaseDate": "2023-02-17",
       "phase": 5,
       "dependencies": [
-        { "id": "ant-man-and-the-wasp", "importance": "required", "note": "Directly continues Janet van Dyne's history in the Quantum Realm, teased at the end of that film." },
-        { "id": "avengers-endgame", "importance": "recommended", "note": "The Quantum Realm's role in the time heist established mechanics this film expands on significantly." }
-      ]
+        {
+          "id": "ant-man-and-the-wasp",
+          "importance": "required",
+          "note": "Directly continues Janet van Dyne's history in the Quantum Realm, teased at the end of that film."
+        },
+        {
+          "id": "avengers-endgame",
+          "importance": "recommended",
+          "note": "The Quantum Realm's role in the time heist established mechanics this film expands on significantly."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Ant-Man_and_the_Wasp:_Quantumania",
+      "imdbUrl": "https://www.imdb.com/title/tt10954600/",
+      "runtimeMinutes": 125,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/3/30/Ant-Man_and_the_Wasp_Quantumania_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Ant-Man_and_the_Wasp:_Quantumania"
     },
     {
       "id": "guardians-of-the-galaxy-vol-3",
@@ -510,10 +1406,27 @@
       "releaseDate": "2023-05-05",
       "phase": 5,
       "dependencies": [
-        { "id": "guardians-of-the-galaxy-vol-2", "importance": "required", "note": "Continues the team directly, including Gamora's status and Rocket's backstory teased there." },
-        { "id": "avengers-infinity-war", "importance": "required", "note": "This Gamora is a variant who does not remember the team, a direct consequence of the original's death in that film." },
-        { "id": "thor-love-and-thunder", "importance": "recommended", "note": "The team's roster and status quo continue from where that film left them." }
-      ]
+        {
+          "id": "guardians-of-the-galaxy-vol-2",
+          "importance": "required",
+          "note": "Continues the team directly, including Gamora's status and Rocket's backstory teased there."
+        },
+        {
+          "id": "avengers-infinity-war",
+          "importance": "required",
+          "note": "This Gamora is a variant who does not remember the team, a direct consequence of the original's death in that film."
+        },
+        {
+          "id": "thor-love-and-thunder",
+          "importance": "recommended",
+          "note": "The team's roster and status quo continue from where that film left them."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Guardians_of_the_Galaxy_Vol._3",
+      "imdbUrl": "https://www.imdb.com/title/tt6791350/",
+      "runtimeMinutes": 150,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/7/74/Guardians_of_the_Galaxy_Vol._3_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Guardians_of_the_Galaxy_Vol._3"
     },
     {
       "id": "secret-invasion",
@@ -522,9 +1435,22 @@
       "releaseDate": "2023-06-21",
       "phase": 5,
       "dependencies": [
-        { "id": "captain-marvel", "importance": "required", "note": "The Skrulls' decades-long alliance with Nick Fury, established there, is the central relationship this series tests." },
-        { "id": "wandavision", "importance": "recommended", "note": "A supporting character's fate from that show is followed up on here." }
-      ]
+        {
+          "id": "captain-marvel",
+          "importance": "required",
+          "note": "The Skrulls' decades-long alliance with Nick Fury, established there, is the central relationship this series tests."
+        },
+        {
+          "id": "wandavision",
+          "importance": "recommended",
+          "note": "A supporting character's fate from that show is followed up on here."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Secret_Invasion_(miniseries)",
+      "imdbUrl": "https://www.imdb.com/title/tt13157618/",
+      "runtimeMinutes": 45,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/9/91/Secret_Invasion_%28miniseries%29_logo.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Secret_Invasion"
     },
     {
       "id": "loki-season-2",
@@ -533,8 +1459,17 @@
       "releaseDate": "2023-10-06",
       "phase": 5,
       "dependencies": [
-        { "id": "loki-season-1", "importance": "required", "note": "A direct, immediate continuation of that season's finale and the collapse of the Time Variance Authority's timeline." }
-      ]
+        {
+          "id": "loki-season-1",
+          "importance": "required",
+          "note": "A direct, immediate continuation of that season's finale and the collapse of the Time Variance Authority's timeline."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Loki_(TV_series)",
+      "imdbUrl": "https://www.imdb.com/title/tt9140554/",
+      "runtimeMinutes": 50,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/4/4e/Loki_%28TV_series%29_logo.png",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Loki"
     },
     {
       "id": "the-marvels",
@@ -543,11 +1478,32 @@
       "releaseDate": "2023-11-10",
       "phase": 5,
       "dependencies": [
-        { "id": "captain-marvel", "importance": "required", "note": "Directly continues Carol Danvers' arc and her complicated history with the Kree Empire." },
-        { "id": "ms-marvel", "importance": "required", "note": "Kamala Khan's powers and family, established there, are central to this film's plot and team-up." },
-        { "id": "wandavision", "importance": "recommended", "note": "Monica Rambeau's powers, gained there, and her arc continue directly into this film." },
-        { "id": "secret-invasion", "importance": "recommended", "note": "The state of Nick Fury and the Skrulls following that series informs his role here." }
-      ]
+        {
+          "id": "captain-marvel",
+          "importance": "required",
+          "note": "Directly continues Carol Danvers' arc and her complicated history with the Kree Empire."
+        },
+        {
+          "id": "ms-marvel",
+          "importance": "required",
+          "note": "Kamala Khan's powers and family, established there, are central to this film's plot and team-up."
+        },
+        {
+          "id": "wandavision",
+          "importance": "recommended",
+          "note": "Monica Rambeau's powers, gained there, and her arc continue directly into this film."
+        },
+        {
+          "id": "secret-invasion",
+          "importance": "recommended",
+          "note": "The state of Nick Fury and the Skrulls following that series informs his role here."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Marvels",
+      "imdbUrl": "https://www.imdb.com/title/tt10676048/",
+      "runtimeMinutes": 105,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/7/7a/The_Marvels_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/The_Marvels"
     },
     {
       "id": "echo",
@@ -556,8 +1512,16 @@
       "releaseDate": "2024-01-09",
       "phase": 5,
       "dependencies": [
-        { "id": "hawkeye", "importance": "required", "note": "A direct spin-off following Maya Lopez and the Kingpin/criminal underworld storyline introduced in that series." }
-      ]
+        {
+          "id": "hawkeye",
+          "importance": "required",
+          "note": "A direct spin-off following Maya Lopez and the Kingpin/criminal underworld storyline introduced in that series."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Echo_(miniseries)",
+      "imdbUrl": "https://www.imdb.com/title/tt13966962/",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Echo",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/9/99/Echo_%28miniseries%29_logo.jpg"
     },
     {
       "id": "deadpool-and-wolverine",
@@ -566,9 +1530,42 @@
       "releaseDate": "2024-07-26",
       "phase": 5,
       "dependencies": [
-        { "id": "loki-season-2", "importance": "recommended", "note": "The Time Variance Authority and the concept of 'sacred timelines' vs. pruned ones, central to this film's plot, were established there." },
-        { "id": "what-if-season-1", "importance": "optional", "note": "General familiarity with the multiverse and variant concepts helps, though this film explains them for newcomers too." }
-      ]
+        {
+          "id": "loki-season-2",
+          "importance": "recommended",
+          "note": "The Time Variance Authority and the concept of 'sacred timelines' vs. pruned ones, central to this film's plot, were established there."
+        },
+        {
+          "id": "what-if-season-1",
+          "importance": "optional",
+          "note": "General familiarity with the multiverse and variant concepts helps, though this film explains them for newcomers too."
+        },
+        {
+          "id": "fox-deadpool",
+          "importance": "required",
+          "note": "Wade Wilson's origin, powers, and fourth-wall-breaking voice, established there, are assumed knowledge throughout."
+        },
+        {
+          "id": "fox-deadpool-2",
+          "importance": "required",
+          "note": "Continues Wade's relationships and the X-Force setup from that film."
+        },
+        {
+          "id": "fox-logan",
+          "importance": "recommended",
+          "note": "This film directly reckons with and pays tribute to Logan's fate in that film."
+        },
+        {
+          "id": "fox-x-men-days-of-future-past",
+          "importance": "optional",
+          "note": "General familiarity with the Fox X-Men timeline and its variants deepens some of this film's multiverse cameos."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Deadpool_&_Wolverine",
+      "imdbUrl": "https://www.imdb.com/title/tt6263850/",
+      "runtimeMinutes": 128,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/4/4c/Deadpool_%26_Wolverine_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Deadpool_&_Wolverine"
     },
     {
       "id": "agatha-all-along",
@@ -577,8 +1574,16 @@
       "releaseDate": "2024-09-18",
       "phase": 5,
       "dependencies": [
-        { "id": "wandavision", "importance": "required", "note": "A direct spin-off following Agatha Harkness after the events of that show, including how she lost her powers." }
-      ]
+        {
+          "id": "wandavision",
+          "importance": "required",
+          "note": "A direct spin-off following Agatha Harkness after the events of that show, including how she lost her powers."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Agatha_All_Along",
+      "imdbUrl": "https://www.imdb.com/title/tt15571732/",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/7/70/Agatha_All_Along_logo.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Agatha_All_Along"
     },
     {
       "id": "captain-america-brave-new-world",
@@ -587,11 +1592,32 @@
       "releaseDate": "2025-02-14",
       "phase": 5,
       "dependencies": [
-        { "id": "falcon-and-winter-soldier", "importance": "required", "note": "Directly continues Sam Wilson's arc as the new Captain America, established there." },
-        { "id": "avengers-endgame", "importance": "recommended", "note": "Sam's status as shield-bearer originates from the final scene of that film." },
-        { "id": "eternals", "importance": "recommended", "note": "A major plot thread involves consequences tied to the Celestial revealed at the end of that film." },
-        { "id": "incredible-hulk", "importance": "recommended", "note": "General Thaddeus Ross, a major character here, was first introduced there." }
-      ]
+        {
+          "id": "falcon-and-winter-soldier",
+          "importance": "required",
+          "note": "Directly continues Sam Wilson's arc as the new Captain America, established there."
+        },
+        {
+          "id": "avengers-endgame",
+          "importance": "recommended",
+          "note": "Sam's status as shield-bearer originates from the final scene of that film."
+        },
+        {
+          "id": "eternals",
+          "importance": "recommended",
+          "note": "A major plot thread involves consequences tied to the Celestial revealed at the end of that film."
+        },
+        {
+          "id": "incredible-hulk",
+          "importance": "recommended",
+          "note": "General Thaddeus Ross, a major character here, was first introduced there."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Captain_America:_Brave_New_World",
+      "imdbUrl": "https://www.imdb.com/title/tt14513804/",
+      "runtimeMinutes": 118,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/a/a4/Captain_America_Brave_New_World_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America:_Brave_New_World"
     },
     {
       "id": "thunderbolts",
@@ -600,10 +1626,27 @@
       "releaseDate": "2025-05-02",
       "phase": 5,
       "dependencies": [
-        { "id": "black-widow", "importance": "required", "note": "Yelena Belova's arc and grief over Natasha, established there, continue directly into this film." },
-        { "id": "falcon-and-winter-soldier", "importance": "recommended", "note": "Several characters and government/political threads from that series carry over directly." },
-        { "id": "captain-america-brave-new-world", "importance": "recommended", "note": "The state of the U.S. government and its enhanced-persons programs continues directly from that film." }
-      ]
+        {
+          "id": "black-widow",
+          "importance": "required",
+          "note": "Yelena Belova's arc and grief over Natasha, established there, continue directly into this film."
+        },
+        {
+          "id": "falcon-and-winter-soldier",
+          "importance": "recommended",
+          "note": "Several characters and government/political threads from that series carry over directly."
+        },
+        {
+          "id": "captain-america-brave-new-world",
+          "importance": "recommended",
+          "note": "The state of the U.S. government and its enhanced-persons programs continues directly from that film."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Thunderbolts*",
+      "imdbUrl": "https://www.imdb.com/title/tt20969586/",
+      "runtimeMinutes": 126,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/9/90/Thunderbolts%2A_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Thunderbolts*"
     },
     {
       "id": "fantastic-four-first-steps",
@@ -612,8 +1655,17 @@
       "releaseDate": "2025-07-25",
       "phase": 6,
       "dependencies": [
-        { "id": "what-if-season-1", "importance": "optional", "note": "General familiarity with the multiverse concept helps frame why this team's world looks different, though the film stands alone." }
-      ]
+        {
+          "id": "what-if-season-1",
+          "importance": "optional",
+          "note": "General familiarity with the multiverse concept helps frame why this team's world looks different, though the film stands alone."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Fantastic_Four:_First_Steps",
+      "imdbUrl": "https://www.imdb.com/title/tt10676052/",
+      "runtimeMinutes": 114,
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/1/13/The_Fantastic_Four_First_Steps_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/The_Fantastic_Four:_First_Steps"
     },
     {
       "id": "avengers-doomsday",
@@ -622,12 +1674,36 @@
       "releaseDate": "2026-12-18",
       "phase": 6,
       "dependencies": [
-        { "id": "thunderbolts", "importance": "required", "note": "" },
-        { "id": "captain-america-brave-new-world", "importance": "required", "note": "" },
-        { "id": "fantastic-four-first-steps", "importance": "required", "note": "" },
-        { "id": "deadpool-and-wolverine", "importance": "recommended", "note": "" },
-        { "id": "loki-season-2", "importance": "recommended", "note": "" }
-      ]
+        {
+          "id": "thunderbolts",
+          "importance": "required",
+          "note": ""
+        },
+        {
+          "id": "captain-america-brave-new-world",
+          "importance": "required",
+          "note": ""
+        },
+        {
+          "id": "fantastic-four-first-steps",
+          "importance": "required",
+          "note": ""
+        },
+        {
+          "id": "deadpool-and-wolverine",
+          "importance": "recommended",
+          "note": ""
+        },
+        {
+          "id": "loki-season-2",
+          "importance": "recommended",
+          "note": ""
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Avengers:_Doomsday",
+      "imdbUrl": "https://www.imdb.com/title/tt21357150/",
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/e/ee/Avengers_Doomsday_poster.jpg",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Avengers:_Doomsday"
     }
   ]
 }
