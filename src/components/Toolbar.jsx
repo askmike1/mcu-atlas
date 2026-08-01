@@ -1,7 +1,8 @@
 import { useRef, useState } from 'react';
 import { IMPORTANCE } from '../utils/mcu';
+import SearchBox from './SearchBox';
 
-export default function Toolbar({ watchedCount, totalCount, onExport, onImport, onReset, onOpenSync }) {
+export default function Toolbar({ entries, onSelectEntry, watchedCount, totalCount, onExport, onImport, onReset, onOpenSync }) {
   const fileInputRef = useRef(null);
   const [status, setStatus] = useState(null);
 
@@ -35,6 +36,8 @@ export default function Toolbar({ watchedCount, totalCount, onExport, onImport, 
         <h1>MCU Atlas</h1>
         <span className="subtitle">Marvel Cinematic Universe dependency map</span>
       </div>
+
+      <SearchBox entries={entries} onSelect={onSelectEntry} />
 
       <div className="toolbar-progress">
         <div className="progress-track">
