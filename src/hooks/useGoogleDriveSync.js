@@ -7,6 +7,7 @@ import {
   requestAccessToken,
   uploadFile,
 } from '../utils/googleDriveSync';
+import { buildExportPayload, parseExportPayloadObject } from '../utils/watchedFile';
 
 const FILE_ID_KEY = 'mcu-atlas:google-file-id';
 
@@ -16,7 +17,7 @@ const FILE_ID_KEY = 'mcu-atlas:google-file-id';
 // fine to ship this hardcoded rather than asking each user to create one.
 const CLIENT_ID = '794102509102-pm7q1ksi0rc1td12onpjnc9nni2ehr5p.apps.googleusercontent.com';
 
-export function useGoogleDriveSync() {
+export function useGoogleDriveSync(validIds) {
   const [fileId, setFileId] = useState(() => localStorage.getItem(FILE_ID_KEY) || '');
   // The OAuth access token is deliberately kept only in this component's
   // state, never persisted to localStorage — it's a short-lived credential
@@ -49,39 +50,38 @@ export function useGoogleDriveSync() {
       let id = fileId || (await findFile(token));
       if (!id) {
         setStatus({ type: 'error', message: 'No saved file found in Google Drive yet — try Save first.' });
-        return [];
+        return null;
       }
       setFileId(id);
       const text = await downloadFile(token, id);
       const data = JSON.parse(text);
-      const watched = Array.isArray(data.watched) ? data.watched.filter((w) => typeof w === 'string') : [];
+      const result = parseExportPayloadObject(data, validIds);
+      const count = result.users
+        ? result.users.reduce((sum, u) => sum + Object.keys(u.status).length, 0)
+        : Object.keys(result.status).length;
       setStatus({
         type: 'ok',
-        message: `Loaded ${watched.length} watched title${watched.length === 1 ? '' : 's'} from Google Drive.`,
+        message: `Loaded ${count} watched/watching title${count === 1 ? '' : 's'} from Google Drive.`,
       });
-      return watched;
+      return result;
     } catch (err) {
       setStatus({ type: 'error', message: err.message });
       throw err;
     }
-  }, [fileId, token]);
+  }, [fileId, token, validIds]);
 
   const save = useCallback(
-    async (watchedSet) => {
+    async (usersState) => {
       setStatus({ type: 'loading', message: 'Saving to Google Drive…' });
       try {
         const id = fileId || (await findFile(token));
-        const payload = {
-          app: 'mcu-atlas',
-          schemaVersion: 1,
-          exportedAt: new Date().toISOString(),
-          watched: [...watchedSet].sort(),
-        };
+        const payload = buildExportPayload(usersState);
         const newId = await uploadFile(token, id, JSON.stringify(payload, null, 2));
         setFileId(newId);
+        const userCount = usersState.users.length;
         setStatus({
           type: 'ok',
-          message: `Saved ${watchedSet.size} watched title${watchedSet.size === 1 ? '' : 's'} to Google Drive.`,
+          message: `Saved progress for ${userCount} user${userCount === 1 ? '' : 's'} to Google Drive.`,
         });
       } catch (err) {
         setStatus({ type: 'error', message: err.message });

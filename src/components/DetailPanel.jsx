@@ -67,7 +67,19 @@ function ImportanceBadge({ importance }) {
   );
 }
 
-export default function DetailPanel({ entry, byId, dependents, watched, onToggleWatched, onSelect, onClose, onMinimize, phaseNames }) {
+export default function DetailPanel({
+  entry,
+  byId,
+  dependents,
+  watched,
+  watching,
+  statusOf,
+  onSetStatus,
+  onSelect,
+  onClose,
+  onMinimize,
+  phaseNames,
+}) {
   const [revealed, setRevealed] = useState(() => new Set());
 
   if (!entry) {
@@ -140,10 +152,29 @@ export default function DetailPanel({ entry, byId, dependents, watched, onToggle
         </a>
       </div>
 
-      <label className="watched-toggle">
-        <input type="checkbox" checked={watched.has(entry.id)} onChange={() => onToggleWatched(entry.id)} />
-        Mark as watched
-      </label>
+      <div className="status-control" role="group" aria-label="Watch status">
+        <button
+          type="button"
+          className={`status-btn${!statusOf(entry.id) ? ' status-btn--active' : ''}`}
+          onClick={() => onSetStatus(entry.id, null)}
+        >
+          Not started
+        </button>
+        <button
+          type="button"
+          className={`status-btn${statusOf(entry.id) === 'watching' ? ' status-btn--active status-btn--watching' : ''}`}
+          onClick={() => onSetStatus(entry.id, 'watching')}
+        >
+          Watching
+        </button>
+        <button
+          type="button"
+          className={`status-btn${statusOf(entry.id) === 'watched' ? ' status-btn--active status-btn--watched' : ''}`}
+          onClick={() => onSetStatus(entry.id, 'watched')}
+        >
+          Watched
+        </button>
+      </div>
 
       <section>
         <h3>Prerequisites</h3>
@@ -159,6 +190,7 @@ export default function DetailPanel({ entry, byId, dependents, watched, onToggle
                   <button className="dep-title" onClick={() => onSelect(dep.id)}>
                     {depEntry?.title ?? dep.id}
                     {watched.has(dep.id) && <span className="watched-dot" title="Watched" />}
+                    {watching.has(dep.id) && <span className="watched-dot watched-dot--watching" title="Watching" />}
                   </button>
                   <ImportanceBadge importance={dep.importance} />
                 </div>

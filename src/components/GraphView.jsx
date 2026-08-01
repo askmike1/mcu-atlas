@@ -17,6 +17,13 @@ const SHOW_BADGE = `data:image/svg+xml;utf8,${encodeURIComponent(
     '</svg>'
 )}`;
 
+const WATCHING_BADGE = `data:image/svg+xml;utf8,${encodeURIComponent(
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">' +
+    '<circle cx="10" cy="10" r="9.5" fill="#f59e0b" stroke="#0f1117" stroke-width="1"/>' +
+    '<path d="M10 5.2v5l3.3 3.3" stroke="#ffffff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>' +
+    '</svg>'
+)}`;
+
 // Grid tuning: phase bands always span the full container width. Movies
 // pack 3-4 per row (fewer if the container is too narrow to keep them
 // comfortably spaced), growing to fill the row rather than staying a fixed
@@ -193,6 +200,36 @@ function buildStyle(theme) { return [
     },
   },
   {
+    selector: 'node.movie.watching',
+    style: {
+      'background-image': WATCHING_BADGE,
+      'background-width': '16px',
+      'background-height': '16px',
+      'background-position-x': '100%',
+      'background-position-y': '0%',
+      'background-offset-x': 3,
+      'background-offset-y': -3,
+      'background-clip': 'none',
+      'bounds-expansion': 6,
+      'background-opacity': 0.7,
+      'border-color': '#f59e0b',
+      'border-width': 2.5,
+    },
+  },
+  {
+    selector: 'node.movie.show.watching',
+    style: {
+      'background-image': [SHOW_BADGE, WATCHING_BADGE],
+      'background-width': ['16px', '16px'],
+      'background-height': ['16px', '16px'],
+      'background-position-x': ['0%', '100%'],
+      'background-position-y': ['0%', '0%'],
+      'background-offset-x': [-3, 3],
+      'background-offset-y': [-3, -3],
+      'background-clip': ['none', 'none'],
+    },
+  },
+  {
     selector: 'node.movie.selected',
     style: {
       'overlay-color': '#ffffff',
@@ -248,7 +285,7 @@ function layoutFor(positions) {
   };
 }
 
-export default function GraphView({ entries, phases, watched, selectedId, onSelect }) {
+export default function GraphView({ entries, phases, watched, watching, selectedId, onSelect }) {
   const containerRef = useRef(null);
   const cyRef = useRef(null);
 
@@ -344,10 +381,12 @@ export default function GraphView({ entries, phases, watched, selectedId, onSele
     if (!cy) return;
 
     cy.batch(() => {
-      cy.elements().removeClass('selected dep-highlight dependent-highlight dim highlight watched');
+      cy.elements().removeClass('selected dep-highlight dependent-highlight dim highlight watched watching');
 
       cy.nodes('.movie').forEach((n) => {
-        if (watched.has(n.id())) n.addClass('watched');
+        const id = n.id();
+        if (watched.has(id)) n.addClass('watched');
+        else if (watching.has(id)) n.addClass('watching');
       });
 
       if (selectedId) {
@@ -379,7 +418,7 @@ export default function GraphView({ entries, phases, watched, selectedId, onSele
         cy.animate({ pan: { x: cy.pan().x, y: targetY } }, { duration: 200 });
       }
     });
-  }, [selectedId, watched, dependenciesOf, dependentsOf]);
+  }, [selectedId, watched, watching, dependenciesOf, dependentsOf]);
 
   useEffect(() => {
     function onKeyDown(evt) {

@@ -1,8 +1,24 @@
 import { useRef, useState } from 'react';
 import { IMPORTANCE } from '../utils/mcu';
 import SearchBox from './SearchBox';
+import UserSwitcher from './UserSwitcher';
 
-export default function Toolbar({ entries, onSelectEntry, watchedCount, totalCount, onExport, onImport, onReset, onOpenSync }) {
+export default function Toolbar({
+  entries,
+  onSelectEntry,
+  watchedCount,
+  totalCount,
+  onExport,
+  onImport,
+  onReset,
+  onOpenSync,
+  users,
+  currentUserId,
+  onSwitchUser,
+  onAddUser,
+  onRenameUser,
+  onRemoveUser,
+}) {
   const fileInputRef = useRef(null);
   const [status, setStatus] = useState(null);
 
@@ -23,7 +39,8 @@ export default function Toolbar({ entries, onSelectEntry, watchedCount, totalCou
   };
 
   const handleReset = () => {
-    if (window.confirm('Clear all watched selections? This cannot be undone.')) {
+    const current = users.find((u) => u.id === currentUserId);
+    if (window.confirm(`Clear all watched/watching selections for ${current?.name ?? 'this user'}? This cannot be undone.`)) {
       onReset();
     }
   };
@@ -36,6 +53,15 @@ export default function Toolbar({ entries, onSelectEntry, watchedCount, totalCou
         <h1>MCU Atlas</h1>
         <span className="subtitle">Marvel Cinematic Universe dependency map</span>
       </div>
+
+      <UserSwitcher
+        users={users}
+        currentUserId={currentUserId}
+        onSwitch={onSwitchUser}
+        onAdd={onAddUser}
+        onRename={onRenameUser}
+        onRemove={onRemoveUser}
+      />
 
       <SearchBox entries={entries} onSelect={onSelectEntry} />
 
