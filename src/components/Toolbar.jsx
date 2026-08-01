@@ -55,7 +55,7 @@ export default function Toolbar({ watchedCount, totalCount, onExport, onImport, 
       </div>
 
       <div className="toolbar-actions">
-        <button onClick={onOpenSync}>GitHub sync</button>
+        <button onClick={onOpenSync}>Google Drive sync</button>
         <button onClick={onExport}>Export</button>
         <button onClick={handleImportClick}>Import</button>
         <input ref={fileInputRef} type="file" accept="application/json,.json" hidden onChange={handleFileChange} />

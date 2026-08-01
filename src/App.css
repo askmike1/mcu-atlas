@@ -366,7 +366,7 @@
   color: var(--accent);
 }
 
-/* GitHub sync modal */
+/* Google Drive sync modal */
 
 .modal-backdrop {
   position: fixed;
@@ -395,39 +395,6 @@
 .modal h2 {
   margin: 0 0 0.5rem;
   font-size: 1.35rem;
-}
-
-.field {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-  font-size: 0.92rem;
-  color: var(--text-muted);
-  margin-bottom: 0.75rem;
-}
-
-.field input {
-  font-size: 0.98rem;
-  padding: 0.45rem 0.6rem;
-  border-radius: 6px;
-  border: 1px solid var(--border);
-  background: var(--bg);
-  color: var(--text);
-}
-
-.field-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0 0.75rem;
-}
-
-.checkbox-field {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.92rem;
-  color: var(--text-muted);
-  margin-bottom: 1rem;
 }
 
 .modal-actions {
@@ -516,9 +483,5 @@
   .toolbar-actions button {
     padding: 0.4rem 0.65rem;
     font-size: 0.85rem;
-  }
-
-  .field-grid {
-    grid-template-columns: 1fr;
   }
 }

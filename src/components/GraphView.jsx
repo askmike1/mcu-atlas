@@ -295,6 +295,8 @@ export default function GraphView({ entries, phases, watched, selectedId, onSele
       if (evt.target === cy) onSelect(null);
     });
 
+    // Phase boxes always span the full container width, so there's nothing
+    // to see by panning sideways — lock dragging to vertical-only.
     let panFrom = null;
     cy.on('tapstart', (evt) => {
       panFrom = { x: evt.renderedPosition.x, y: evt.renderedPosition.y };
@@ -302,7 +304,7 @@ export default function GraphView({ entries, phases, watched, selectedId, onSele
     cy.on('tapdrag', (evt) => {
       if (!panFrom) return;
       const pos = evt.renderedPosition;
-      cy.panBy({ x: pos.x - panFrom.x, y: pos.y - panFrom.y });
+      cy.panBy({ x: 0, y: pos.y - panFrom.y });
       panFrom = { x: pos.x, y: pos.y };
     });
     cy.on('tapend', () => {
@@ -368,8 +370,13 @@ export default function GraphView({ entries, phases, watched, selectedId, onSele
           if (target === selectedId || source === selectedId) e.addClass('highlight');
         });
 
+        // Center vertically only — panning is locked to vertical-only, so
+        // leave the x pan untouched (always 0) rather than letting the
+        // built-in `center` animation shift it sideways.
         const selNode = cy.$id(selectedId);
-        cy.animate({ center: { eles: selNode } }, { duration: 200 });
+        const viewportH = containerRef.current.clientHeight;
+        const targetY = viewportH / 2 - selNode.position('y') * cy.zoom();
+        cy.animate({ pan: { x: cy.pan().x, y: targetY } }, { duration: 200 });
       }
     });
   }, [selectedId, watched, dependenciesOf, dependentsOf]);

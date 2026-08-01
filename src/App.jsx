@@ -3,9 +3,9 @@ import mcuData from './data/mcu-data.json';
 import GraphView from './components/GraphView';
 import DetailPanel from './components/DetailPanel';
 import Toolbar from './components/Toolbar';
-import GitHubSyncDialog from './components/GitHubSyncDialog';
+import GoogleDriveSyncDialog from './components/GoogleDriveSyncDialog';
 import { useWatchedState } from './hooks/useWatchedState';
-import { useGitHubSync } from './hooks/useGitHubSync';
+import { useGoogleDriveSync } from './hooks/useGoogleDriveSync';
 import { useIsMobile } from './hooks/useIsMobile';
 import { indexEntries } from './utils/mcu';
 import { downloadWatchedFile, parseWatchedFile } from './utils/watchedFile';
@@ -20,7 +20,7 @@ export default function App() {
   const { watched, toggle, replaceAll, reset } = useWatchedState(validIds);
   const [selectedId, setSelectedId] = useState(null);
   const [syncOpen, setSyncOpen] = useState(false);
-  const sync = useGitHubSync();
+  const sync = useGoogleDriveSync();
   const isMobile = useIsMobile();
 
   const handleSelect = useCallback((id) => setSelectedId(id), []);
@@ -92,19 +92,15 @@ export default function App() {
         </div>
       )}
       {syncOpen && (
-        <GitHubSyncDialog
+        <GoogleDriveSyncDialog
           onClose={() => setSyncOpen(false)}
-          config={sync.config}
-          updateConfig={sync.updateConfig}
-          token={sync.token}
-          setToken={sync.setToken}
-          rememberToken={sync.rememberToken}
-          setRememberToken={sync.setRememberToken}
+          connected={sync.connected}
           status={sync.status}
+          onConnect={sync.connect}
           onLoad={handleSyncLoad}
           onSave={handleSyncSave}
           watchedCount={watched.size}
-          progressPath={sync.progressPath}
+          fileName={sync.fileName}
         />
       )}
     </div>
