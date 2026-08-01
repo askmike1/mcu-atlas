@@ -53,6 +53,8 @@ export default function App() {
   return (
     <div className="app">
       <Toolbar
+        entries={entries}
+        onSelectEntry={handleSelect}
         watchedCount={watched.size}
         totalCount={entries.length}
         onExport={handleExport}
