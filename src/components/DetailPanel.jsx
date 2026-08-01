@@ -67,7 +67,7 @@ function ImportanceBadge({ importance }) {
   );
 }
 
-export default function DetailPanel({ entry, byId, dependents, watched, onToggleWatched, onSelect, onClose, phaseNames }) {
+export default function DetailPanel({ entry, byId, dependents, watched, onToggleWatched, onSelect, onClose, onMinimize, phaseNames }) {
   const [revealed, setRevealed] = useState(() => new Set());
 
   if (!entry) {
@@ -100,9 +100,16 @@ export default function DetailPanel({ entry, byId, dependents, watched, onToggle
 
   return (
     <aside className="detail-panel">
-      <button className="close-btn" onClick={onClose} aria-label="Close">
-        ×
-      </button>
+      <div className="panel-header-actions">
+        {onMinimize && (
+          <button className="minimize-btn" onClick={onMinimize} aria-label="Minimize">
+            −
+          </button>
+        )}
+        <button className="close-btn" onClick={onClose} aria-label="Close">
+          ×
+        </button>
+      </div>
 
       <div className="cover-row">
         <Cover entry={entry} />

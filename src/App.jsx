@@ -19,12 +19,21 @@ export default function App() {
 
   const { watched, toggle, replaceAll, reset } = useWatchedState(validIds);
   const [selectedId, setSelectedId] = useState(null);
+  const [modalMinimized, setModalMinimized] = useState(false);
   const [syncOpen, setSyncOpen] = useState(false);
   const sync = useGoogleDriveSync();
   const isMobile = useIsMobile();
 
-  const handleSelect = useCallback((id) => setSelectedId(id), []);
-  const handleClose = useCallback(() => setSelectedId(null), []);
+  const handleSelect = useCallback((id) => {
+    setSelectedId(id);
+    setModalMinimized(false);
+  }, []);
+  const handleClose = useCallback(() => {
+    setSelectedId(null);
+    setModalMinimized(false);
+  }, []);
+  const handleMinimize = useCallback(() => setModalMinimized(true), []);
+  const handleExpand = useCallback(() => setModalMinimized(false), []);
 
   const handleExport = useCallback(() => downloadWatchedFile(watched), [watched]);
 
@@ -77,7 +86,7 @@ export default function App() {
           />
         )}
       </div>
-      {isMobile && selectedEntry && (
+      {isMobile && selectedEntry && !modalMinimized && (
         <div className="detail-modal-backdrop" onClick={handleClose}>
           <div className="detail-modal-card" onClick={(e) => e.stopPropagation()}>
             <DetailPanel
@@ -88,10 +97,28 @@ export default function App() {
               onToggleWatched={toggle}
               onSelect={handleSelect}
               onClose={handleClose}
+              onMinimize={handleMinimize}
               phaseNames={phaseNames}
             />
           </div>
         </div>
+      )}
+      {isMobile && selectedEntry && modalMinimized && (
+        <button className="detail-minimized-bar" onClick={handleExpand}>
+          <span className="detail-minimized-title">{selectedEntry.title}</span>
+          <span className="detail-minimized-hint">Tap to expand</span>
+          <span
+            className="detail-minimized-close"
+            role="button"
+            aria-label="Close"
+            onClick={(e) => {
+              e.stopPropagation();
+              handleClose();
+            }}
+          >
+            ×
+          </span>
+        </button>
       )}
       {syncOpen && (
         <GoogleDriveSyncDialog

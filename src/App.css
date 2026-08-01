@@ -223,16 +223,29 @@
   margin-top: 0.75rem;
 }
 
-.close-btn {
+.panel-header-actions {
   position: absolute;
   top: 0.75rem;
   right: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.close-btn,
+.minimize-btn {
   background: none;
   border: none;
   font-size: 1.6rem;
   line-height: 1;
   color: var(--text-muted);
   cursor: pointer;
+  padding: 0.15rem 0.4rem;
+}
+
+.close-btn:hover,
+.minimize-btn:hover {
+  color: var(--text);
 }
 
 .cover-row {
@@ -529,6 +542,56 @@
   border-left: none;
   border-top: 1px solid var(--border);
   border-radius: 16px 16px 0 0;
+}
+
+.detail-minimized-bar {
+  position: fixed;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 0.6rem 0.7rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg-panel);
+  color: var(--text);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  font-size: 0.95rem;
+  text-align: left;
+}
+
+.detail-minimized-title {
+  flex: 1;
+  min-width: 0;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detail-minimized-hint {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.detail-minimized-close {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.1rem 0.35rem;
+}
+
+.detail-minimized-close:hover {
+  color: var(--text);
 }
 
 @media (max-width: 820px) {
