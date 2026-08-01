@@ -59,7 +59,8 @@
       "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/X-Men",
       "imdbUrl": "https://www.imdb.com/title/tt0120903/",
       "runtimeMinutes": 104,
-      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/8/81/X-MenfilmPoster.jpg"
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/8/81/X-MenfilmPoster.jpg",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-e9f59c82-de76-4a18-a849-192532ff9b2d"
     },
     {
       "id": "fox-x2",
@@ -78,7 +79,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt0290334/",
       "runtimeMinutes": 134,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/3/3e/X2_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/X2"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/X2",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-54748282-5bf7-496c-8db9-a9aa3b7f57ac"
     },
     {
       "id": "fox-x-men-last-stand",
@@ -97,7 +99,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt0376994/",
       "runtimeMinutes": 104,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/5/5b/X-Men_The_Last_Stand_theatrical_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/X-Men:_The_Last_Stand"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/X-Men:_The_Last_Stand",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-e0f6bbed-cea5-41c1-b787-478f21255898"
     },
     {
       "id": "fox-x-men-origins-wolverine",
@@ -110,7 +113,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt0458525/",
       "runtimeMinutes": 107,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/0/08/X-Men_Origins_Wolverine_theatrical_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/X-Men_Origins:_Wolverine"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/X-Men_Origins:_Wolverine",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-82480f3f-6f11-4feb-8c4e-b32c0aca2c53"
     },
     {
       "id": "fox-x-men-first-class",
@@ -123,7 +127,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt1270798/",
       "runtimeMinutes": 131,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/5/55/X-MenFirstClassMoviePoster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/X-Men:_First_Class"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/X-Men:_First_Class",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-9f9e9ae3-88d8-467b-8969-28d253cc4687"
     },
     {
       "id": "fox-the-wolverine",
@@ -147,7 +152,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt1430132/",
       "runtimeMinutes": 138,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/7/74/The_Wolverine_posterUS.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/The_Wolverine"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/The_Wolverine",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-0f3b4bfe-aa16-43f2-8a11-d5586c6e6c8f"
     },
     {
       "id": "fox-x-men-days-of-future-past",
@@ -176,7 +182,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt1877832/",
       "runtimeMinutes": 131,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/0/0c/X-Men_Days_of_Future_Past_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/X-Men:_Days_of_Future_Past"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/X-Men:_Days_of_Future_Past",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-5b3d1005-eb3b-41bb-8ac6-a025263d8106"
     },
     {
       "id": "fox-deadpool",
@@ -189,7 +196,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt1431045/",
       "runtimeMinutes": 108,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/2/23/Deadpool_%282016_poster%29.png",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Deadpool_(film)"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Deadpool_(film)",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-17854bdb-0121-4327-80a0-699fdecd1aaa"
     },
     {
       "id": "fox-x-men-apocalypse",
@@ -208,7 +216,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt3385516/",
       "runtimeMinutes": 131,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/0/04/X-Men_-_Apocalypse.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/X-Men:_Apocalypse"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/X-Men:_Apocalypse",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-3ea207ed-b92e-4e71-9ce6-5c0d8afd4265"
     },
     {
       "id": "fox-logan",
@@ -232,7 +241,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt3315342/",
       "runtimeMinutes": 137,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/3/37/Logan_2017_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Logan"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Logan",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-7c1743ec-7cd6-4da4-9e8c-b713ad4e634a"
     },
     {
       "id": "fox-deadpool-2",
@@ -251,7 +261,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt5463162/",
       "runtimeMinutes": 119,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/c/cf/Deadpool_2_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Deadpool_2"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Deadpool_2",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-27e84e56-31d3-4813-91ba-602cb52890f1"
     },
     {
       "id": "fox-dark-phoenix",
@@ -270,7 +281,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt6565702/",
       "runtimeMinutes": 114,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/9/9e/Dark_Phoenix_%28film%29.png",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Dark_Phoenix"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Dark_Phoenix",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-180356b5-0596-4333-891f-e48c526a0803"
     },
     {
       "id": "fox-the-new-mutants",
@@ -283,7 +295,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt4682266/",
       "runtimeMinutes": 94,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/1/1a/TheNewMutantsPoster.jpeg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/The_New_Mutants"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/The_New_Mutants",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-8799f3bc-ac02-40ec-b7a2-174d51450d31"
     },
     {
       "id": "sony-spider-man",
@@ -296,7 +309,8 @@
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/6/6c/Spider-Man_%282002_film%29_poster.jpg",
       "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Spider-Man_(2002_film)",
       "imdbUrl": "https://www.imdb.com/title/tt0145487/",
-      "runtimeMinutes": 121
+      "runtimeMinutes": 121,
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-f82b95f5-13da-4acd-b378-7d3f6864919f"
     },
     {
       "id": "sony-spider-man-2",
@@ -315,7 +329,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt0316654/",
       "runtimeMinutes": 122,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/4/4e/Spider-Man_2_USA_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Spider-Man_2"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Spider-Man_2",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-939fab6f-224f-43cb-8c38-aa454aa89e2b"
     },
     {
       "id": "sony-spider-man-3",
@@ -334,7 +349,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt0413300/",
       "runtimeMinutes": 139,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/7/7a/Spider-Man_3%2C_International_Poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Spider-Man_3"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Spider-Man_3",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-e64ed3c8-1874-43cd-8ea7-9cf55237aa4b"
     },
     {
       "id": "sony-amazing-spider-man",
@@ -347,7 +363,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt0948470/",
       "runtimeMinutes": 136,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/e/e0/The_Amazing_Spider-Man_%28film%29_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/The_Amazing_Spider-Man"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/The_Amazing_Spider-Man",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-f43ffe63-2c96-4b6c-8fae-84d0d22d6466"
     },
     {
       "id": "sony-amazing-spider-man-2",
@@ -366,7 +383,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt1872181/",
       "runtimeMinutes": 142,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/2/24/The_Amazing_Spider-Man_2_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/The_Amazing_Spider-Man_2"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/The_Amazing_Spider-Man_2",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-c21c733a-18f4-4cdc-b1e8-1ff6b996c0a3"
     },
     {
       "id": "mtv-agents-of-shield",
@@ -374,7 +392,11 @@
       "type": "show",
       "releaseDate": "2013-09-24",
       "phase": -2,
-      "dependencies": []
+      "dependencies": [],
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-63516dff-91f8-4deb-b110-d22552f329cb",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Agents_of_S.H.I.E.L.D.",
+      "imdbUrl": "https://www.imdb.com/title/tt2364582/",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Agents_of_S.H.I.E.L.D."
     },
     {
       "id": "mtv-agent-carter",
@@ -382,7 +404,11 @@
       "type": "show",
       "releaseDate": "2015-01-06",
       "phase": -2,
-      "dependencies": []
+      "dependencies": [],
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-5e7f5aa1-b3ea-4cd3-983f-c5cda970fb0a",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Agent_Carter_(TV_series)",
+      "imdbUrl": "https://www.imdb.com/title/tt3475734/",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Agent_Carter_(TV_series)"
     },
     {
       "id": "mtv-daredevil",
@@ -390,7 +416,11 @@
       "type": "show",
       "releaseDate": "2015-04-10",
       "phase": -2,
-      "dependencies": []
+      "dependencies": [],
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-b03f0bdc-ebd5-44df-a16a-1a180a88873a",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Daredevil_(TV_series)",
+      "imdbUrl": "https://www.imdb.com/title/tt3322312/",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Daredevil_(TV_series)"
     },
     {
       "id": "mtv-jessica-jones",
@@ -398,7 +428,11 @@
       "type": "show",
       "releaseDate": "2015-11-20",
       "phase": -2,
-      "dependencies": []
+      "dependencies": [],
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-6e31f304-024a-41a2-97a5-5a7ced0345a8",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Jessica_Jones_(TV_series)",
+      "imdbUrl": "https://www.imdb.com/title/tt2357547/",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Jessica_Jones_(TV_series)"
     },
     {
       "id": "mtv-luke-cage",
@@ -412,7 +446,11 @@
           "importance": "recommended",
           "note": "Luke Cage is introduced as a supporting character in Jessica Jones' first season."
         }
-      ]
+      ],
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-0e8ba0c3-47da-44d4-bab5-1c6f5d6e61a0",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Luke_Cage_(TV_series)",
+      "imdbUrl": "https://www.imdb.com/title/tt3322314/",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Luke_Cage_(TV_series)"
     },
     {
       "id": "mtv-iron-fist",
@@ -420,7 +458,11 @@
       "type": "show",
       "releaseDate": "2017-03-17",
       "phase": -2,
-      "dependencies": []
+      "dependencies": [],
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-d251acf8-4a1a-48d1-b3b7-d9513afeaac0",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Iron_Fist_(TV_series)",
+      "imdbUrl": "https://www.imdb.com/title/tt3322310/",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Iron_Fist_(TV_series)"
     },
     {
       "id": "mtv-inhumans",
@@ -428,7 +470,11 @@
       "type": "show",
       "releaseDate": "2017-09-01",
       "phase": -2,
-      "dependencies": []
+      "dependencies": [],
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-f93e8212-c6c0-4a2f-a147-ad220f3481c8",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Inhumans_(TV_series)",
+      "imdbUrl": "https://www.imdb.com/title/tt4154858/",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Inhumans_(TV_series)"
     },
     {
       "id": "mtv-defenders",
@@ -457,7 +503,11 @@
           "importance": "required",
           "note": "Follows directly from Danny's arc and relationships established in his series."
         }
-      ]
+      ],
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-61687bed-4a66-4657-9252-df80ca1d1fbc",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Defenders_(miniseries)",
+      "imdbUrl": "https://www.imdb.com/title/tt4230076/",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/The_Defenders"
     },
     {
       "id": "mtv-punisher",
@@ -471,7 +521,11 @@
           "importance": "recommended",
           "note": "Frank Castle is introduced as an antagonist-turned-ally during Daredevil's second season."
         }
-      ]
+      ],
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-bbe154ae-af21-49dd-8129-90077e61c991",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Punisher_(TV_series)",
+      "imdbUrl": "https://www.imdb.com/title/tt5675620/",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/The_Punisher"
     },
     {
       "id": "mtv-runaways",
@@ -479,7 +533,11 @@
       "type": "show",
       "releaseDate": "2017-11-21",
       "phase": -2,
-      "dependencies": []
+      "dependencies": [],
+      "disneyPlusUrl": "https://tubitv.com/series/300012572/runaways",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Runaways_(TV_series)",
+      "imdbUrl": "https://www.imdb.com/title/tt1236246/",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Runaways_(TV_series)"
     },
     {
       "id": "mtv-cloak-and-dagger",
@@ -487,7 +545,11 @@
       "type": "show",
       "releaseDate": "2018-06-07",
       "phase": -2,
-      "dependencies": []
+      "dependencies": [],
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-ad2911c4-31a3-4694-8e91-950646a0ed11",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Cloak_%26_Dagger_(TV_series)",
+      "imdbUrl": "https://www.imdb.com/title/tt5614844/",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Cloak_%26_Dagger"
     },
     {
       "id": "iron-man",
@@ -500,7 +562,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt0371746/",
       "runtimeMinutes": 126,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/0/02/Iron_Man_%282008_film%29_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Iron_Man"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Iron_Man",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-0c520152-b81f-4c20-9310-003debd1947e"
     },
     {
       "id": "incredible-hulk",
@@ -519,7 +582,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt0800080/",
       "runtimeMinutes": 112,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/f/f0/The_Incredible_Hulk_%28film%29_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/The_Incredible_Hulk"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/The_Incredible_Hulk",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-30d00f7b-331a-4f43-b9e1-1989d39cb1a3"
     },
     {
       "id": "iron-man-2",
@@ -543,7 +607,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt1228705/",
       "runtimeMinutes": 125,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/e/ed/Iron_Man_2_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Iron_Man_2"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Iron_Man_2",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-85c5529d-c053-4fa4-9957-4906eb5aedc6"
     },
     {
       "id": "thor",
@@ -562,7 +627,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt0800369/",
       "runtimeMinutes": 114,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/9/95/Thor_%28film%29_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Thor"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Thor",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-479d41e3-8438-4ba4-b93d-8223220e069c"
     },
     {
       "id": "captain-america-first-avenger",
@@ -581,7 +647,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt0458339/",
       "runtimeMinutes": 124,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/3/37/Captain_America_The_First_Avenger_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America:_The_First_Avenger"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America:_The_First_Avenger",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-8e68c43a-117c-4f4d-b217-0db106a1a614"
     },
     {
       "id": "avengers",
@@ -620,7 +687,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt0848228/",
       "runtimeMinutes": 142,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/8/8a/The_Avengers_%282012_film%29_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/The_Avengers"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/The_Avengers",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-d2ab699b-67da-4906-a7a4-5bc542c953cf"
     },
     {
       "id": "iron-man-3",
@@ -644,7 +712,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt1300854/",
       "runtimeMinutes": 130,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/1/19/Iron_Man_3_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Iron_Man_3"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Iron_Man_3",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-e8569c2d-85ec-42a4-8811-b2618d494a40"
     },
     {
       "id": "thor-dark-world",
@@ -668,7 +737,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt1981115/",
       "runtimeMinutes": 112,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/7/7f/Thor_The_Dark_World_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Thor:_The_Dark_World"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Thor:_The_Dark_World",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-7c4f4e28-4152-4f64-90ec-8b7f682c33d4"
     },
     {
       "id": "captain-america-winter-soldier",
@@ -697,7 +767,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt1843866/",
       "runtimeMinutes": 136,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/9/9e/Captain_America_The_Winter_Soldier_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America:_The_Winter_Soldier"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America:_The_Winter_Soldier",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-ef333a5c-b855-4d3e-a7d9-d9e142b6dc7d"
     },
     {
       "id": "guardians-of-the-galaxy",
@@ -716,7 +787,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt2015381/",
       "runtimeMinutes": 121,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/3/33/Guardians_of_the_Galaxy_%28film%29_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Guardians_of_the_Galaxy"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Guardians_of_the_Galaxy",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-c9ee959b-7249-4a4c-9708-9ffd1ddb00f1"
     },
     {
       "id": "avengers-age-of-ultron",
@@ -755,7 +827,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt2395427/",
       "runtimeMinutes": 141,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/f/ff/Avengers_Age_of_Ultron_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Avengers:_Age_of_Ultron"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Avengers:_Age_of_Ultron",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-42329b99-0953-4f1a-9420-a0dbf7733e95"
     },
     {
       "id": "ant-man",
@@ -774,7 +847,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt0478970/",
       "runtimeMinutes": 117,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/1/12/Ant-Man_%28film%29_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Ant-Man"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Ant-Man",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-af42798c-b9db-457f-b748-5e1f029c1ece"
     },
     {
       "id": "captain-america-civil-war",
@@ -803,7 +877,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt3498820/",
       "runtimeMinutes": 147,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/5/53/Captain_America_Civil_War_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America:_Civil_War"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America:_Civil_War",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-2bd19267-1387-4b51-98e6-5189ff28e9c9"
     },
     {
       "id": "doctor-strange",
@@ -822,7 +897,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt1211837/",
       "runtimeMinutes": 115,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/a/a1/Doctor_Strange_%282016_film%29_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Doctor_Strange"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Doctor_Strange",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-43a741e8-2369-4577-9bec-ef94f4aaae0b"
     },
     {
       "id": "guardians-of-the-galaxy-vol-2",
@@ -841,7 +917,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt3896198/",
       "runtimeMinutes": 136,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/3/32/Guardians_of_the_Galaxy_Vol._2_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Guardians_of_the_Galaxy_Vol._2"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Guardians_of_the_Galaxy_Vol._2",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-9fcd7087-c151-49dc-aeb9-b2f9943fd4e6"
     },
     {
       "id": "spider-man-homecoming",
@@ -865,7 +942,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt2250912/",
       "runtimeMinutes": 133,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/f/f9/Spider-Man_Homecoming_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Spider-Man:_Homecoming"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Spider-Man:_Homecoming",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-d285316b-e1ea-4b50-933a-bb5fd13549c1"
     },
     {
       "id": "thor-ragnarok",
@@ -899,7 +977,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt3501632/",
       "runtimeMinutes": 130,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/7/7d/Thor_Ragnarok_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Thor:_Ragnarok"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Thor:_Ragnarok",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-766280de-0c00-4781-a388-2c85c5b4e259"
     },
     {
       "id": "black-panther",
@@ -918,7 +997,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt1825683/",
       "runtimeMinutes": 134,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/d/d6/Black_Panther_%28film%29_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Black_Panther"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Black_Panther",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-8904b1b5-da2c-4ff1-b389-dc81825559fd"
     },
     {
       "id": "avengers-infinity-war",
@@ -967,7 +1047,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt4154756/",
       "runtimeMinutes": 149,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/4/4d/Avengers_Infinity_War_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Avengers:_Infinity_War"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Avengers:_Infinity_War",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-9a136e06-852a-41bf-b71d-fa061cb43225"
     },
     {
       "id": "ant-man-and-the-wasp",
@@ -991,7 +1072,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt5095030/",
       "runtimeMinutes": 118,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/2/2c/Ant-Man_and_the_Wasp_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Ant-Man_and_the_Wasp"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Ant-Man_and_the_Wasp",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-3533ca7b-e187-4bf5-a65c-7c903cd2d4ad"
     },
     {
       "id": "captain-marvel",
@@ -1004,7 +1086,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt4154664/",
       "runtimeMinutes": 124,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/4/4e/Captain_Marvel_%28film%29_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_Marvel"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_Marvel",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-1e383a14-1ea6-4345-9ab8-fd37618669af"
     },
     {
       "id": "avengers-endgame",
@@ -1053,7 +1136,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt4154796/",
       "runtimeMinutes": 181,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/0/0d/Avengers_Endgame_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Avengers:_Endgame"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Avengers:_Endgame",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-b39aa962-be56-4b09-a536-98617031717f"
     },
     {
       "id": "spider-man-far-from-home",
@@ -1082,7 +1166,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt6320628/",
       "runtimeMinutes": 129,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/b/bd/Spider-Man_Far_From_Home_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Spider-Man:_Far_From_Home"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Spider-Man:_Far_From_Home",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-6e497c43-d4da-4e12-b100-d4d38dc2a7ff"
     },
     {
       "id": "wandavision",
@@ -1111,7 +1196,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt9140560/",
       "runtimeMinutes": 40,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/2/20/WandaVision_logo.png",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/WandaVision"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/WandaVision",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-90affd1f-0851-48bc-9cab-c142d5c9c20c"
     },
     {
       "id": "falcon-and-winter-soldier",
@@ -1140,7 +1226,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt9208876/",
       "runtimeMinutes": 55,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/9/9a/The_Falcon_and_the_Winter_Soldier_logo.png",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/The_Falcon_and_the_Winter_Soldier"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/The_Falcon_and_the_Winter_Soldier",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-3c08a31a-2350-4aaf-90d0-88def4c551bf"
     },
     {
       "id": "loki-season-1",
@@ -1164,7 +1251,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt9140554/",
       "runtimeMinutes": 50,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/4/4e/Loki_%28TV_series%29_logo.png",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Loki"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Loki",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-8f8c5cbb-e5ba-4285-9e2c-86abcac9fd50"
     },
     {
       "id": "black-widow",
@@ -1188,7 +1276,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt3480822/",
       "runtimeMinutes": 133,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/e/e9/Black_Widow_%282021_film%29_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Black_Widow"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Black_Widow",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-d9cd6bd1-bcf8-4a3b-8f92-0fdd4f79ac08"
     },
     {
       "id": "what-if-season-1",
@@ -1227,7 +1316,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt10168312/",
       "runtimeMinutes": 33,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/b/b6/What_If...%3F_%28TV_series%29_logo.png",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/What_If...?"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/What_If...?",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-fc588cfe-ff2b-4a44-abbd-d76359ce778f"
     },
     {
       "id": "shang-chi",
@@ -1246,7 +1336,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt9376612/",
       "runtimeMinutes": 132,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/7/74/Shang-Chi_and_the_Legend_of_the_Ten_Rings_poster.jpeg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Shang-Chi_and_the_Legend_of_the_Ten_Rings"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Shang-Chi_and_the_Legend_of_the_Ten_Rings",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-92243dd0-bcfe-4365-ae76-1fa3cf1a2ab9"
     },
     {
       "id": "eternals",
@@ -1265,7 +1356,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt9032400/",
       "runtimeMinutes": 156,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/9/9b/Eternals_%28film%29_poster.jpeg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Eternals"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Eternals",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-b042efa2-6650-48fd-bf35-ea285a5a5649"
     },
     {
       "id": "hawkeye",
@@ -1294,7 +1386,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt10160804/",
       "runtimeMinutes": 40,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/7/7a/Hawkeye_%28miniseries%29_logo.png",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Hawkeye"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Hawkeye",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-128482e8-a9bc-4289-9c0d-83a975d823f3"
     },
     {
       "id": "spider-man-no-way-home",
@@ -1348,7 +1441,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt10872600/",
       "runtimeMinutes": 148,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/0/00/Spider-Man_No_Way_Home_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Spider-Man:_No_Way_Home"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Spider-Man:_No_Way_Home",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-295fb45a-c8bb-477e-816f-b0706b4d9984"
     },
     {
       "id": "moon-knight",
@@ -1361,7 +1455,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt10234724/",
       "runtimeMinutes": 45,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/a/a8/Moon_Knight_%28miniseries%29_logo.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Moon_Knight_(miniseries)"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Moon_Knight_(miniseries)",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-330062c7-20c5-45e1-b6c5-e1e096055d75"
     },
     {
       "id": "doctor-strange-multiverse-of-madness",
@@ -1395,7 +1490,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt9419884/",
       "runtimeMinutes": 126,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/1/17/Doctor_Strange_in_the_Multiverse_of_Madness_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Doctor_Strange_in_the_Multiverse_of_Madness"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Doctor_Strange_in_the_Multiverse_of_Madness",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-6fe6062c-2499-4f44-a48a-fc93f59cb504"
     },
     {
       "id": "ms-marvel",
@@ -1413,7 +1509,8 @@
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Ms._Marvel_(miniseries)",
       "imdbUrl": "https://www.imdb.com/title/tt10857164/",
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/a/ac/Ms._Marvel_%28miniseries%29_logo.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Ms._Marvel"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Ms._Marvel",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-7bf8d7e6-9739-4fee-86c0-f4afc48b152c"
     },
     {
       "id": "thor-love-and-thunder",
@@ -1442,7 +1539,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt10648342/",
       "runtimeMinutes": 119,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/8/88/Thor_Love_and_Thunder_poster.jpeg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Thor:_Love_and_Thunder"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Thor:_Love_and_Thunder",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-0007d7a0-2515-411e-9294-2de6a7b8d00e"
     },
     {
       "id": "she-hulk",
@@ -1475,7 +1573,8 @@
       "wikipediaUrl": "https://en.wikipedia.org/wiki/She-Hulk:_Attorney_at_Law",
       "imdbUrl": "https://www.imdb.com/title/tt10857160/",
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/3/32/She-Hulk_Attorney_at_Law_logo.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/She-Hulk:_Attorney_at_Law"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/She-Hulk:_Attorney_at_Law",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-b1c3c897-b925-4236-88e4-1ceed3623a46"
     },
     {
       "id": "black-panther-wakanda-forever",
@@ -1499,7 +1598,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt9114286/",
       "runtimeMinutes": 161,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/3/3b/Black_Panther_Wakanda_Forever_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Black_Panther:_Wakanda_Forever"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Black_Panther:_Wakanda_Forever",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-86e14fdb-3841-4282-ad38-07c8c4aab4b6"
     },
     {
       "id": "ant-man-quantumania",
@@ -1523,7 +1623,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt10954600/",
       "runtimeMinutes": 125,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/3/30/Ant-Man_and_the_Wasp_Quantumania_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Ant-Man_and_the_Wasp:_Quantumania"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Ant-Man_and_the_Wasp:_Quantumania",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-eb1453f3-48aa-4af0-85f5-8ca4916c7415"
     },
     {
       "id": "guardians-of-the-galaxy-vol-3",
@@ -1552,7 +1653,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt6791350/",
       "runtimeMinutes": 150,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/7/74/Guardians_of_the_Galaxy_Vol._3_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Guardians_of_the_Galaxy_Vol._3"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Guardians_of_the_Galaxy_Vol._3",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-820f0ded-3254-42c5-a7e4-7c044ff6dd65"
     },
     {
       "id": "secret-invasion",
@@ -1576,7 +1678,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt13157618/",
       "runtimeMinutes": 45,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/9/91/Secret_Invasion_%28miniseries%29_logo.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Secret_Invasion"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Secret_Invasion",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-4cfe6313-7f5e-4544-af84-d31bf718f65a"
     },
     {
       "id": "loki-season-2",
@@ -1595,7 +1698,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt9140554/",
       "runtimeMinutes": 50,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/4/4e/Loki_%28TV_series%29_logo.png",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Loki"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Loki",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-8f8c5cbb-e5ba-4285-9e2c-86abcac9fd50"
     },
     {
       "id": "the-marvels",
@@ -1629,7 +1733,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt10676048/",
       "runtimeMinutes": 105,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/7/7a/The_Marvels_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/The_Marvels"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/The_Marvels",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-75c90eca-8969-4edb-ac1a-7165cff2671c"
     },
     {
       "id": "echo",
@@ -1647,7 +1752,8 @@
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Echo_(miniseries)",
       "imdbUrl": "https://www.imdb.com/title/tt13966962/",
       "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Echo",
-      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/9/99/Echo_%28miniseries%29_logo.jpg"
+      "posterUrl": "https://upload.wikimedia.org/wikipedia/en/9/99/Echo_%28miniseries%29_logo.jpg",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-3c9aa47d-88c2-455b-a63b-4be76b666a55"
     },
     {
       "id": "deadpool-and-wolverine",
@@ -1691,7 +1797,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt6263850/",
       "runtimeMinutes": 128,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/4/4c/Deadpool_%26_Wolverine_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Deadpool_&_Wolverine"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Deadpool_&_Wolverine",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-120ae1e6-2240-4924-a4ce-f8de6e28b0b1"
     },
     {
       "id": "agatha-all-along",
@@ -1709,7 +1816,8 @@
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Agatha_All_Along",
       "imdbUrl": "https://www.imdb.com/title/tt15571732/",
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/7/70/Agatha_All_Along_logo.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Agatha_All_Along"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Agatha_All_Along",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-5e474669-a4a2-4b90-a928-5ae7f845090c"
     },
     {
       "id": "captain-america-brave-new-world",
@@ -1743,7 +1851,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt14513804/",
       "runtimeMinutes": 118,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/a/a4/Captain_America_Brave_New_World_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America:_Brave_New_World"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Captain_America:_Brave_New_World",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-3064ac7f-ef4d-4f89-b92f-b5524da92a72"
     },
     {
       "id": "thunderbolts",
@@ -1772,7 +1881,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt20969586/",
       "runtimeMinutes": 126,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/9/90/Thunderbolts%2A_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Thunderbolts*"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Thunderbolts*",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-f51dce23-7d8f-490a-9f0c-be1b5432c2a9"
     },
     {
       "id": "fantastic-four-first-steps",
@@ -1791,7 +1901,8 @@
       "imdbUrl": "https://www.imdb.com/title/tt10676052/",
       "runtimeMinutes": 114,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/1/13/The_Fantastic_Four_First_Steps_poster.jpg",
-      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/The_Fantastic_Four:_First_Steps"
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/The_Fantastic_Four:_First_Steps",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-2142a7a9-4c49-438d-a492-296c4e08b714"
     },
     {
       "id": "avengers-doomsday",
@@ -1843,7 +1954,212 @@
           "importance": "required",
           "note": "Peter's identity being erased from everyone's memory at the end of No Way Home is the starting point for this film."
         }
-      ]
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Spider-Man:_Brand_New_Day",
+      "imdbUrl": "https://www.imdb.com/title/tt22084616/",
+      "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Spider-Man%3A_Brand_New_Day"
+    },
+    {
+      "id": "spiderverse-into",
+      "title": "Spider-Man: Into the Spider-Verse",
+      "type": "movie",
+      "releaseDate": "2018-12-14",
+      "phase": 0,
+      "dependencies": [],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Spider-Man:_Into_the_Spider-Verse",
+      "imdbUrl": "https://www.imdb.com/title/tt4633694/",
+      "runtimeMinutes": 117
+    },
+    {
+      "id": "spiderverse-across",
+      "title": "Spider-Man: Across the Spider-Verse",
+      "type": "movie",
+      "releaseDate": "2023-06-02",
+      "phase": 0,
+      "dependencies": [
+        {
+          "id": "spiderverse-into",
+          "importance": "required",
+          "note": "Direct continuation of Miles' story and the multiverse mechanics established there."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Spider-Man:_Across_the_Spider-Verse",
+      "imdbUrl": "https://www.imdb.com/title/tt9362722/",
+      "runtimeMinutes": 140
+    },
+    {
+      "id": "sony-venom",
+      "title": "Venom",
+      "type": "movie",
+      "releaseDate": "2018-10-05",
+      "phase": 0,
+      "dependencies": [],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Venom_(2018_film)",
+      "imdbUrl": "https://www.imdb.com/title/tt1270797/",
+      "runtimeMinutes": 112
+    },
+    {
+      "id": "sony-venom-2",
+      "title": "Venom: Let There Be Carnage",
+      "type": "movie",
+      "releaseDate": "2021-10-01",
+      "phase": 0,
+      "dependencies": [
+        {
+          "id": "sony-venom",
+          "importance": "required",
+          "note": "Continues Eddie and Venom's relationship directly from the first film."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Venom:_Let_There_Be_Carnage",
+      "imdbUrl": "https://www.imdb.com/title/tt7097896/",
+      "runtimeMinutes": 97
+    },
+    {
+      "id": "sony-morbius",
+      "title": "Morbius",
+      "type": "movie",
+      "releaseDate": "2022-04-01",
+      "phase": 0,
+      "dependencies": [],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Morbius_(film)",
+      "imdbUrl": "https://www.imdb.com/title/tt5108870/",
+      "runtimeMinutes": 104
+    },
+    {
+      "id": "sony-madame-web",
+      "title": "Madame Web",
+      "type": "movie",
+      "releaseDate": "2024-02-14",
+      "phase": 0,
+      "dependencies": [],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Madame_Web_(film)",
+      "imdbUrl": "https://www.imdb.com/title/tt11057302/",
+      "runtimeMinutes": 116
+    },
+    {
+      "id": "werewolf-by-night",
+      "title": "Werewolf by Night",
+      "type": "movie",
+      "releaseDate": "2022-10-07",
+      "phase": 4,
+      "dependencies": [],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Werewolf_by_Night_(film)",
+      "imdbUrl": "https://www.imdb.com/title/tt21807222/",
+      "runtimeMinutes": 54,
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-ad2fd4e8-062b-45b9-b2c5-8b8779873e48"
+    },
+    {
+      "id": "gotg-holiday-special",
+      "title": "The Guardians of the Galaxy Holiday Special",
+      "type": "movie",
+      "releaseDate": "2022-11-25",
+      "phase": 4,
+      "dependencies": [
+        {
+          "id": "guardians-of-the-galaxy-vol-2",
+          "importance": "required",
+          "note": "Set between Vol. 2 and Vol. 3, with the team as established there."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Guardians_of_the_Galaxy_Holiday_Special",
+      "imdbUrl": "https://www.imdb.com/title/tt21044666/",
+      "runtimeMinutes": 44,
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-1a15fe60-3236-4242-a699-a4e3392cf112"
+    },
+    {
+      "id": "x-men-97",
+      "title": "X-Men '97",
+      "type": "show",
+      "releaseDate": "2024-03-20",
+      "phase": -1,
+      "dependencies": [],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/X-Men_%2797",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-8dc91ed4-cdca-4fab-9723-d3d42f382d34"
+    },
+    {
+      "id": "daredevil-born-again",
+      "title": "Daredevil: Born Again",
+      "type": "show",
+      "releaseDate": "2025-03-04",
+      "phase": 5,
+      "dependencies": [
+        {
+          "id": "mtv-daredevil",
+          "importance": "recommended",
+          "note": "Matt Murdock, Wilson Fisk, and Karen Page's history from the original series informs this continuation."
+        },
+        {
+          "id": "echo",
+          "importance": "recommended",
+          "note": "Fisk and Daredevil's confrontation in Echo directly precedes the events here."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Daredevil:_Born_Again",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-85e7a914-c8e6-41db-95df-c740dc2cf1b7"
+    },
+    {
+      "id": "ironheart",
+      "title": "Ironheart",
+      "type": "show",
+      "releaseDate": "2025-06-24",
+      "phase": 6,
+      "dependencies": [
+        {
+          "id": "black-panther-wakanda-forever",
+          "importance": "required",
+          "note": "Introduces Riri Williams and her Ironheart suit."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Ironheart_(TV_series)",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-b2b50b9a-a055-4b31-a609-8ec46f3add98"
+    },
+    {
+      "id": "eyes-of-wakanda",
+      "title": "Eyes of Wakanda",
+      "type": "show",
+      "releaseDate": "2025-08-06",
+      "phase": 6,
+      "dependencies": [
+        {
+          "id": "black-panther-wakanda-forever",
+          "importance": "recommended",
+          "note": "Explores Wakandan history and legacy following the events of that film."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Eyes_of_Wakanda",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-8d16eb3d-b7e5-4c43-abda-a281be4d284a"
+    },
+    {
+      "id": "wonder-man",
+      "title": "Wonder Man",
+      "type": "show",
+      "releaseDate": "2026-01-27",
+      "phase": 6,
+      "dependencies": [],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Wonder_Man_(TV_series)",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-25ee768f-06e3-491c-ad8f-876b4c87ac42"
+    },
+    {
+      "id": "punisher-one-last-kill",
+      "title": "The Punisher: One Last Kill",
+      "type": "movie",
+      "releaseDate": "2026-05-12",
+      "phase": 6,
+      "dependencies": [
+        {
+          "id": "mtv-punisher",
+          "importance": "recommended",
+          "note": "Frank Castle's arc continues from his original Marvel Television series."
+        },
+        {
+          "id": "daredevil-born-again",
+          "importance": "recommended",
+          "note": "Bridges the gap between Born Again and Spider-Man: Brand New Day."
+        }
+      ],
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/The_Punisher:_One_Last_Kill",
+      "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-c5b69f75-f159-4749-873d-9a1d1a4eb878"
     }
   ]
 }

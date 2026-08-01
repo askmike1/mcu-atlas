@@ -145,7 +145,7 @@ export default function DetailPanel({
           IMDb
         </a>
         <a href={links.disneyPlus} target="_blank" rel="noreferrer">
-          Disney+
+          {links.disneyPlusLabel}
         </a>
         <a href={links.fandom} target="_blank" rel="noreferrer">
           MCU Wiki
