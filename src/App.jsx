@@ -4,7 +4,7 @@ import GraphView from './components/GraphView';
 import DetailPanel from './components/DetailPanel';
 import Toolbar from './components/Toolbar';
 import GoogleDriveSyncDialog from './components/GoogleDriveSyncDialog';
-import { useWatchedState } from './hooks/useWatchedState';
+import { useUserState } from './hooks/useUserState';
 import { useGoogleDriveSync } from './hooks/useGoogleDriveSync';
 import { useIsMobile } from './hooks/useIsMobile';
 import { indexEntries } from './utils/mcu';
@@ -17,11 +17,27 @@ export default function App() {
   const validIds = useMemo(() => new Set(entries.map((e) => e.id)), [entries]);
   const phaseNames = useMemo(() => new Map(phases.map((p) => [p.number, p.name])), [phases]);
 
-  const { watched, toggle, replaceAll, reset } = useWatchedState(validIds);
+  const {
+    users,
+    currentUserId,
+    watched,
+    watching,
+    statusOf,
+    setStatus,
+    switchUser,
+    addUser,
+    renameUser,
+    removeUser,
+    replaceCurrentUserStatus,
+    importUsers,
+    exportState,
+    reset,
+  } = useUserState(validIds);
+
   const [selectedId, setSelectedId] = useState(null);
   const [modalMinimized, setModalMinimized] = useState(false);
   const [syncOpen, setSyncOpen] = useState(false);
-  const sync = useGoogleDriveSync();
+  const sync = useGoogleDriveSync(validIds);
   const isMobile = useIsMobile();
 
   const handleSelect = useCallback((id) => {
@@ -35,27 +51,35 @@ export default function App() {
   const handleMinimize = useCallback(() => setModalMinimized(true), []);
   const handleExpand = useCallback(() => setModalMinimized(false), []);
 
-  const handleExport = useCallback(() => downloadWatchedFile(watched), [watched]);
+  const handleExport = useCallback(() => downloadWatchedFile(exportState()), [exportState]);
 
   const handleImport = useCallback(
     (text) => {
-      const ids = parseWatchedFile(text, validIds);
-      replaceAll(ids);
-      return ids.length;
+      const result = parseWatchedFile(text, validIds);
+      if (result.users) {
+        importUsers(result.users, result.currentUserId);
+        return result.users.reduce((sum, u) => sum + Object.keys(u.status).length, 0);
+      }
+      replaceCurrentUserStatus(result.status);
+      return Object.keys(result.status).length;
     },
-    [replaceAll, validIds]
+    [validIds, importUsers, replaceCurrentUserStatus]
   );
 
   const handleSyncSave = useCallback(() => {
-    sync.save(watched).catch(() => {});
-  }, [sync, watched]);
+    sync.save(exportState()).catch(() => {});
+  }, [sync, exportState]);
 
   const handleSyncLoad = useCallback(() => {
     sync
       .load()
-      .then((ids) => replaceAll(ids))
+      .then((result) => {
+        if (!result) return;
+        if (result.users) importUsers(result.users, result.currentUserId);
+        else replaceCurrentUserStatus(result.status);
+      })
       .catch(() => {});
-  }, [sync, replaceAll]);
+  }, [sync, importUsers, replaceCurrentUserStatus]);
 
   const selectedEntry = selectedId ? byId.get(selectedId) : null;
 
@@ -70,16 +94,31 @@ export default function App() {
         onImport={handleImport}
         onReset={reset}
         onOpenSync={() => setSyncOpen(true)}
+        users={users}
+        currentUserId={currentUserId}
+        onSwitchUser={switchUser}
+        onAddUser={addUser}
+        onRenameUser={renameUser}
+        onRemoveUser={removeUser}
       />
       <div className="layout">
-        <GraphView entries={entries} phases={phases} watched={watched} selectedId={selectedId} onSelect={handleSelect} />
+        <GraphView
+          entries={entries}
+          phases={phases}
+          watched={watched}
+          watching={watching}
+          selectedId={selectedId}
+          onSelect={handleSelect}
+        />
         {!isMobile && (
           <DetailPanel
             entry={selectedEntry}
             byId={byId}
             dependents={dependentsOf}
             watched={watched}
-            onToggleWatched={toggle}
+            watching={watching}
+            statusOf={statusOf}
+            onSetStatus={setStatus}
             onSelect={handleSelect}
             onClose={handleClose}
             phaseNames={phaseNames}
@@ -94,7 +133,9 @@ export default function App() {
               byId={byId}
               dependents={dependentsOf}
               watched={watched}
-              onToggleWatched={toggle}
+              watching={watching}
+              statusOf={statusOf}
+              onSetStatus={setStatus}
               onSelect={handleSelect}
               onClose={handleClose}
               onMinimize={handleMinimize}

@@ -28,6 +28,41 @@
   color: var(--text-muted);
 }
 
+.user-switcher {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.user-switcher select {
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 0.9rem;
+  max-width: 140px;
+}
+
+.user-switcher button {
+  padding: 0.3rem 0.55rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 0.9rem;
+  line-height: 1;
+}
+
+.user-switcher button:hover {
+  border-color: var(--accent);
+}
+
+.user-switcher button.danger {
+  color: #e5484d;
+}
+
 .search-box {
   position: relative;
   width: 240px;
@@ -327,13 +362,39 @@
   font-size: 0.8rem;
 }
 
-.watched-toggle {
+.status-control {
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.98rem;
+  gap: 0.4rem;
   margin-bottom: 1.25rem;
+}
+
+.status-btn {
+  flex: 1;
+  padding: 0.4rem 0.5rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-muted);
   cursor: pointer;
+  font-size: 0.88rem;
+}
+
+.status-btn:hover {
+  border-color: var(--accent);
+}
+
+.status-btn--active {
+  color: #fff;
+  border-color: transparent;
+  background: var(--text-muted);
+}
+
+.status-btn--active.status-btn--watching {
+  background: #f59e0b;
+}
+
+.status-btn--active.status-btn--watched {
+  background: #2fb865;
 }
 
 .detail-panel section {
@@ -395,6 +456,10 @@
   border-radius: 50%;
   background: #2fb865;
   display: inline-block;
+}
+
+.watched-dot--watching {
+  background: #f59e0b;
 }
 
 .badge {
