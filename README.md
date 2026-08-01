@@ -24,9 +24,9 @@ enabled — see [Deployment](#deployment) below).
   browser (`localStorage`).
 - **Export / Import** — download your watched list as a JSON file, or import
   one to restore it (import **overwrites** your current selections).
-- **GitHub sync** (optional) — save your watched list as a committed file in
-  this repo instead of/alongside browser storage, so it follows you across
-  devices. See [GitHub sync](#github-sync) below.
+- **Google Drive sync** (optional) — save your watched list as a file in
+  your own Google Drive instead of/alongside browser storage, so it follows
+  you across devices. See [Google Drive sync](#google-drive-sync) below.
 
 ## Data format
 
@@ -163,31 +163,50 @@ If an entry has no `posterUrl` (or the enrichment script hasn't been run on
 it yet), the detail panel falls back to `public/posters/<id>.jpg` if
 present, then a generated placeholder.
 
-## GitHub sync
+## Google Drive sync
 
-Since this app has no backend, "saving to the cloud" means committing a small
-JSON file straight to this repo from your browser, using the GitHub REST API.
+Since this app has no backend, "saving to the cloud" means calling the
+Google Drive REST API directly from your browser via OAuth — Google's
+official [Identity Services](https://developers.google.com/identity/gsi/web)
+library, no server, no third-party library.
 
-1. Click **GitHub sync** in the toolbar.
-2. Create a [fine-grained personal access token](https://github.com/settings/personal-access-tokens/new)
-   scoped to **only this repository**, with **Contents: Read and write**
-   permission and nothing else.
-3. Paste it in, confirm the owner/repo/branch (auto-filled when running on
-   `*.github.io`), then **Save** or **Load**.
+1. Click **Google Drive sync** in the toolbar.
+2. Click **Connect Google Drive** to sign in via Google's own consent
+   popup, then **Save** or **Load**.
+
+The app ships with an OAuth Client ID already registered for its deployed
+GitHub Pages URL (see `CLIENT_ID` in
+[`useGoogleDriveSync.js`](src/hooks/useGoogleDriveSync.js)), so no setup is
+needed. If you're running your own fork from a different URL, you'll need
+to swap that constant for your own Client ID from the
+[Google Cloud Console](https://console.cloud.google.com/apis/credentials)
+(**Create credentials → OAuth client ID → Web application**, adding your
+site's URL under **Authorized JavaScript origins**).
 
 Notes on the security model:
 
-- The token never leaves your browser except in direct HTTPS calls to
-  `api.github.com` — there's no server in between.
-- By default the token is kept only in memory for the current tab and is
-  lost on refresh. Checking "remember this token" stores it in this
-  browser's `localStorage` instead, for convenience — anyone with access to
-  that browser profile could read it from there, so only enable this on a
-  device you trust, and prefer a token scoped to just this one repo.
-- Progress is always written to `user_data/watched-progress.json` — this path
-  is hardcoded (not user-configurable) so it's guaranteed to land in a
-  location the deploy workflow ignores (`paths-ignore: user_data/**`),
-  meaning saving progress never triggers a rebuild/redeploy.
+- The app requests only the
+  [`drive.file`](https://developers.google.com/drive/api/guides/api-specific-auth)
+  scope — the most restrictive Drive scope Google offers. It grants access
+  to exactly one file: the one this app creates (`mcu-atlas-progress.json`,
+  saved to your Drive). It can never see, read, or modify anything else in
+  your Drive.
+- The OAuth Client ID itself isn't a secret — it only identifies which app
+  is requesting access, and Google still requires you to consent via its
+  own popup every time a new session connects — so it's safe to ship
+  hardcoded in the app's source rather than requiring each user to create
+  their own.
+- The access token Google issues after you sign in is short-lived (about an
+  hour) and is kept only in memory for the current tab — it is never written
+  to `localStorage` or anywhere else, so it can't be read back after a
+  refresh or leaked through storage.
+- All calls go directly from your browser to `accounts.google.com` and
+  `www.googleapis.com` over HTTPS — there's no server in between, and no
+  data ever passes through this repo or GitHub Pages hosting.
+- The page ships a strict `Content-Security-Policy` (see
+  [`index.html`](index.html)) that only allows scripts from this site and
+  `accounts.google.com`, blocking inline scripts and `eval` outright — this
+  is defense-in-depth against XSS, independent of the Drive integration.
 
 ## Development
 
