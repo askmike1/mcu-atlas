@@ -2,6 +2,11 @@
   "schemaVersion": 1,
   "phases": [
     {
+      "number": -2,
+      "name": "Marvel Television (ABC/Netflix)",
+      "saga": "Legacy Continuity (non-MCU)"
+    },
+    {
       "number": -1,
       "name": "Fox's X-Men",
       "saga": "Legacy Continuity (non-MCU)"
@@ -362,6 +367,127 @@
       "runtimeMinutes": 142,
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/2/24/The_Amazing_Spider-Man_2_poster.jpg",
       "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/The_Amazing_Spider-Man_2"
+    },
+    {
+      "id": "mtv-agents-of-shield",
+      "title": "Agents of S.H.I.E.L.D.",
+      "type": "show",
+      "releaseDate": "2013-09-24",
+      "phase": -2,
+      "dependencies": []
+    },
+    {
+      "id": "mtv-agent-carter",
+      "title": "Agent Carter",
+      "type": "show",
+      "releaseDate": "2015-01-06",
+      "phase": -2,
+      "dependencies": []
+    },
+    {
+      "id": "mtv-daredevil",
+      "title": "Daredevil",
+      "type": "show",
+      "releaseDate": "2015-04-10",
+      "phase": -2,
+      "dependencies": []
+    },
+    {
+      "id": "mtv-jessica-jones",
+      "title": "Jessica Jones",
+      "type": "show",
+      "releaseDate": "2015-11-20",
+      "phase": -2,
+      "dependencies": []
+    },
+    {
+      "id": "mtv-luke-cage",
+      "title": "Luke Cage",
+      "type": "show",
+      "releaseDate": "2016-09-30",
+      "phase": -2,
+      "dependencies": [
+        {
+          "id": "mtv-jessica-jones",
+          "importance": "recommended",
+          "note": "Luke Cage is introduced as a supporting character in Jessica Jones' first season."
+        }
+      ]
+    },
+    {
+      "id": "mtv-iron-fist",
+      "title": "Iron Fist",
+      "type": "show",
+      "releaseDate": "2017-03-17",
+      "phase": -2,
+      "dependencies": []
+    },
+    {
+      "id": "mtv-inhumans",
+      "title": "Inhumans",
+      "type": "show",
+      "releaseDate": "2017-09-01",
+      "phase": -2,
+      "dependencies": []
+    },
+    {
+      "id": "mtv-defenders",
+      "title": "The Defenders",
+      "type": "show",
+      "releaseDate": "2017-08-18",
+      "phase": -2,
+      "dependencies": [
+        {
+          "id": "mtv-daredevil",
+          "importance": "required",
+          "note": "The crossover miniseries pays off Matt Murdock's arc and status quo from Daredevil."
+        },
+        {
+          "id": "mtv-jessica-jones",
+          "importance": "required",
+          "note": "Follows directly from Jessica's arc and relationships established in her series."
+        },
+        {
+          "id": "mtv-luke-cage",
+          "importance": "required",
+          "note": "Follows directly from Luke's arc and relationships established in his series."
+        },
+        {
+          "id": "mtv-iron-fist",
+          "importance": "required",
+          "note": "Follows directly from Danny's arc and relationships established in his series."
+        }
+      ]
+    },
+    {
+      "id": "mtv-punisher",
+      "title": "The Punisher",
+      "type": "show",
+      "releaseDate": "2017-11-17",
+      "phase": -2,
+      "dependencies": [
+        {
+          "id": "mtv-daredevil",
+          "importance": "recommended",
+          "note": "Frank Castle is introduced as an antagonist-turned-ally during Daredevil's second season."
+        }
+      ]
+    },
+    {
+      "id": "mtv-runaways",
+      "title": "Runaways",
+      "type": "show",
+      "releaseDate": "2017-11-21",
+      "phase": -2,
+      "dependencies": []
+    },
+    {
+      "id": "mtv-cloak-and-dagger",
+      "title": "Cloak & Dagger",
+      "type": "show",
+      "releaseDate": "2018-06-07",
+      "phase": -2,
+      "dependencies": []
     },
     {
       "id": "iron-man",
@@ -1704,6 +1830,20 @@
       "imdbUrl": "https://www.imdb.com/title/tt21357150/",
       "posterUrl": "https://upload.wikimedia.org/wikipedia/en/e/ee/Avengers_Doomsday_poster.jpg",
       "fandomUrl": "https://marvelcinematicuniverse.fandom.com/wiki/Avengers:_Doomsday"
+    },
+    {
+      "id": "spider-man-brand-new-day",
+      "title": "Spider-Man: Brand New Day",
+      "type": "movie",
+      "releaseDate": "2026-07-31",
+      "phase": 6,
+      "dependencies": [
+        {
+          "id": "spider-man-no-way-home",
+          "importance": "required",
+          "note": "Peter's identity being erased from everyone's memory at the end of No Way Home is the starting point for this film."
+        }
+      ]
     }
   ]
 }
