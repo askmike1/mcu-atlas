@@ -8,10 +8,16 @@ export function buildExternalLinks(entry) {
   const wikiQuery = encodeURIComponent(`${entry.title} ${kind}`);
   const titleQuery = encodeURIComponent(entry.title);
 
+  const disneyPlusUrl = entry.disneyPlusUrl || `https://www.disneyplus.com/search?q=${titleQuery}`;
+  // Some titles (e.g. licensed to another platform) carry a disneyPlusUrl
+  // that isn't actually a disneyplus.com link — label those generically.
+  const disneyPlusLabel = entry.disneyPlusUrl && !entry.disneyPlusUrl.includes('disneyplus.com') ? 'Stream' : 'Disney+';
+
   return {
     wikipedia: entry.wikipediaUrl || `https://en.wikipedia.org/wiki/Special:Search?search=${wikiQuery}&go=Go`,
     imdb: entry.imdbUrl || `https://www.imdb.com/find/?q=${titleQuery}&s=tt`,
-    disneyPlus: entry.disneyPlusUrl || `https://www.disneyplus.com/search?q=${titleQuery}`,
+    disneyPlus: disneyPlusUrl,
+    disneyPlusLabel,
     fandom:
       entry.fandomUrl ||
       `https://marvelcinematicuniverse.fandom.com/wiki/Special:Search?query=${titleQuery}`,
