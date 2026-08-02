@@ -5,7 +5,7 @@ const LEGACY_WATCHED_KEY = 'mcu-atlas:watched';
 const SCHEMA_VERSION = 2;
 
 function makeId() {
-  return `user-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
+  return `user-${crypto.randomUUID()}`;
 }
 
 // Pre-multi-user installs kept a flat array of watched ids under a
