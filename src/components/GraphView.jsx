@@ -2,12 +2,16 @@ import { useEffect, useMemo, useRef } from 'react';
 import cytoscape from 'cytoscape';
 import { IMPORTANCE, PHASE_COLORS } from '../utils/mcu';
 
-const CHECK_BADGE = `data:image/svg+xml;utf8,${encodeURIComponent(
-  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">' +
-    '<circle cx="10" cy="10" r="9.5" fill="#22c55e" stroke="#0f1117" stroke-width="1"/>' +
-    '<path d="M5.5 10.3l3 3 6-6.6" stroke="#ffffff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>' +
-    '</svg>'
-)}`;
+// Ring color must match the page background so the badge reads as a cutout
+// rather than a hard-edged circle sitting on top of the node — it has to be
+// regenerated per theme rather than baked in as a static constant.
+const checkBadge = (ringColor) =>
+  `data:image/svg+xml;utf8,${encodeURIComponent(
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">' +
+      `<circle cx="10" cy="10" r="9.5" fill="#22c55e" stroke="${ringColor}" stroke-width="1"/>` +
+      '<path d="M5.5 10.3l3 3 6-6.6" stroke="#ffffff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>' +
+      '</svg>'
+  )}`;
 
 const SHOW_BADGE = `data:image/svg+xml;utf8,${encodeURIComponent(
   '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">' +
@@ -17,12 +21,13 @@ const SHOW_BADGE = `data:image/svg+xml;utf8,${encodeURIComponent(
     '</svg>'
 )}`;
 
-const WATCHING_BADGE = `data:image/svg+xml;utf8,${encodeURIComponent(
-  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">' +
-    '<circle cx="10" cy="10" r="9.5" fill="#f59e0b" stroke="#0f1117" stroke-width="1"/>' +
-    '<path d="M10 5.2v5l3.3 3.3" stroke="#ffffff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>' +
-    '</svg>'
-)}`;
+const watchingBadge = (ringColor) =>
+  `data:image/svg+xml;utf8,${encodeURIComponent(
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">' +
+      `<circle cx="10" cy="10" r="9.5" fill="#f59e0b" stroke="${ringColor}" stroke-width="1"/>` +
+      '<path d="M10 5.2v5l3.3 3.3" stroke="#ffffff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>' +
+      '</svg>'
+  )}`;
 
 // Grid tuning: phase bands always span the full container width. Movies
 // pack 3-4 per row (fewer if the container is too narrow to keep them
@@ -108,9 +113,22 @@ function buildElements(entries, phases, grid) {
   return [...phaseNodes, ...movieNodes, ...edges];
 }
 
-const THEME = { bg: '#0f1117', nodeFill: '#2b3040', nodeText: '#e9ebf2', nodeBorder: '#454b60' };
+// Cytoscape can't read CSS custom properties directly, so its palette is
+// re-derived from the live computed values on <html> whenever the theme
+// toggles — this keeps it in sync with index.css instead of duplicating hex
+// values that could drift out of sync with the light/dark variable blocks.
+function readTheme() {
+  const styles = getComputedStyle(document.documentElement);
+  const read = (name, fallback) => styles.getPropertyValue(name).trim() || fallback;
+  return {
+    bg: read('--bg', '#0f1117'),
+    nodeFill: read('--node-fill', '#2b3040'),
+    nodeText: read('--node-text', '#e9ebf2'),
+    nodeBorder: read('--node-border', '#454b60'),
+  };
+}
 
-function buildStyle(theme) { return [
+function buildStyle(theme, badges) { return [
   {
     selector: 'node.phase-parent',
     style: {
@@ -158,7 +176,7 @@ function buildStyle(theme) { return [
     selector: 'node.movie.show',
     style: {
       'border-style': 'dashed',
-      'background-image': SHOW_BADGE,
+      'background-image': badges.show,
       'background-width': '16px',
       'background-height': '16px',
       'background-position-x': '0%',
@@ -172,7 +190,7 @@ function buildStyle(theme) { return [
   {
     selector: 'node.movie.watched',
     style: {
-      'background-image': CHECK_BADGE,
+      'background-image': badges.check,
       'background-width': '16px',
       'background-height': '16px',
       'background-position-x': '100%',
@@ -189,7 +207,7 @@ function buildStyle(theme) { return [
   {
     selector: 'node.movie.show.watched',
     style: {
-      'background-image': [SHOW_BADGE, CHECK_BADGE],
+      'background-image': [badges.show, badges.check],
       'background-width': ['16px', '16px'],
       'background-height': ['16px', '16px'],
       'background-position-x': ['0%', '100%'],
@@ -202,7 +220,7 @@ function buildStyle(theme) { return [
   {
     selector: 'node.movie.watching',
     style: {
-      'background-image': WATCHING_BADGE,
+      'background-image': badges.watching,
       'background-width': '16px',
       'background-height': '16px',
       'background-position-x': '100%',
@@ -219,7 +237,7 @@ function buildStyle(theme) { return [
   {
     selector: 'node.movie.show.watching',
     style: {
-      'background-image': [SHOW_BADGE, WATCHING_BADGE],
+      'background-image': [badges.show, badges.watching],
       'background-width': ['16px', '16px'],
       'background-height': ['16px', '16px'],
       'background-position-x': ['0%', '100%'],
@@ -285,7 +303,7 @@ function layoutFor(positions) {
   };
 }
 
-export default function GraphView({ entries, phases, watched, watching, selectedId, onSelect }) {
+export default function GraphView({ entries, phases, watched, watching, selectedId, onSelect, themeName }) {
   const containerRef = useRef(null);
   const cyRef = useRef(null);
 
@@ -309,10 +327,13 @@ export default function GraphView({ entries, phases, watched, watching, selected
     const initialWidth = containerRef.current.getBoundingClientRect().width;
     const grid = computeGrid(entries, phases, initialWidth);
 
+    const theme = readTheme();
+    const badges = { show: SHOW_BADGE, check: checkBadge(theme.bg), watching: watchingBadge(theme.bg) };
+
     const cy = cytoscape({
       container: containerRef.current,
       elements: buildElements(entries, phases, grid),
-      style: buildStyle(THEME),
+      style: buildStyle(theme, badges),
       layout: layoutFor(grid.positions),
       minZoom: 0.15,
       maxZoom: 3,
@@ -412,11 +433,14 @@ export default function GraphView({ entries, phases, watched, watching, selected
         else if (watching.has(id)) n.addClass('watching');
       });
 
-      if (selectedId) {
+      // Filters can hide the selected title's node entirely — guard against
+      // an empty selection instead of highlighting/centering on nothing.
+      const selNode = selectedId ? cy.$id(selectedId) : null;
+      if (selNode && selNode.nonempty()) {
         const depIds = new Set((dependenciesOf.get(selectedId) || []).map((d) => d.id));
         const dependentIds = new Set(dependentsOf.get(selectedId) || []);
 
-        cy.$id(selectedId).addClass('selected');
+        selNode.addClass('selected');
 
         cy.nodes('.movie').forEach((n) => {
           const id = n.id();
@@ -435,13 +459,23 @@ export default function GraphView({ entries, phases, watched, watching, selected
         // Center vertically only — panning is locked to vertical-only, so
         // leave the x pan untouched (always 0) rather than letting the
         // built-in `center` animation shift it sideways.
-        const selNode = cy.$id(selectedId);
         const viewportH = containerRef.current.clientHeight;
         const targetY = viewportH / 2 - selNode.position('y') * cy.zoom();
         cy.animate({ pan: { x: cy.pan().x, y: targetY } }, { duration: 200 });
       }
     });
   }, [selectedId, watched, watching, dependenciesOf, dependentsOf]);
+
+  // Cytoscape's style is plain JS, not CSS — when the theme toggles, re-read
+  // the now-updated custom properties and push a fresh style rather than
+  // rebuilding the whole graph (cheap: no layout/elements change involved).
+  useEffect(() => {
+    const cy = cyRef.current;
+    if (!cy) return;
+    const theme = readTheme();
+    const badges = { show: SHOW_BADGE, check: checkBadge(theme.bg), watching: watchingBadge(theme.bg) };
+    cy.style(buildStyle(theme, badges)).update();
+  }, [themeName]);
 
   useEffect(() => {
     function onKeyDown(evt) {

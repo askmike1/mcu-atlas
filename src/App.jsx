@@ -1,15 +1,23 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import mcuData from './data/mcu-data.json';
 import GraphView from './components/GraphView';
+import WatchOrderList from './components/WatchOrderList';
 import DetailPanel from './components/DetailPanel';
 import Toolbar from './components/Toolbar';
 import GoogleDriveSyncDialog from './components/GoogleDriveSyncDialog';
 import { useUserState } from './hooks/useUserState';
 import { useGoogleDriveSync } from './hooks/useGoogleDriveSync';
 import { useIsMobile } from './hooks/useIsMobile';
-import { indexEntries } from './utils/mcu';
+import { indexEntries, getUpNext, computeWatchOrder } from './utils/mcu';
 import { downloadWatchedFile, parseWatchedFile } from './utils/watchedFile';
 import './App.css';
+
+const THEME_KEY = 'mcu-atlas:theme';
+
+function initialSelectedIdFromUrl(validIds) {
+  const param = new URLSearchParams(window.location.search).get('title');
+  return param && validIds.has(param) ? param : null;
+}
 
 export default function App() {
   const { entries, phases } = mcuData;
@@ -34,11 +42,43 @@ export default function App() {
     reset,
   } = useUserState(validIds);
 
-  const [selectedId, setSelectedId] = useState(null);
+  const [selectedId, setSelectedId] = useState(() => initialSelectedIdFromUrl(validIds));
   const [modalMinimized, setModalMinimized] = useState(false);
   const [syncOpen, setSyncOpen] = useState(false);
+  const [viewMode, setViewMode] = useState('tree');
+  const [filters, setFilters] = useState({ hideWatched: false, type: 'all' });
+  const [theme, setTheme] = useState(() => (localStorage.getItem(THEME_KEY) === 'light' ? 'light' : 'dark'));
   const sync = useGoogleDriveSync(validIds);
   const isMobile = useIsMobile();
+
+  // Keeps a title shareable/bookmarkable without pushing a history entry
+  // per click — deep links only need the final URL to be correct.
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    if (selectedId) url.searchParams.set('title', selectedId);
+    else url.searchParams.delete('title');
+    window.history.replaceState(null, '', url);
+  }, [selectedId]);
+
+  const toggleTheme = useCallback(() => {
+    setTheme((prev) => {
+      const next = prev === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem(THEME_KEY, next);
+      return next;
+    });
+  }, []);
+
+  const filteredEntries = useMemo(() => {
+    return entries.filter((e) => {
+      if (filters.hideWatched && watched.has(e.id)) return false;
+      if (filters.type !== 'all' && e.type !== filters.type) return false;
+      return true;
+    });
+  }, [entries, filters, watched]);
+
+  const upNext = useMemo(() => getUpNext(entries, watched, watching, { limit: 6 }), [entries, watched, watching]);
+  const watchOrder = useMemo(() => computeWatchOrder(filteredEntries), [filteredEntries]);
 
   const handleSelect = useCallback((id) => {
     setSelectedId(id);
@@ -100,16 +140,34 @@ export default function App() {
         onAddUser={addUser}
         onRenameUser={renameUser}
         onRemoveUser={removeUser}
+        upNext={upNext}
+        viewMode={viewMode}
+        onSetViewMode={setViewMode}
+        filters={filters}
+        onSetFilters={setFilters}
+        theme={theme}
+        onToggleTheme={toggleTheme}
       />
       <div className="layout">
-        <GraphView
-          entries={entries}
-          phases={phases}
-          watched={watched}
-          watching={watching}
-          selectedId={selectedId}
-          onSelect={handleSelect}
-        />
+        {viewMode === 'tree' ? (
+          <GraphView
+            entries={filteredEntries}
+            phases={phases}
+            watched={watched}
+            watching={watching}
+            selectedId={selectedId}
+            onSelect={handleSelect}
+            themeName={theme}
+          />
+        ) : (
+          <WatchOrderList
+            entries={watchOrder}
+            watched={watched}
+            watching={watching}
+            selectedId={selectedId}
+            onSelect={handleSelect}
+          />
+        )}
         {!isMobile && (
           <DetailPanel
             entry={selectedEntry}
