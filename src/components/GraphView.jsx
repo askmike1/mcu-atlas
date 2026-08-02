@@ -314,7 +314,6 @@ export default function GraphView({ entries, phases, watched, watching, selected
       elements: buildElements(entries, phases, grid),
       style: buildStyle(THEME),
       layout: layoutFor(grid.positions),
-      wheelSensitivity: 0.25,
       minZoom: 0.15,
       maxZoom: 3,
       // Nodes are fixed grid cells, not draggable — without this, a
@@ -325,6 +324,9 @@ export default function GraphView({ entries, phases, watched, watching, selected
       // the whole width, leaving almost no empty space to grab on mobile.
       // We replace it with manual panning below that works from anywhere.
       userPanningEnabled: false,
+      // Plain wheel/trackpad scroll should scroll the tree, not zoom it —
+      // zoom is remapped to pinch/ctrl+wheel below.
+      userZoomingEnabled: false,
     });
 
     cy.on('tap', 'node.movie', (evt) => onSelect(evt.target.id()));
@@ -348,6 +350,26 @@ export default function GraphView({ entries, phases, watched, watching, selected
       panFrom = null;
     });
 
+    // Plain wheel / two-finger trackpad scroll pans the tree vertically,
+    // matching normal page-scroll direction. Pinch-to-zoom (and ctrl+wheel)
+    // still zoom, since both are delivered as wheel events with ctrlKey set.
+    function normalizeDeltaY(evt) {
+      if (evt.deltaMode === 1) return evt.deltaY * 20; // DOM_DELTA_LINE
+      if (evt.deltaMode === 2) return evt.deltaY * containerRef.current.clientHeight; // DOM_DELTA_PAGE
+      return evt.deltaY;
+    }
+    function onWheel(evt) {
+      evt.preventDefault();
+      if (evt.ctrlKey) {
+        const factor = evt.deltaY < 0 ? 1.1 : 1 / 1.1;
+        const level = Math.max(cy.minZoom(), Math.min(cy.maxZoom(), cy.zoom() * factor));
+        cy.zoom({ level, renderedPosition: { x: evt.offsetX, y: evt.offsetY } });
+      } else {
+        cy.panBy({ x: 0, y: -normalizeDeltaY(evt) });
+      }
+    }
+    containerRef.current.addEventListener('wheel', onWheel, { passive: false });
+
     cyRef.current = cy;
 
     let lastWidth = initialWidth;
@@ -370,6 +392,7 @@ export default function GraphView({ entries, phases, watched, watching, selected
 
     return () => {
       resizeObserver.disconnect();
+      containerRef.current?.removeEventListener('wheel', onWheel);
       cy.destroy();
       cyRef.current = null;
     };
