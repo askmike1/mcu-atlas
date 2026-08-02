@@ -173,6 +173,20 @@ export default function App() {
           fileName={sync.fileName}
         />
       )}
+      <footer className="app-footer">
+        <span>
+          MCU Atlas is a fan-made project and is not affiliated with, endorsed by, or sponsored by Marvel, Marvel
+          Studios, or The Walt Disney Company.
+        </span>
+        <span className="app-footer-links">
+          <a href="./privacy.html" target="_blank" rel="noreferrer">
+            Privacy Policy
+          </a>
+          <a href="./terms.html" target="_blank" rel="noreferrer">
+            Terms of Service
+          </a>
+        </span>
+      </footer>
     </div>
   );
 }
