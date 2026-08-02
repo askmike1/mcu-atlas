@@ -95,9 +95,11 @@ function buildElements(entries, phases, grid) {
     classes: `movie ${entry.type}`,
   }));
 
+  const entryIds = new Set(entries.map((e) => e.id));
   const edges = [];
   for (const entry of entries) {
     for (const dep of entry.dependencies) {
+      if (!entryIds.has(dep.id)) continue;
       edges.push({
         data: {
           id: `${dep.id}__${entry.id}`,
