@@ -46,13 +46,23 @@ export function indexEntries(entries) {
 const ORDER_BLOCKING_IMPORTANCE = new Set(['required', 'recommended']);
 const byReleaseDate = (a, b) => a.releaseDate.localeCompare(b.releaseDate);
 
+// Legacy continuity (Marvel Television, Fox's X-Men, Sony's Spider-Man) uses
+// phase <= 0; only phase >= 1 is the actual MCU. Up Next should surface real
+// MCU entries first and only fall back to legacy continuity beneath them.
+const byPhaseThenReleaseDate = (a, b) => {
+  const aLegacy = a.phase <= 0;
+  const bLegacy = b.phase <= 0;
+  if (aLegacy !== bLegacy) return aLegacy ? 1 : -1;
+  return byReleaseDate(a, b);
+};
+
 // Titles the user hasn't started yet, whose blocking prerequisites are all
 // already watched — i.e. what's unlocked and ready to watch right now.
 export function getUpNext(entries, watched, watching, { limit = 6 } = {}) {
   return entries
     .filter((e) => !watched.has(e.id) && !watching.has(e.id))
     .filter((e) => e.dependencies.every((dep) => !ORDER_BLOCKING_IMPORTANCE.has(dep.importance) || watched.has(dep.id)))
-    .sort(byReleaseDate)
+    .sort(byPhaseThenReleaseDate)
     .slice(0, limit);
 }
 
