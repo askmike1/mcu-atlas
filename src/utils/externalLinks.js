@@ -1,3 +1,15 @@
+// A plain substring check (`url.includes('disneyplus.com')`) would also
+// match hosts like "disneyplus.com.evil.example" or paths that merely
+// contain the string — check the actual parsed hostname instead.
+function isDisneyPlusUrl(url) {
+  try {
+    const { hostname } = new URL(url);
+    return hostname === 'disneyplus.com' || hostname.endsWith('.disneyplus.com');
+  } catch {
+    return false;
+  }
+}
+
 // Prefer real, stored URLs (populated via scripts/enrich-data.mjs from
 // Wikipedia/Wikidata) and only fall back to a search link when an entry
 // hasn't been enriched yet. We never guess exact article slugs, title IDs,
@@ -11,7 +23,7 @@ export function buildExternalLinks(entry) {
   const disneyPlusUrl = entry.disneyPlusUrl || `https://www.disneyplus.com/search?q=${titleQuery}`;
   // Some titles (e.g. licensed to another platform) carry a disneyPlusUrl
   // that isn't actually a disneyplus.com link — label those generically.
-  const disneyPlusLabel = entry.disneyPlusUrl && !entry.disneyPlusUrl.includes('disneyplus.com') ? 'Stream' : 'Disney+';
+  const disneyPlusLabel = entry.disneyPlusUrl && !isDisneyPlusUrl(entry.disneyPlusUrl) ? 'Stream' : 'Disney+';
 
   return {
     wikipedia: entry.wikipediaUrl || `https://en.wikipedia.org/wiki/Special:Search?search=${wikiQuery}&go=Go`,
