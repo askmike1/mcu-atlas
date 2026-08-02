@@ -3,6 +3,7 @@ import { IMPORTANCE } from '../utils/mcu';
 import SearchBox from './SearchBox';
 import UserSwitcher from './UserSwitcher';
 import UpNext from './UpNext';
+import logo from '../assets/logo.png';
 
 function SunIcon() {
   return (
@@ -78,7 +79,7 @@ export default function Toolbar({
   return (
     <header className="toolbar">
       <div className="toolbar-title">
-        <h1>MCU Atlas</h1>
+        <img className="toolbar-logo" src={logo} alt="MCU Atlas" />
         <span className="subtitle">Marvel Cinematic Universe dependency map</span>
       </div>
 
