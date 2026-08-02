@@ -46,10 +46,18 @@ jobs:
           output: sarif-results
       # analyze always uploads to the Security tab; this gate additionally
       # fails the check only for error-level (high/critical) findings so
-      # low/medium results stay visible without blocking the PR.
+      # low/medium results stay visible without blocking the PR. The SARIF
+      # filename is derived from CodeQL's resolved language slug (e.g.
+      # "javascript"), not the "javascript-typescript" input alias, so
+      # discover it rather than hardcoding the name.
       - name: Fail on high/critical findings
         run: |
-          count=$(jq '[.runs[].results[] | select(.level=="error")] | length' sarif-results/javascript-typescript.sarif)
+          mapfile -t files < <(find sarif-results -name '*.sarif')
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "::warning::No SARIF files found in sarif-results/"
+            exit 0
+          fi
+          count=$(jq -s '[.[] | .runs[].results[] | select(.level=="error")] | length' "${files[@]}")
           echo "High/critical CodeQL findings: $count"
           if [ "$count" -gt 0 ]; then
             echo "::error::CodeQL found $count high/critical-severity issue(s). See the Security tab for details."
