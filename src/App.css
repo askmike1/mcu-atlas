@@ -228,6 +228,36 @@
   min-height: 0;
 }
 
+/* Footer */
+
+.app-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  padding: 0.55rem 1.25rem;
+  border-top: 1px solid var(--border);
+  background: var(--bg-panel);
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.app-footer-links {
+  display: flex;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.app-footer-links a {
+  color: var(--text-muted);
+}
+
+.app-footer-links a:hover {
+  color: var(--accent);
+}
+
 .graph-canvas {
   flex: 1;
   min-width: 0;
