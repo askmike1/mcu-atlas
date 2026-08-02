@@ -1,0 +1,18 @@
+{
+  "name": "MCU Atlas",
+  "short_name": "MCU Atlas",
+  "description": "Explore dependencies between Marvel Cinematic Universe movies and shows.",
+  "start_url": "/mcu-atlas/",
+  "scope": "/mcu-atlas/",
+  "display": "standalone",
+  "background_color": "#0f1117",
+  "theme_color": "#0f1117",
+  "icons": [
+    {
+      "src": "/mcu-atlas/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

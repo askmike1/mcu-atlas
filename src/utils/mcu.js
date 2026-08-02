@@ -40,3 +40,61 @@ export function indexEntries(entries) {
   }
   return { byId, dependentsOf };
 }
+
+// 'optional' prerequisites (e.g. side-continuity films) never gate ordering
+// or "up next" suggestions — only required/recommended deps do.
+const ORDER_BLOCKING_IMPORTANCE = new Set(['required', 'recommended']);
+const byReleaseDate = (a, b) => a.releaseDate.localeCompare(b.releaseDate);
+
+// Titles the user hasn't started yet, whose blocking prerequisites are all
+// already watched — i.e. what's unlocked and ready to watch right now.
+export function getUpNext(entries, watched, watching, { limit = 6 } = {}) {
+  return entries
+    .filter((e) => !watched.has(e.id) && !watching.has(e.id))
+    .filter((e) => e.dependencies.every((dep) => !ORDER_BLOCKING_IMPORTANCE.has(dep.importance) || watched.has(dep.id)))
+    .sort(byReleaseDate)
+    .slice(0, limit);
+}
+
+// A single recommended viewing order across all entries: a topological sort
+// over required/recommended dependency edges, tie-broken by release date so
+// unrelated titles still fall in chronological order.
+export function computeWatchOrder(entries) {
+  const byId = new Map(entries.map((e) => [e.id, e]));
+  const indegree = new Map(entries.map((e) => [e.id, 0]));
+  const children = new Map(entries.map((e) => [e.id, []]));
+
+  for (const entry of entries) {
+    for (const dep of entry.dependencies) {
+      if (!ORDER_BLOCKING_IMPORTANCE.has(dep.importance) || !byId.has(dep.id)) continue;
+      indegree.set(entry.id, indegree.get(entry.id) + 1);
+      children.get(dep.id).push(entry.id);
+    }
+  }
+
+  const heap = entries.filter((e) => indegree.get(e.id) === 0).sort(byReleaseDate);
+  const order = [];
+  const remaining = new Set(entries.map((e) => e.id));
+
+  while (heap.length > 0) {
+    const next = heap.shift();
+    order.push(next);
+    remaining.delete(next.id);
+    for (const childId of children.get(next.id)) {
+      const left = indegree.get(childId) - 1;
+      indegree.set(childId, left);
+      if (left === 0) {
+        heap.push(byId.get(childId));
+        heap.sort(byReleaseDate);
+      }
+    }
+  }
+
+  // Only reachable with a cyclic dependency graph, which the data shouldn't
+  // ever have — append anything left over rather than dropping it silently.
+  if (remaining.size > 0) {
+    order.push(...entries.filter((e) => remaining.has(e.id)).sort(byReleaseDate));
+  }
+
+  return order;
+}

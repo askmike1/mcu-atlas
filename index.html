@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <link rel="manifest" href="/manifest.webmanifest" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f1117" />
     <title>MCU Atlas</title>
     <meta name="description" content="Explore dependencies between Marvel Cinematic Universe movies and shows." />
     <!--
@@ -19,6 +22,9 @@
       http-equiv="Content-Security-Policy"
       content="default-src 'self'; script-src 'self' https://accounts.google.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://upload.wikimedia.org https://commons.wikimedia.org; connect-src 'self' https://www.googleapis.com https://accounts.google.com https://oauth2.googleapis.com; frame-src https://accounts.google.com; object-src 'none'; base-uri 'self'; form-action 'self';"
     />
+    <!-- Blocking, same-origin: applies a stored light-theme choice before
+         first paint. Must stay an external file — CSP has no 'unsafe-inline'. -->
+    <script src="/theme-init.js"></script>
     <!-- Fixed, hardcoded Google URL — never built from user/runtime input. -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
   </head>

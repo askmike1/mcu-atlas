@@ -11,6 +11,19 @@
   --node-border: #454b60;
 }
 
+:root[data-theme='light'] {
+  color-scheme: light;
+  --bg: #f3f4f8;
+  --bg-panel: #ffffff;
+  --text: #171a23;
+  --text-muted: #5b6172;
+  --border: #d8dbe4;
+  --accent: #3b5fe0;
+  --node-fill: #eef1f8;
+  --node-text: #1b2030;
+  --node-border: #c7ccdb;
+}
+
 * {
   box-sizing: border-box;
 }
