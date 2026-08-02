@@ -1,0 +1,104 @@
+name: PR Security Scan
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-security-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  gitguardian:
+    name: Secrets (GitGuardian)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: GitGuardian/ggshield-action@v1
+        env:
+          GITHUB_PUSH_BEFORE_SHA: ${{ github.event.before }}
+          GITHUB_PUSH_BASE_SHA: ${{ github.event.base }}
+          GITHUB_PULL_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          GITHUB_DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          GITGUARDIAN_API_KEY: ${{ secrets.GITGUARDIAN_API_KEY }}
+
+  codeql:
+    name: SAST (CodeQL)
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: github/codeql-action/init@v3
+        with:
+          languages: javascript-typescript
+          build-mode: none
+      - uses: github/codeql-action/analyze@v3
+        with:
+          category: '/language:javascript-typescript'
+          output: sarif-results
+      # analyze always uploads to the Security tab; this gate additionally
+      # fails the check only for error-level (high/critical) findings so
+      # low/medium results stay visible without blocking the PR.
+      - name: Fail on high/critical findings
+        run: |
+          count=$(jq '[.runs[].results[] | select(.level=="error")] | length' sarif-results/javascript-typescript.sarif)
+          echo "High/critical CodeQL findings: $count"
+          if [ "$count" -gt 0 ]; then
+            echo "::error::CodeQL found $count high/critical-severity issue(s). See the Security tab for details."
+            exit 1
+          fi
+
+  semgrep:
+    name: SAST (Semgrep)
+    runs-on: ubuntu-latest
+    container:
+      image: semgrep/semgrep
+    permissions:
+      contents: read
+      security-events: write
+    steps:
+      - uses: actions/checkout@v4
+      - run: semgrep scan --config auto --sarif --output semgrep-results.sarif
+      - uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: semgrep-results.sarif
+      # Semgrep severities map to SARIF levels ERROR/WARNING/INFO; only
+      # ERROR (high/critical) blocks the PR, same policy as the CodeQL gate.
+      - name: Fail on high/critical findings
+        run: |
+          count=$(jq '[.runs[].results[] | select(.level=="error")] | length' semgrep-results.sarif)
+          echo "High/critical Semgrep findings: $count"
+          if [ "$count" -gt 0 ]; then
+            echo "::error::Semgrep found $count high/critical-severity issue(s). See the Security tab for details."
+            exit 1
+          fi
+
+  sca:
+    name: SCA (npm audit)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Full audit report (non-blocking)
+        if: always()
+        run: npm audit --json > npm-audit.json || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: npm-audit-report
+          path: npm-audit.json
+      - name: Fail on high/critical vulnerabilities
+        run: npm audit --audit-level=high
