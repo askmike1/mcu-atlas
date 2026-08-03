@@ -15,6 +15,33 @@
 // - The access token this returns is short-lived and is never written to
 //   storage by this module — see useGoogleDriveSync for how it's held.
 
+interface GoogleTokenResponse {
+  error?: string;
+  error_description?: string;
+  access_token: string;
+}
+
+interface GoogleTokenClient {
+  requestAccessToken(): void;
+}
+
+declare global {
+  interface Window {
+    google?: {
+      accounts: {
+        oauth2: {
+          initTokenClient(config: {
+            client_id: string;
+            scope: string;
+            callback: (response: GoogleTokenResponse) => void;
+            error_callback: (err: { message?: string }) => void;
+          }): GoogleTokenClient;
+        };
+      };
+    };
+  }
+}
+
 const DRIVE_FILES_URL = 'https://www.googleapis.com/drive/v3/files';
 const DRIVE_UPLOAD_URL = 'https://www.googleapis.com/upload/drive/v3/files';
 const DRIVE_SCOPE = 'https://www.googleapis.com/auth/drive.file';
@@ -24,7 +51,7 @@ export const FILE_NAME = 'mcu-atlas-progress.json';
 // The GIS <script> tag in index.html loads with async/defer, so it may
 // still be in flight the first time a user opens the sync dialog — poll
 // briefly for window.google.accounts.oauth2 rather than assuming it's ready.
-export function loadGoogleIdentityServices() {
+export function loadGoogleIdentityServices(): Promise<void> {
   if (window.google?.accounts?.oauth2) return Promise.resolve();
   return new Promise((resolve, reject) => {
     const start = Date.now();
@@ -44,10 +71,10 @@ export function loadGoogleIdentityServices() {
 
 // Opens Google's OAuth consent popup and resolves with a short-lived access
 // token scoped to drive.file only.
-export function requestAccessToken(clientId) {
+export function requestAccessToken(clientId: string): Promise<string> {
   return new Promise((resolve, reject) => {
     try {
-      const client = window.google.accounts.oauth2.initTokenClient({
+      const client = window.google!.accounts.oauth2.initTokenClient({
         client_id: clientId,
         scope: DRIVE_SCOPE,
         callback: (response) => {
@@ -63,7 +90,7 @@ export function requestAccessToken(clientId) {
   });
 }
 
-async function driveRequest(url, token, options = {}) {
+async function driveRequest(url: string, token: string, options: RequestInit = {}): Promise<Response> {
   const res = await fetch(url, {
     ...options,
     headers: {
@@ -86,7 +113,7 @@ async function driveRequest(url, token, options = {}) {
 
 // Looks up this app's progress file by name. Because the token only has the
 // drive.file scope, this can only ever see files the app itself created.
-export async function findFile(token) {
+export async function findFile(token: string): Promise<string | null> {
   const q = encodeURIComponent(`name='${FILE_NAME}' and trashed=false`);
   const url = `${DRIVE_FILES_URL}?q=${q}&spaces=drive&fields=files(id,name)&pageSize=1`;
   const res = await driveRequest(url, token);
@@ -94,14 +121,14 @@ export async function findFile(token) {
   return data.files?.[0]?.id ?? null;
 }
 
-export async function downloadFile(token, fileId) {
+export async function downloadFile(token: string, fileId: string): Promise<string> {
   const res = await driveRequest(`${DRIVE_FILES_URL}/${fileId}?alt=media`, token);
   return res.text();
 }
 
 // Creates the file if fileId is null, otherwise updates its contents in
 // place. Returns the file's id.
-export async function uploadFile(token, fileId, contents) {
+export async function uploadFile(token: string, fileId: string | null, contents: string): Promise<string> {
   const boundary = `mcu-atlas-${crypto.randomUUID()}`;
   const metadata = fileId ? {} : { name: FILE_NAME, mimeType: 'application/json' };
   const body =

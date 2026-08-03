@@ -1,3 +1,16 @@
+import type { SyncStatus } from '../hooks/useGoogleDriveSync';
+
+interface GoogleDriveSyncDialogProps {
+  onClose: () => void;
+  connected: boolean;
+  status: SyncStatus;
+  onConnect: () => void;
+  onLoad: () => void;
+  onSave: () => void;
+  watchedCount: number;
+  fileName: string;
+}
+
 export default function GoogleDriveSyncDialog({
   onClose,
   connected,
@@ -7,7 +20,7 @@ export default function GoogleDriveSyncDialog({
   onSave,
   watchedCount,
   fileName,
-}) {
+}: GoogleDriveSyncDialogProps) {
   const busy = status?.type === 'loading';
 
   return (

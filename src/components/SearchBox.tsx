@@ -1,10 +1,16 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import type { Entry } from '../types';
 
-export default function SearchBox({ entries, onSelect }) {
+interface SearchBoxProps {
+  entries: Entry[];
+  onSelect: (id: string) => void;
+}
+
+export default function SearchBox({ entries, onSelect }: SearchBoxProps) {
   const [query, setQuery] = useState('');
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -16,8 +22,8 @@ export default function SearchBox({ entries, onSelect }) {
   }, [entries, query]);
 
   useEffect(() => {
-    function handleClickOutside(evt) {
-      if (containerRef.current && !containerRef.current.contains(evt.target)) {
+    function handleClickOutside(evt: MouseEvent) {
+      if (containerRef.current && !containerRef.current.contains(evt.target as Node)) {
         setOpen(false);
       }
     }
@@ -25,14 +31,14 @@ export default function SearchBox({ entries, onSelect }) {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const pick = (entry) => {
+  const pick = (entry: Entry) => {
     onSelect(entry.id);
     setQuery('');
     setOpen(false);
     setActiveIndex(-1);
   };
 
-  const handleKeyDown = (evt) => {
+  const handleKeyDown = (evt: React.KeyboardEvent<HTMLInputElement>) => {
     if (evt.key === 'Escape') {
       setOpen(false);
       return;

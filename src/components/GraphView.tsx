@@ -1,11 +1,12 @@
 import { useEffect, useMemo, useRef } from 'react';
-import cytoscape from 'cytoscape';
+import cytoscape, { type ElementDefinition, type StylesheetJson } from 'cytoscape';
 import { IMPORTANCE, PHASE_COLORS } from '../utils/mcu';
+import type { Entry, Phase, Theme } from '../types';
 
 // Ring color must match the page background so the badge reads as a cutout
 // rather than a hard-edged circle sitting on top of the node — it has to be
 // regenerated per theme rather than baked in as a static constant.
-const checkBadge = (ringColor) =>
+const checkBadge = (ringColor: string) =>
   `data:image/svg+xml;utf8,${encodeURIComponent(
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">' +
       `<circle cx="10" cy="10" r="9.5" fill="#22c55e" stroke="${ringColor}" stroke-width="1"/>` +
@@ -21,7 +22,7 @@ const SHOW_BADGE = `data:image/svg+xml;utf8,${encodeURIComponent(
     '</svg>'
 )}`;
 
-const watchingBadge = (ringColor) =>
+const watchingBadge = (ringColor: string) =>
   `data:image/svg+xml;utf8,${encodeURIComponent(
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">' +
       `<circle cx="10" cy="10" r="9.5" fill="#f59e0b" stroke="${ringColor}" stroke-width="1"/>` +
@@ -43,7 +44,13 @@ const PREFERRED_PER_ROW = 4;
 const MIN_NODE_W = 150;
 const MAX_NODE_W = 320;
 
-function computeGrid(entries, phases, containerWidth) {
+interface Grid {
+  positions: Map<string, { x: number; y: number }>;
+  nodeW: number;
+  nodeTextW: number;
+}
+
+function computeGrid(entries: Entry[], phases: Phase[], containerWidth: number): Grid {
   const availableWidth = Math.max((containerWidth || 900) - OUTER_PADDING * 2, MIN_NODE_W);
   const itemsPerRow = Math.max(
     1,
@@ -53,7 +60,7 @@ function computeGrid(entries, phases, containerWidth) {
   const nodeW = Math.min(MAX_NODE_W, Math.max(MIN_NODE_W, cellW - MIN_GAP));
   const nodeTextW = Math.max(nodeW - 20, 60);
 
-  const positions = new Map();
+  const positions = new Map<string, { x: number; y: number }>();
   let y = TOP_PADDING;
 
   for (const phase of phases) {
@@ -77,14 +84,14 @@ function computeGrid(entries, phases, containerWidth) {
   return { positions, nodeW, nodeTextW };
 }
 
-function buildElements(entries, phases, grid) {
-  const phaseNodes = phases.map((phase) => ({
+function buildElements(entries: Entry[], phases: Phase[], grid: Grid): ElementDefinition[] {
+  const phaseNodes: ElementDefinition[] = phases.map((phase) => ({
     data: { id: `phase-${phase.number}`, label: phase.name, phaseColor: PHASE_COLORS[phase.number] ?? '#8b93a7' },
     classes: 'phase-parent',
     selectable: false,
   }));
 
-  const movieNodes = entries.map((entry) => ({
+  const movieNodes: ElementDefinition[] = entries.map((entry) => ({
     data: {
       id: entry.id,
       label: entry.title,
@@ -96,7 +103,7 @@ function buildElements(entries, phases, grid) {
   }));
 
   const entryIds = new Set(entries.map((e) => e.id));
-  const edges = [];
+  const edges: ElementDefinition[] = [];
   for (const entry of entries) {
     for (const dep of entry.dependencies) {
       if (!entryIds.has(dep.id)) continue;
@@ -115,13 +122,20 @@ function buildElements(entries, phases, grid) {
   return [...phaseNodes, ...movieNodes, ...edges];
 }
 
+interface CyTheme {
+  bg: string;
+  nodeFill: string;
+  nodeText: string;
+  nodeBorder: string;
+}
+
 // Cytoscape can't read CSS custom properties directly, so its palette is
 // re-derived from the live computed values on <html> whenever the theme
 // toggles — this keeps it in sync with index.css instead of duplicating hex
 // values that could drift out of sync with the light/dark variable blocks.
-function readTheme() {
+function readTheme(): CyTheme {
   const styles = getComputedStyle(document.documentElement);
-  const read = (name, fallback) => styles.getPropertyValue(name).trim() || fallback;
+  const read = (name: string, fallback: string) => styles.getPropertyValue(name).trim() || fallback;
   return {
     bg: read('--bg', '#0f1117'),
     nodeFill: read('--node-fill', '#2b3040'),
@@ -130,7 +144,13 @@ function readTheme() {
   };
 }
 
-function buildStyle(theme, badges) { return [
+interface Badges {
+  show: string;
+  check: string;
+  watching: string;
+}
+
+function buildStyle(theme: CyTheme, badges: Badges): StylesheetJson { return [
   {
     selector: 'node.phase-parent',
     style: {
@@ -294,10 +314,10 @@ function buildStyle(theme, badges) { return [
   },
 ]; }
 
-function layoutFor(positions) {
+function layoutFor(positions: Map<string, { x: number; y: number }>) {
   return {
     name: 'preset',
-    positions: (node) => (node.hasClass('movie') ? positions.get(node.id()) : undefined),
+    positions: (node: cytoscape.NodeSingular) => (node.hasClass('movie') ? positions.get(node.id()) : undefined),
     zoom: 1,
     pan: { x: 0, y: 0 },
     fit: false,
@@ -305,13 +325,23 @@ function layoutFor(positions) {
   };
 }
 
-export default function GraphView({ entries, phases, watched, watching, selectedId, onSelect, themeName }) {
-  const containerRef = useRef(null);
-  const cyRef = useRef(null);
+interface GraphViewProps {
+  entries: Entry[];
+  phases: Phase[];
+  watched: Set<string>;
+  watching: Set<string>;
+  selectedId: string | null;
+  onSelect: (id: string | null) => void;
+  themeName: Theme;
+}
+
+export default function GraphView({ entries, phases, watched, watching, selectedId, onSelect, themeName }: GraphViewProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const cyRef = useRef<cytoscape.Core | null>(null);
 
   const { dependenciesOf, dependentsOf } = useMemo(() => {
-    const dependenciesOf = new Map();
-    const dependentsOf = new Map();
+    const dependenciesOf = new Map<string, Entry['dependencies']>();
+    const dependentsOf = new Map<string, string[]>();
     for (const entry of entries) {
       dependenciesOf.set(entry.id, entry.dependencies);
       if (!dependentsOf.has(entry.id)) dependentsOf.set(entry.id, []);
@@ -319,21 +349,22 @@ export default function GraphView({ entries, phases, watched, watching, selected
     for (const entry of entries) {
       for (const dep of entry.dependencies) {
         if (!dependentsOf.has(dep.id)) dependentsOf.set(dep.id, []);
-        dependentsOf.get(dep.id).push(entry.id);
+        dependentsOf.get(dep.id)!.push(entry.id);
       }
     }
     return { dependenciesOf, dependentsOf };
   }, [entries]);
 
   useEffect(() => {
-    const initialWidth = containerRef.current.getBoundingClientRect().width;
+    const container = containerRef.current!;
+    const initialWidth = container.getBoundingClientRect().width;
     const grid = computeGrid(entries, phases, initialWidth);
 
     const theme = readTheme();
     const badges = { show: SHOW_BADGE, check: checkBadge(theme.bg), watching: watchingBadge(theme.bg) };
 
     const cy = cytoscape({
-      container: containerRef.current,
+      container,
       elements: buildElements(entries, phases, grid),
       style: buildStyle(theme, badges),
       layout: layoutFor(grid.positions),
@@ -359,7 +390,7 @@ export default function GraphView({ entries, phases, watched, watching, selected
 
     // Phase boxes always span the full container width, so there's nothing
     // to see by panning sideways — lock dragging to vertical-only.
-    let panFrom = null;
+    let panFrom: { x: number; y: number } | null = null;
     cy.on('tapstart', (evt) => {
       panFrom = { x: evt.renderedPosition.x, y: evt.renderedPosition.y };
     });
@@ -376,12 +407,12 @@ export default function GraphView({ entries, phases, watched, watching, selected
     // Plain wheel / two-finger trackpad scroll pans the tree vertically,
     // matching normal page-scroll direction. Pinch-to-zoom (and ctrl+wheel)
     // still zoom, since both are delivered as wheel events with ctrlKey set.
-    function normalizeDeltaY(evt) {
+    function normalizeDeltaY(evt: WheelEvent) {
       if (evt.deltaMode === 1) return evt.deltaY * 20; // DOM_DELTA_LINE
-      if (evt.deltaMode === 2) return evt.deltaY * containerRef.current.clientHeight; // DOM_DELTA_PAGE
+      if (evt.deltaMode === 2) return evt.deltaY * container.clientHeight; // DOM_DELTA_PAGE
       return evt.deltaY;
     }
-    function onWheel(evt) {
+    function onWheel(evt: WheelEvent) {
       evt.preventDefault();
       if (evt.ctrlKey) {
         const factor = evt.deltaY < 0 ? 1.1 : 1 / 1.1;
@@ -391,7 +422,7 @@ export default function GraphView({ entries, phases, watched, watching, selected
         cy.panBy({ x: 0, y: -normalizeDeltaY(evt) });
       }
     }
-    containerRef.current.addEventListener('wheel', onWheel, { passive: false });
+    container.addEventListener('wheel', onWheel, { passive: false });
 
     cyRef.current = cy;
 
@@ -411,11 +442,11 @@ export default function GraphView({ entries, phases, watched, watching, selected
       });
       cy.layout(layoutFor(newGrid.positions)).run();
     });
-    resizeObserver.observe(containerRef.current);
+    resizeObserver.observe(container);
 
     return () => {
       resizeObserver.disconnect();
-      containerRef.current?.removeEventListener('wheel', onWheel);
+      container.removeEventListener('wheel', onWheel);
       cy.destroy();
       cyRef.current = null;
     };
@@ -439,8 +470,8 @@ export default function GraphView({ entries, phases, watched, watching, selected
       // an empty selection instead of highlighting/centering on nothing.
       const selNode = selectedId ? cy.$id(selectedId) : null;
       if (selNode && selNode.nonempty()) {
-        const depIds = new Set((dependenciesOf.get(selectedId) || []).map((d) => d.id));
-        const dependentIds = new Set(dependentsOf.get(selectedId) || []);
+        const depIds = new Set((dependenciesOf.get(selectedId!) || []).map((d) => d.id));
+        const dependentIds = new Set(dependentsOf.get(selectedId!) || []);
 
         selNode.addClass('selected');
 
@@ -461,7 +492,7 @@ export default function GraphView({ entries, phases, watched, watching, selected
         // Center vertically only — panning is locked to vertical-only, so
         // leave the x pan untouched (always 0) rather than letting the
         // built-in `center` animation shift it sideways.
-        const viewportH = containerRef.current.clientHeight;
+        const viewportH = containerRef.current!.clientHeight;
         const targetY = viewportH / 2 - selNode.position('y') * cy.zoom();
         cy.animate({ pan: { x: cy.pan().x, y: targetY } }, { duration: 200 });
       }
@@ -480,7 +511,7 @@ export default function GraphView({ entries, phases, watched, watching, selected
   }, [themeName]);
 
   useEffect(() => {
-    function onKeyDown(evt) {
+    function onKeyDown(evt: KeyboardEvent) {
       if (evt.key === 'Escape') onSelect(null);
     }
     window.addEventListener('keydown', onKeyDown);

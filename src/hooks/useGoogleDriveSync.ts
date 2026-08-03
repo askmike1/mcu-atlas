@@ -8,6 +8,7 @@ import {
   uploadFile,
 } from '../utils/googleDriveSync';
 import { buildExportPayload, parseExportPayloadObject } from '../utils/watchedFile';
+import type { UsersState } from '../types';
 
 const FILE_ID_KEY = 'mcu-atlas:google-file-id';
 
@@ -17,7 +18,9 @@ const FILE_ID_KEY = 'mcu-atlas:google-file-id';
 // fine to ship this hardcoded rather than asking each user to create one.
 const CLIENT_ID = '794102509102-pm7q1ksi0rc1td12onpjnc9nni2ehr5p.apps.googleusercontent.com';
 
-export function useGoogleDriveSync(validIds) {
+export type SyncStatus = { type: 'loading' | 'ok' | 'error'; message: string } | null;
+
+export function useGoogleDriveSync(validIds: Set<string>) {
   const [fileId, setFileId] = useState(() => localStorage.getItem(FILE_ID_KEY) || '');
   // The OAuth access token is deliberately kept only in this component's
   // state, never persisted to localStorage — it's a short-lived credential
@@ -25,7 +28,7 @@ export function useGoogleDriveSync(validIds) {
   // future bug or a browser extension inspecting storage. Reconnecting is a
   // one-click popup, so there's little cost to not remembering it.
   const [token, setToken] = useState('');
-  const [status, setStatus] = useState(null);
+  const [status, setStatus] = useState<SyncStatus>(null);
 
   useEffect(() => {
     if (fileId) localStorage.setItem(FILE_ID_KEY, fileId);
@@ -40,7 +43,7 @@ export function useGoogleDriveSync(validIds) {
       setToken(accessToken);
       setStatus({ type: 'ok', message: 'Connected to Google Drive.' });
     } catch (err) {
-      setStatus({ type: 'error', message: err.message });
+      setStatus({ type: 'error', message: (err as Error).message });
     }
   }, []);
 
@@ -56,7 +59,7 @@ export function useGoogleDriveSync(validIds) {
       const text = await downloadFile(token, id);
       const data = JSON.parse(text);
       const result = parseExportPayloadObject(data, validIds);
-      const count = result.users
+      const count = 'users' in result
         ? result.users.reduce((sum, u) => sum + Object.keys(u.status).length, 0)
         : Object.keys(result.status).length;
       setStatus({
@@ -65,13 +68,13 @@ export function useGoogleDriveSync(validIds) {
       });
       return result;
     } catch (err) {
-      setStatus({ type: 'error', message: err.message });
+      setStatus({ type: 'error', message: (err as Error).message });
       throw err;
     }
   }, [fileId, token, validIds]);
 
   const save = useCallback(
-    async (usersState) => {
+    async (usersState: UsersState) => {
       setStatus({ type: 'loading', message: 'Saving to Google Drive…' });
       try {
         const id = fileId || (await findFile(token));
@@ -84,7 +87,7 @@ export function useGoogleDriveSync(validIds) {
           message: `Saved progress for ${userCount} user${userCount === 1 ? '' : 's'} to Google Drive.`,
         });
       } catch (err) {
-        setStatus({ type: 'error', message: err.message });
+        setStatus({ type: 'error', message: (err as Error).message });
         throw err;
       }
     },
