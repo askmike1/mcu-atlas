@@ -1,22 +1,23 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import type { UsersState, WatchStatus } from '../types';
 
 const STORAGE_KEY = 'mcu-atlas:users';
 const LEGACY_WATCHED_KEY = 'mcu-atlas:watched';
 const SCHEMA_VERSION = 2;
 
-function makeId() {
+function makeId(): string {
   return `user-${crypto.randomUUID()}`;
 }
 
 // Pre-multi-user installs kept a flat array of watched ids under a
 // different key — fold that into the default "Me" user on first load.
-function migrateLegacyWatched() {
+function migrateLegacyWatched(): Record<string, WatchStatus> {
   try {
     const raw = localStorage.getItem(LEGACY_WATCHED_KEY);
     if (!raw) return {};
     const arr = JSON.parse(raw);
     if (!Array.isArray(arr)) return {};
-    const status = {};
+    const status: Record<string, WatchStatus> = {};
     for (const id of arr) {
       if (typeof id === 'string') status[id] = 'watched';
     }
@@ -26,18 +27,18 @@ function migrateLegacyWatched() {
   }
 }
 
-function loadState() {
+function loadState(): UsersState {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (raw) {
       const data = JSON.parse(raw);
       if (data && Array.isArray(data.users) && data.users.length > 0) {
-        const users = data.users.map((u) => ({
+        const users = data.users.map((u: { id: string; name?: string; status?: Record<string, WatchStatus> }) => ({
           id: u.id,
           name: typeof u.name === 'string' && u.name ? u.name : 'Me',
           status: u.status && typeof u.status === 'object' ? u.status : {},
         }));
-        const currentUserId = users.some((u) => u.id === data.currentUserId) ? data.currentUserId : users[0].id;
+        const currentUserId = users.some((u: { id: string }) => u.id === data.currentUserId) ? data.currentUserId : users[0].id;
         return { currentUserId, users };
       }
     }
@@ -47,7 +48,7 @@ function loadState() {
   return { currentUserId: 'me', users: [{ id: 'me', name: 'Me', status: migrateLegacyWatched() }] };
 }
 
-export function useUserState(validIds) {
+export function useUserState(validIds: Set<string>) {
   const [state, setState] = useState(loadState);
 
   useEffect(() => {
@@ -56,11 +57,11 @@ export function useUserState(validIds) {
 
   const currentUser = state.users.find((u) => u.id === state.currentUserId) ?? state.users[0];
 
-  const switchUser = useCallback((id) => {
+  const switchUser = useCallback((id: string) => {
     setState((prev) => (prev.users.some((u) => u.id === id) ? { ...prev, currentUserId: id } : prev));
   }, []);
 
-  const addUser = useCallback((name) => {
+  const addUser = useCallback((name: string) => {
     const trimmed = name.trim();
     if (!trimmed) return;
     const id = makeId();
@@ -70,7 +71,7 @@ export function useUserState(validIds) {
     }));
   }, []);
 
-  const renameUser = useCallback((id, name) => {
+  const renameUser = useCallback((id: string, name: string) => {
     const trimmed = name.trim();
     if (!trimmed) return;
     setState((prev) => ({
@@ -79,7 +80,7 @@ export function useUserState(validIds) {
     }));
   }, []);
 
-  const removeUser = useCallback((id) => {
+  const removeUser = useCallback((id: string) => {
     setState((prev) => {
       if (prev.users.length <= 1) return prev;
       const users = prev.users.filter((u) => u.id !== id);
@@ -88,7 +89,7 @@ export function useUserState(validIds) {
     });
   }, []);
 
-  const setStatus = useCallback((entryId, status) => {
+  const setStatus = useCallback((entryId: string, status: WatchStatus | null) => {
     setState((prev) => ({
       ...prev,
       users: prev.users.map((u) => {
@@ -102,12 +103,12 @@ export function useUserState(validIds) {
   }, []);
 
   const replaceCurrentUserStatus = useCallback(
-    (statusMap) => {
+    (statusMap: Record<string, WatchStatus>) => {
       setState((prev) => ({
         ...prev,
         users: prev.users.map((u) => {
           if (u.id !== prev.currentUserId) return u;
-          const nextStatus = {};
+          const nextStatus: Record<string, WatchStatus> = {};
           for (const [id, status] of Object.entries(statusMap)) {
             if (validIds.has(id) && (status === 'watched' || status === 'watching')) nextStatus[id] = status;
           }
@@ -118,7 +119,7 @@ export function useUserState(validIds) {
     [validIds]
   );
 
-  const importUsers = useCallback((newUsers, newCurrentUserId) => {
+  const importUsers = useCallback((newUsers: UsersState['users'], newCurrentUserId: string) => {
     setState(() => {
       const users = newUsers.map((u) => ({
         id: u.id,
@@ -148,7 +149,7 @@ export function useUserState(validIds) {
     () => new Set(Object.keys(currentUser.status).filter((id) => currentUser.status[id] === 'watching')),
     [currentUser]
   );
-  const statusOf = useCallback((id) => currentUser.status[id] ?? null, [currentUser]);
+  const statusOf = useCallback((id: string) => currentUser.status[id] ?? null, [currentUser]);
 
   return {
     users: state.users,

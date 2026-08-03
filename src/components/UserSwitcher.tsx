@@ -1,4 +1,15 @@
-export default function UserSwitcher({ users, currentUserId, onSwitch, onAdd, onRename, onRemove }) {
+import type { User } from '../types';
+
+interface UserSwitcherProps {
+  users: User[];
+  currentUserId: string;
+  onSwitch: (id: string) => void;
+  onAdd: (name: string) => void;
+  onRename: (id: string, name: string) => void;
+  onRemove: (id: string) => void;
+}
+
+export default function UserSwitcher({ users, currentUserId, onSwitch, onAdd, onRename, onRemove }: UserSwitcherProps) {
   const currentUser = users.find((u) => u.id === currentUserId);
 
   const handleAdd = () => {

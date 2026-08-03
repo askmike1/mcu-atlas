@@ -1,7 +1,9 @@
+import type { Entry } from '../types';
+
 // A plain substring check (`url.includes('disneyplus.com')`) would also
 // match hosts like "disneyplus.com.evil.example" or paths that merely
 // contain the string — check the actual parsed hostname instead.
-function isDisneyPlusUrl(url) {
+function isDisneyPlusUrl(url: string): boolean {
   try {
     const { hostname } = new URL(url);
     return hostname === 'disneyplus.com' || hostname.endsWith('.disneyplus.com');
@@ -10,12 +12,20 @@ function isDisneyPlusUrl(url) {
   }
 }
 
+export interface ExternalLinks {
+  wikipedia: string;
+  imdb: string;
+  disneyPlus: string;
+  disneyPlusLabel: string;
+  fandom: string;
+}
+
 // Prefer real, stored URLs (populated via scripts/enrich-data.mjs from
 // Wikipedia/Wikidata) and only fall back to a search link when an entry
 // hasn't been enriched yet. We never guess exact article slugs, title IDs,
 // or Disney+'s opaque entity UUIDs — a wrong guess is a broken/misleading
 // link, while a search query always lands somewhere useful.
-export function buildExternalLinks(entry) {
+export function buildExternalLinks(entry: Entry): ExternalLinks {
   const kind = entry.type === 'show' ? 'TV series' : 'film';
   const wikiQuery = encodeURIComponent(`${entry.title} ${kind}`);
   const titleQuery = encodeURIComponent(entry.title);
@@ -39,12 +49,12 @@ export function buildExternalLinks(entry) {
 // Local poster convention: drop an image at public/posters/<id>.jpg (or set
 // entry.posterUrl to any URL you have the rights to use). Falls back to a
 // generated placeholder when neither is present/loadable.
-export function posterSrcFor(entry) {
+export function posterSrcFor(entry: Entry): string {
   if (entry.posterUrl) return entry.posterUrl;
   return `${import.meta.env.BASE_URL}posters/${entry.id}.jpg`;
 }
 
-export function formatRuntime(minutes) {
+export function formatRuntime(minutes: number | undefined): string | null {
   if (!minutes) return null;
   const h = Math.floor(minutes / 60);
   const m = minutes % 60;

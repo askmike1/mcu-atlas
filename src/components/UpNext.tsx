@@ -1,13 +1,19 @@
 import { useEffect, useRef, useState } from 'react';
 import { formatDate } from '../utils/mcu';
+import type { Entry } from '../types';
 
-export default function UpNext({ items, onSelect }) {
+interface UpNextProps {
+  items: Entry[];
+  onSelect: (id: string) => void;
+}
+
+export default function UpNext({ items, onSelect }: UpNextProps) {
   const [open, setOpen] = useState(false);
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    function handleClickOutside(evt) {
-      if (containerRef.current && !containerRef.current.contains(evt.target)) {
+    function handleClickOutside(evt: MouseEvent) {
+      if (containerRef.current && !containerRef.current.contains(evt.target as Node)) {
         setOpen(false);
       }
     }
@@ -15,7 +21,7 @@ export default function UpNext({ items, onSelect }) {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const pick = (id) => {
+  const pick = (id: string) => {
     onSelect(id);
     setOpen(false);
   };

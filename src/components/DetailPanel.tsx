@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { IMPORTANCE, PHASE_COLORS, formatDate, isUpcoming } from '../utils/mcu';
 import { buildExternalLinks, formatRuntime, posterSrcFor } from '../utils/externalLinks';
+import type { Dependent, Entry, Importance, WatchStatus } from '../types';
 
 function FilmIcon() {
   return (
@@ -20,14 +21,14 @@ function TvIcon() {
   );
 }
 
-function Cover({ entry }) {
+function Cover({ entry }: { entry: Entry }) {
   const [failed, setFailed] = useState(false);
   useEffect(() => setFailed(false), [entry.id]);
 
   if (failed) {
     const color = PHASE_COLORS[entry.phase] ?? '#8b93a7';
     return (
-      <div className="cover cover--placeholder" style={{ '--cover-color': color }}>
+      <div className="cover cover--placeholder" style={{ '--cover-color': color } as React.CSSProperties}>
         {entry.type === 'show' ? <TvIcon /> : <FilmIcon />}
       </div>
     );
@@ -43,7 +44,7 @@ function Cover({ entry }) {
   );
 }
 
-function EyeIcon({ revealed }) {
+function EyeIcon({ revealed }: { revealed: boolean }) {
   return revealed ? (
     <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2">
       <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z" />
@@ -58,13 +59,27 @@ function EyeIcon({ revealed }) {
   );
 }
 
-function ImportanceBadge({ importance }) {
+function ImportanceBadge({ importance }: { importance: Importance }) {
   const meta = IMPORTANCE[importance];
   return (
-    <span className="badge" style={{ '--badge-color': meta.color }}>
+    <span className="badge" style={{ '--badge-color': meta.color } as React.CSSProperties}>
       {meta.shortLabel}
     </span>
   );
+}
+
+interface DetailPanelProps {
+  entry: Entry | null | undefined;
+  byId: Map<string, Entry>;
+  dependents: Map<string, Dependent[]>;
+  watched: Set<string>;
+  watching: Set<string>;
+  statusOf: (id: string) => WatchStatus | null;
+  onSetStatus: (id: string, status: WatchStatus | null) => void;
+  onSelect: (id: string) => void;
+  onClose: () => void;
+  onMinimize?: () => void;
+  phaseNames: Map<number, string>;
 }
 
 export default function DetailPanel({
@@ -79,8 +94,8 @@ export default function DetailPanel({
   onClose,
   onMinimize,
   phaseNames,
-}) {
-  const [revealed, setRevealed] = useState(() => new Set());
+}: DetailPanelProps) {
+  const [revealed, setRevealed] = useState(() => new Set<string>());
 
   if (!entry) {
     return (
@@ -91,8 +106,8 @@ export default function DetailPanel({
     );
   }
 
-  const noteKey = (depId) => `${entry.id}:${depId}`;
-  const toggleReveal = (depId) => {
+  const noteKey = (depId: string) => `${entry.id}:${depId}`;
+  const toggleReveal = (depId: string) => {
     setRevealed((prev) => {
       const next = new Set(prev);
       const key = noteKey(depId);

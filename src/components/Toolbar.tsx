@@ -4,6 +4,7 @@ import SearchBox from './SearchBox';
 import UserSwitcher from './UserSwitcher';
 import UpNext from './UpNext';
 import logo from '../assets/logo.png';
+import type { Entry, Filters, Theme, User, ViewMode } from '../types';
 
 function SunIcon() {
   return (
@@ -23,6 +24,30 @@ function MoonIcon() {
       <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z" strokeLinejoin="round" />
     </svg>
   );
+}
+
+interface ToolbarProps {
+  entries: Entry[];
+  onSelectEntry: (id: string) => void;
+  watchedCount: number;
+  totalCount: number;
+  onExport: () => void;
+  onImport: (text: string) => number;
+  onReset: () => void;
+  onOpenSync: () => void;
+  users: User[];
+  currentUserId: string;
+  onSwitchUser: (id: string) => void;
+  onAddUser: (name: string) => void;
+  onRenameUser: (id: string, name: string) => void;
+  onRemoveUser: (id: string) => void;
+  upNext: Entry[];
+  viewMode: ViewMode;
+  onSetViewMode: (mode: ViewMode) => void;
+  filters: Filters;
+  onSetFilters: (filters: Filters) => void;
+  theme: Theme;
+  onToggleTheme: () => void;
 }
 
 export default function Toolbar({
@@ -47,13 +72,13 @@ export default function Toolbar({
   onSetFilters,
   theme,
   onToggleTheme,
-}) {
-  const fileInputRef = useRef(null);
-  const [status, setStatus] = useState(null);
+}: ToolbarProps) {
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [status, setStatus] = useState<{ ok: boolean; message: string } | null>(null);
 
   const handleImportClick = () => fileInputRef.current?.click();
 
-  const handleFileChange = async (evt) => {
+  const handleFileChange = async (evt: React.ChangeEvent<HTMLInputElement>) => {
     const file = evt.target.files?.[0];
     evt.target.value = '';
     if (!file) return;
@@ -62,7 +87,7 @@ export default function Toolbar({
       const count = onImport(text);
       setStatus({ ok: true, message: `Imported ${count} watched title${count === 1 ? '' : 's'}.` });
     } catch (err) {
-      setStatus({ ok: false, message: err.message });
+      setStatus({ ok: false, message: (err as Error).message });
     }
     setTimeout(() => setStatus(null), 5000);
   };
@@ -122,7 +147,7 @@ export default function Toolbar({
           />
           Hide watched
         </label>
-        <select value={filters.type} onChange={(evt) => onSetFilters({ ...filters, type: evt.target.value })}>
+        <select value={filters.type} onChange={(evt) => onSetFilters({ ...filters, type: evt.target.value as Filters['type'] })}>
           <option value="all">All types</option>
           <option value="movie">Movies</option>
           <option value="show">Shows</option>
@@ -141,7 +166,7 @@ export default function Toolbar({
       <div className="toolbar-legend">
         {Object.entries(IMPORTANCE).map(([key, meta]) => (
           <span key={key} className="legend-item">
-            <span className={`legend-swatch legend-swatch--${key}`} style={{ '--badge-color': meta.color }} />
+            <span className={`legend-swatch legend-swatch--${key}`} style={{ '--badge-color': meta.color } as React.CSSProperties} />
             {meta.shortLabel}
           </span>
         ))}

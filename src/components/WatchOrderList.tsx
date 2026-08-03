@@ -1,8 +1,17 @@
 import { useEffect, useRef } from 'react';
 import { PHASE_COLORS, formatDate } from '../utils/mcu';
+import type { Entry } from '../types';
 
-export default function WatchOrderList({ entries, watched, watching, selectedId, onSelect }) {
-  const rowRefs = useRef(new Map());
+interface WatchOrderListProps {
+  entries: Entry[];
+  watched: Set<string>;
+  watching: Set<string>;
+  selectedId: string | null;
+  onSelect: (id: string) => void;
+}
+
+export default function WatchOrderList({ entries, watched, watching, selectedId, onSelect }: WatchOrderListProps) {
+  const rowRefs = useRef(new Map<string, HTMLLIElement | null>());
 
   useEffect(() => {
     if (!selectedId) return;
@@ -18,12 +27,18 @@ export default function WatchOrderList({ entries, watched, watching, selectedId,
           if (entry.id === selectedId) classes.push('watch-order-row--selected');
           if (status) classes.push(`watch-order-row--${status}`);
           return (
-            <li key={entry.id} ref={(el) => rowRefs.current.set(entry.id, el)} className={classes.join(' ')}>
+            <li
+              key={entry.id}
+              ref={(el) => {
+                rowRefs.current.set(entry.id, el);
+              }}
+              className={classes.join(' ')}
+            >
               <button type="button" onClick={() => onSelect(entry.id)}>
                 <span className="watch-order-index">{i + 1}</span>
                 <span
                   className="watch-order-phase"
-                  style={{ '--phase-color': PHASE_COLORS[entry.phase] ?? '#8b93a7' }}
+                  style={{ '--phase-color': PHASE_COLORS[entry.phase] ?? '#8b93a7' } as React.CSSProperties}
                 />
                 <span className="watch-order-title">{entry.title}</span>
                 <span className="watch-order-type">{entry.type === 'show' ? 'Series' : 'Movie'}</span>

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import mcuData from './data/mcu-data.json';
+import mcuDataRaw from './data/mcu-data.json';
 import GraphView from './components/GraphView';
 import WatchOrderList from './components/WatchOrderList';
 import DetailPanel from './components/DetailPanel';
@@ -10,11 +10,14 @@ import { useGoogleDriveSync } from './hooks/useGoogleDriveSync';
 import { useIsMobile } from './hooks/useIsMobile';
 import { indexEntries, getUpNext, computeWatchOrder } from './utils/mcu';
 import { downloadWatchedFile, parseWatchedFile } from './utils/watchedFile';
+import type { Filters, McuData, Theme, ViewMode } from './types';
 import './App.css';
+
+const mcuData = mcuDataRaw as McuData;
 
 const THEME_KEY = 'mcu-atlas:theme';
 
-function initialSelectedIdFromUrl(validIds) {
+function initialSelectedIdFromUrl(validIds: Set<string>): string | null {
   const param = new URLSearchParams(window.location.search).get('title');
   return param && validIds.has(param) ? param : null;
 }
@@ -42,12 +45,12 @@ export default function App() {
     reset,
   } = useUserState(validIds);
 
-  const [selectedId, setSelectedId] = useState(() => initialSelectedIdFromUrl(validIds));
+  const [selectedId, setSelectedId] = useState<string | null>(() => initialSelectedIdFromUrl(validIds));
   const [modalMinimized, setModalMinimized] = useState(false);
   const [syncOpen, setSyncOpen] = useState(false);
-  const [viewMode, setViewMode] = useState('tree');
-  const [filters, setFilters] = useState({ hideWatched: false, type: 'all' });
-  const [theme, setTheme] = useState(() => (localStorage.getItem(THEME_KEY) === 'light' ? 'light' : 'dark'));
+  const [viewMode, setViewMode] = useState<ViewMode>('tree');
+  const [filters, setFilters] = useState<Filters>({ hideWatched: false, type: 'all' });
+  const [theme, setTheme] = useState<Theme>(() => (localStorage.getItem(THEME_KEY) === 'light' ? 'light' : 'dark'));
   const sync = useGoogleDriveSync(validIds);
   const isMobile = useIsMobile();
 
@@ -80,7 +83,7 @@ export default function App() {
   const upNext = useMemo(() => getUpNext(entries, watched, watching, { limit: 6 }), [entries, watched, watching]);
   const watchOrder = useMemo(() => computeWatchOrder(filteredEntries), [filteredEntries]);
 
-  const handleSelect = useCallback((id) => {
+  const handleSelect = useCallback((id: string | null) => {
     setSelectedId(id);
     setModalMinimized(false);
   }, []);
@@ -94,9 +97,9 @@ export default function App() {
   const handleExport = useCallback(() => downloadWatchedFile(exportState()), [exportState]);
 
   const handleImport = useCallback(
-    (text) => {
+    (text: string) => {
       const result = parseWatchedFile(text, validIds);
-      if (result.users) {
+      if ('users' in result) {
         importUsers(result.users, result.currentUserId);
         return result.users.reduce((sum, u) => sum + Object.keys(u.status).length, 0);
       }
@@ -115,7 +118,7 @@ export default function App() {
       .load()
       .then((result) => {
         if (!result) return;
-        if (result.users) importUsers(result.users, result.currentUserId);
+        if ('users' in result) importUsers(result.users, result.currentUserId);
         else replaceCurrentUserStatus(result.status);
       })
       .catch(() => {});
