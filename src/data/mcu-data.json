@@ -343,6 +343,11 @@
           "id": "sony-spider-man-2",
           "importance": "required",
           "note": "Harry Osborn's arc as the new Goblin and Peter's relationships all continue directly from that film."
+        },
+        {
+          "id": "sony-spider-man",
+          "importance": "required",
+          "note": "Peter Parker's Spider-Man is first introduced along with other main characters"
         }
       ],
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Spider-Man_3",
@@ -392,7 +397,18 @@
       "type": "show",
       "releaseDate": "2013-09-24",
       "phase": -2,
-      "dependencies": [],
+      "dependencies": [
+        {
+          "id": "avengers",
+          "importance": "required",
+          "note": "Explains who Agent Phil Coulson is and why his return in the show is a big deal."
+        },
+        {
+          "id": "captain-america-winter-soldier",
+          "importance": "recommended",
+          "note": "Changes the entire plot of the show halfway through Season 1."
+        }
+      ],
       "disneyPlusUrl": "https://www.disneyplus.com/browse/entity-63516dff-91f8-4deb-b110-d22552f329cb",
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Agents_of_S.H.I.E.L.D.",
       "imdbUrl": "https://www.imdb.com/title/tt2364582/",
@@ -664,7 +680,7 @@
         },
         {
           "id": "iron-man-2",
-          "importance": "required",
+          "importance": "recommended",
           "note": "Introduces Black Widow and Nick Fury/S.H.I.E.L.D. as an active organization, both central to the team's formation here."
         },
         {
@@ -679,7 +695,7 @@
         },
         {
           "id": "incredible-hulk",
-          "importance": "recommended",
+          "importance": "optional",
           "note": "Bruce Banner's fugitive status and General Ross's pursuit of him carry directly into his introduction here."
         }
       ],
@@ -759,7 +775,7 @@
         },
         {
           "id": "thor-dark-world",
-          "importance": "recommended",
+          "importance": "optional",
           "note": "Minor continuity around S.H.I.E.L.D.'s post-Avengers operations."
         }
       ],
@@ -819,7 +835,7 @@
         },
         {
           "id": "guardians-of-the-galaxy",
-          "importance": "recommended",
+          "importance": "optional",
           "note": "Deepens the Infinity Stone mythology referenced in Thor's vision."
         }
       ],
@@ -839,7 +855,7 @@
       "dependencies": [
         {
           "id": "avengers-age-of-ultron",
-          "importance": "required",
+          "importance": "optional",
           "note": "Set in the immediate aftermath, with a cameo from an Avenger tied to the team's new headquarters."
         }
       ],
@@ -934,7 +950,7 @@
         },
         {
           "id": "avengers",
-          "importance": "recommended",
+          "importance": "optional",
           "note": "The Battle of New York's cleanup salvage is the origin of this film's central villain's technology and motive."
         }
       ],
@@ -959,17 +975,17 @@
         },
         {
           "id": "avengers-age-of-ultron",
-          "importance": "required",
+          "importance": "recommended",
           "note": "Bruce Banner has been missing since the end of that film; his fate as the Hulk is resolved here."
         },
         {
           "id": "doctor-strange",
-          "importance": "recommended",
+          "importance": "optional",
           "note": "A cameo appearance connects the mystical side of the MCU to Thor's search for his father."
         },
         {
           "id": "captain-america-civil-war",
-          "importance": "recommended",
+          "importance": "optional",
           "note": "Explains why Hulk/Bruce Banner and Thor have both been absent from recent Avengers activity."
         }
       ],
@@ -989,7 +1005,7 @@
       "dependencies": [
         {
           "id": "captain-america-civil-war",
-          "importance": "required",
+          "importance": "optional",
           "note": "T'Chaka's death and T'Challa's ascension to the throne of Wakanda, shown in that film, is the direct inciting incident here."
         }
       ],
@@ -1034,7 +1050,7 @@
         },
         {
           "id": "spider-man-homecoming",
-          "importance": "recommended",
+          "importance": "required",
           "note": "Peter Parker's relationship with Tony Stark, built there, pays off emotionally here."
         },
         {
@@ -1064,7 +1080,7 @@
         },
         {
           "id": "captain-america-civil-war",
-          "importance": "required",
+          "importance": "recommended",
           "note": "Scott's fugitive status and house arrest, the film's central plot device, result directly from his involvement there."
         }
       ],
@@ -1128,7 +1144,7 @@
         },
         {
           "id": "thor-ragnarok",
-          "importance": "recommended",
+          "importance": "optional",
           "note": "Thor's arc and his family history are directly revisited via time travel to Asgard."
         }
       ],
@@ -1158,7 +1174,7 @@
         },
         {
           "id": "captain-marvel",
-          "importance": "recommended",
+          "importance": "optional",
           "note": "Nick Fury and Talos (in disguise) appear throughout, building on characters and concepts introduced there."
         }
       ],
@@ -1348,7 +1364,7 @@
       "dependencies": [
         {
           "id": "avengers-endgame",
-          "importance": "recommended",
+          "importance": "optional",
           "note": "The Eternals' choice not to intervene in past events, including the Blip, is directly addressed and questioned."
         }
       ],
@@ -1477,7 +1493,7 @@
         },
         {
           "id": "spider-man-no-way-home",
-          "importance": "recommended",
+          "importance": "optional",
           "note": "The multiverse-breaking spell from that film is referenced as a direct cause of the instability here."
         },
         {
@@ -1531,7 +1547,7 @@
         },
         {
           "id": "guardians-of-the-galaxy-vol-2",
-          "importance": "recommended",
+          "importance": "optional",
           "note": "Thor is introduced traveling with the Guardians, following directly from the end of Endgame's team-up."
         }
       ],
@@ -1566,7 +1582,7 @@
         },
         {
           "id": "shang-chi",
-          "importance": "recommended",
+          "importance": "optional",
           "note": "Wong and the Ten Rings organization, introduced there, both play into this show's plot."
         }
       ],
@@ -1590,7 +1606,7 @@
         },
         {
           "id": "shang-chi",
-          "importance": "recommended",
+          "importance": "optional",
           "note": "Establishes the wider world's awareness of hidden nations and powers, paralleling Wakanda's own reveal."
         }
       ],
@@ -1645,7 +1661,7 @@
         },
         {
           "id": "thor-love-and-thunder",
-          "importance": "recommended",
+          "importance": "optional",
           "note": "The team's roster and status quo continue from where that film left them."
         }
       ],
@@ -1784,7 +1800,7 @@
         },
         {
           "id": "fox-logan",
-          "importance": "recommended",
+          "importance": "optional",
           "note": "This film directly reckons with and pays tribute to Logan's fate in that film."
         },
         {
@@ -1838,12 +1854,12 @@
         },
         {
           "id": "eternals",
-          "importance": "recommended",
+          "importance": "optional",
           "note": "A major plot thread involves consequences tied to the Celestial revealed at the end of that film."
         },
         {
           "id": "incredible-hulk",
-          "importance": "recommended",
+          "importance": "optional",
           "note": "General Thaddeus Ross, a major character here, was first introduced there."
         }
       ],
@@ -1914,27 +1930,72 @@
         {
           "id": "thunderbolts",
           "importance": "required",
-          "note": ""
+          "note": "Establishes Sam Wilson’s new roster of the Avengers and the state of global politics/the New Avengers before Doom's arrival"
         },
         {
           "id": "captain-america-brave-new-world",
           "importance": "required",
-          "note": ""
+          "note": "Establishes Sam Wilson’s new roster of the Avengers and the state of global politics/the New Avengers before Doom's arrival"
         },
         {
           "id": "fantastic-four-first-steps",
           "importance": "required",
-          "note": ""
+          "note": "Directly introduces the Fantastic Four and sets up Victor Von Doom/Doctor Doom as a primary antagonist"
         },
         {
           "id": "deadpool-and-wolverine",
           "importance": "recommended",
-          "note": ""
+          "note": "Integrates Fox's Marvel/X-Men universes into the wider MCU narrative and re-explores the TVA."
+        },
+        {
+          "id": "loki-season-1",
+          "importance": "recommended",
+          "note": "Establishes the mechanics of the multiverse, the Time Variance Authority (TVA), and branching timelines"
         },
         {
           "id": "loki-season-2",
           "importance": "recommended",
-          "note": ""
+          "note": "Establishes the mechanics of the multiverse, the Time Variance Authority (TVA), and branching timelines"
+        },
+        {
+          "id": "doctor-strange-multiverse-of-madness",
+          "importance": "recommended",
+          "note": "Introduces \"incursions\"—the catastrophic colliding of universes that forms the backbone of a Doom-level event"
+        },
+        {
+          "id": "spider-man-no-way-home",
+          "importance": "optional",
+          "note": "Proves that different cinematic universes and legacy characters can interact with massive consequences"
+        },
+        {
+          "id": "shang-chi",
+          "importance": "recommended",
+          "note": "Crucial context for Shang-Chi, who is confirmed as a core member of Sam Wilson's New Avengers roster in Doomsday."
+        },
+        {
+          "id": "ant-man-quantumania",
+          "importance": "optional",
+          "note": "Highly recommended because it heavily involves Cassie Lang and sets up the Quantum Realm foundations that tie into modern multiversal travel"
+        },
+        {
+          "id": "black-panther-wakanda-forever",
+          "importance": "optional",
+          "note": "Essential if you want to understand the state of Wakanda and the introduction of Namor, both of whom have heavy presence in the setup materials"
+        },
+        {
+          "id": "fox-x-men-first-class",
+          "importance": "recommended",
+          "note": "Explores the definitive origin of the mutant team mechanics and the rift between Xavier and Magneto."
+        },
+        {
+          "id": "fox-x-men-days-of-future-past",
+          "importance": "recommended",
+          "note": "The absolute peak of Fox's timeline-bending narratives, showcasing how a broken future can collide with the past"
+        },
+        {
+          "id": "the-marvels",
+          "importance": "recommended",
+          "note": "While a standalone cosmic story, its vital post-credits scene features Monica Rambeau crossing directly into an alternate X-Men universe alongside Beast"
         }
       ],
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Avengers:_Doomsday",
@@ -1953,6 +2014,36 @@
           "id": "spider-man-no-way-home",
           "importance": "required",
           "note": "Peter's identity being erased from everyone's memory at the end of No Way Home is the starting point for this film."
+        },
+        {
+          "id": "spider-man-far-from-home",
+          "importance": "required",
+          "note": "Establishes the chaos of Peter's identity being exposed by Mysterio"
+        },
+        {
+          "id": "spider-man-homecoming",
+          "importance": "required",
+          "note": "Introduces his early roots and foundational relationships in the MCU"
+        },
+        {
+          "id": "mtv-punisher",
+          "importance": "optional",
+          "note": "This two-season standalone series explores Frank Castle's origins as he uncovers a deep military conspiracy tied to the murder of his family. It transitions him from a simple vigilante seeking personal revenge into a full-time, relentless hunter of underground criminals."
+        },
+        {
+          "id": "punisher-one-last-kill",
+          "importance": "optional",
+          "note": "Released as a Disney+ Marvel Special Presentation, this 45-minute film focuses on an older, weary Frank Castle as he faces off against the remnants of the Gnucci crime family. Rather than ending his crusade, the story acts as a bridge that fully integrates the Punisher into the main MCU street-level landscape right before Spider-Man: Brand New Day."
+        },
+        {
+          "id": "mtv-daredevil",
+          "importance": "optional",
+          "note": "To understand the dynamic between these characters, you need to watch Daredevil Season 2, which introduces Frank Castle as an ideological rival to Matt Murdock."
+        },
+        {
+          "id": "daredevil-born-again",
+          "importance": "optional",
+          "note": "The first season of Daredevil: Born Again sets up the modern anti-vigilante political landscape in New York that directly influences Frank's actions leading into the new movies."
         }
       ],
       "wikipediaUrl": "https://en.wikipedia.org/wiki/Spider-Man:_Brand_New_Day",
